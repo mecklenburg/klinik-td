@@ -3,80 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#2D6A6A">
+<meta name="theme-color" content="#3a2218">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Klinik TD">
-<meta name="description" content="Hospital Tower Defense – Defend the corridor from gomers, paperwork, and administration!">
+<meta name="apple-mobile-web-app-title" content="KRAFT TD">
+<meta name="description" content="Kiez Kaffee Kraft Tower Defense – Defend the counter!">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>🏥 Klinik unter Belagerung / House of God TD</title>
+<title>☕ KRAFT: Theke unter Beschuss</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Figtree:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Figtree:wght@400;600;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{background:#e8ece9;font-family:'Figtree',sans-serif;overflow:hidden;height:100%;height:100dvh;width:100%;display:flex;flex-direction:column;align-items:center;user-select:none;-webkit-user-select:none;touch-action:manipulation;-webkit-touch-callout:none}
-#hud{display:flex;align-items:center;justify-content:center;width:100%;padding:5px 6px;color:#3a4a5c;z-index:10;gap:5px;flex-shrink:0;flex-wrap:wrap}
+html,body{background:#f5ede4;font-family:'Figtree',sans-serif;overflow:hidden;height:100%;height:100dvh;width:100%;display:flex;flex-direction:column;align-items:center;user-select:none;-webkit-user-select:none;touch-action:manipulation;-webkit-touch-callout:none}
+#hud{display:flex;align-items:center;justify-content:center;width:100%;padding:5px 6px;color:#3a2218;z-index:10;gap:5px;flex-shrink:0;flex-wrap:wrap}
 .st{display:flex;align-items:center;gap:3px;font-size:12px;font-weight:600;background:rgba(0,0,0,0.06);padding:2px 8px;border-radius:14px;white-space:nowrap}
 .st .ic{font-size:13px}
 #gc{position:relative;flex:1 1 auto;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden}
 canvas{display:block;border-radius:6px}
 #tp{display:flex;gap:3px;padding:4px 6px;width:100%;justify-content:center;flex-shrink:0;flex-wrap:wrap;max-width:420px;margin:0 auto}
-.tb{display:flex;flex-direction:column;align-items:center;background:rgba(0,0,0,0.04);border:2px solid rgba(0,0,0,0.08);border-radius:10px;padding:3px 5px;color:#3a4a5c;cursor:pointer;transition:all .15s;font-family:'Figtree',sans-serif;min-width:44px;width:calc(16.6% - 3px);flex-shrink:0;-webkit-tap-highlight-color:transparent;position:relative}
+.tb{display:flex;flex-direction:column;align-items:center;background:rgba(0,0,0,0.04);border:2px solid rgba(0,0,0,0.08);border-radius:10px;padding:3px 5px;color:#3a2218;cursor:pointer;transition:all .15s;font-family:'Figtree',sans-serif;min-width:44px;width:calc(16.6% - 3px);flex-shrink:0;-webkit-tap-highlight-color:transparent;position:relative}
 .tb:active{transform:scale(.93)}
-.tb.sel{background:rgba(45,106,106,0.15);border-color:#2D6A6A;box-shadow:0 0 8px rgba(45,106,106,0.2)}
+.tb.sel{background:rgba(58,34,24,0.15);border-color:#3a2218;box-shadow:0 0 8px rgba(58,34,24,0.2)}
 .tb.dis{opacity:.3;pointer-events:none}
 .tb.locked{opacity:.18;pointer-events:none}
 .tb.offlined{opacity:.35;pointer-events:none;border-color:rgba(200,80,50,.3);background:rgba(200,80,50,.06)}
 .tb .em{font-size:20px;line-height:1}
 .tb .nm{font-size:8px;font-weight:600;margin-top:1px;white-space:nowrap}
 .tb .ct{font-size:8px;opacity:.6}
-.tb .lk{position:absolute;top:-2px;right:-2px;font-size:9px;background:#c8cdd2;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center}
-#ib{display:none;width:100%;text-align:center;padding:1px 8px 4px;color:#5a6a7c;font-size:10px;opacity:.7;flex-shrink:0;font-style:italic}
-#wa{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);font-family:'Figtree',sans-serif;font-size:24px;font-weight:700;color:#2a3a4a;text-shadow:0 0 20px rgba(45,106,106,.4),0 1px 0 #fff;pointer-events:none;opacity:0;transition:opacity .4s;z-index:20;white-space:nowrap;letter-spacing:.5px}
+.tb .lk{position:absolute;top:-2px;right:-2px;font-size:9px;background:#d4c4b0;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center}
+#ib{display:none;width:100%;text-align:center;padding:1px 8px 4px;color:#6a5040;font-size:10px;opacity:.7;flex-shrink:0;font-style:italic}
+#wa{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);font-family:'Figtree',sans-serif;font-size:24px;font-weight:700;color:#3a2218;text-shadow:0 0 20px rgba(58,34,24,.4),0 1px 0 #fff;pointer-events:none;opacity:0;transition:opacity .4s;z-index:20;white-space:nowrap;letter-spacing:.5px}
 #wa.show{opacity:1}
-#intro-card{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);width:85%;max-width:340px;display:flex;flex-direction:column;align-items:center;background:#fff;z-index:70;color:#3a4a5c;padding:22px 18px 16px;text-align:center;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.18),0 0 0 1px rgba(0,0,0,.05);border-left:5px solid #2D6A6A}
+#intro-card{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);width:85%;max-width:340px;display:flex;flex-direction:column;align-items:center;background:#fff;z-index:70;color:#3a2218;padding:22px 18px 16px;text-align:center;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.18),0 0 0 1px rgba(0,0,0,.05);border-left:5px solid #3a2218}
 #intro-card.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
 #intro-card.threat{border-left-color:#c0392b}
 #intro-card .ic-emoji{font-size:48px;margin-bottom:6px;filter:drop-shadow(0 0 8px rgba(0,0,0,.08))}
 #intro-card .ic-type{font-family:'Figtree',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;padding:2px 10px;border-radius:8px;display:inline-block}
-#intro-card .ic-type.equip-type{color:#2D6A6A;background:rgba(45,106,106,.1)}
+#intro-card .ic-type.equip-type{color:#3a2218;background:rgba(58,34,24,.1)}
 #intro-card .ic-type.threat-type{color:#c0392b;background:rgba(192,57,43,.1)}
 #intro-card .ic-type.crisis-type{color:#b06000;background:rgba(200,120,30,.12)}
-#intro-card .ic-name{font-family:'Figtree',sans-serif;font-size:22px;font-weight:700;color:#2a3a4a;margin-bottom:5px}
-#intro-card .ic-quote{font-family:'Special Elite',monospace;font-size:12px;color:#6a5a48;line-height:1.5;max-width:290px;margin-bottom:5px;font-style:italic}
-#intro-card .ic-stats{font-size:10px;opacity:.5;margin-bottom:10px;color:#5a6a7c}
-#intro-card .ic-dismiss{font-size:10px;opacity:.3;animation:pulse 2s infinite;color:#5a6a7c}
+#intro-card .ic-name{font-family:'Figtree',sans-serif;font-size:22px;font-weight:700;color:#3a2218;margin-bottom:5px}
+#intro-card .ic-quote{font-family:'Playfair Display',serif;font-size:12px;color:#6a5040;line-height:1.5;max-width:290px;margin-bottom:5px;font-style:italic}
+#intro-card .ic-stats{font-size:10px;opacity:.5;margin-bottom:10px;color:#6a5040}
+#intro-card .ic-dismiss{font-size:10px;opacity:.3;animation:pulse 2s infinite;color:#6a5040}
 @keyframes pulse{0%,100%{opacity:.35}50%{opacity:.6}}
 #mutator-bar{position:absolute;top:4px;left:4px;right:40px;z-index:12;display:none;flex-wrap:wrap;gap:3px;padding:0}
 .mut-pill{display:inline-block;font-family:'Figtree',sans-serif;font-size:10px;font-weight:600;letter-spacing:.3px;color:#a03030;background:rgba(200,50,50,.1);padding:2px 7px;border-radius:10px;border:1px solid rgba(200,50,50,.2);white-space:nowrap;line-height:1.4}
 .mut-pill.disable{color:#b06000;background:rgba(200,120,30,.1);border-color:rgba(200,120,30,.2)}
-.ov{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(232,236,233,.97);z-index:50;color:#3a4a5c;padding:16px;text-align:center;overflow-y:auto}
+.ov{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(245,237,228,.97);z-index:50;color:#3a2218;padding:16px;text-align:center;overflow-y:auto}
 .ov.hid{display:none}
 .hid{display:none!important}
 body:has(.ov:not(.hid)) #hud,body:has(.ov:not(.hid)) #tp,body:has(.ov:not(.hid)) #ib{visibility:hidden;height:0;padding:0;overflow:hidden;flex:0}
-.bt{font-family:'Figtree',sans-serif;font-size:26px;font-weight:700;text-shadow:none;line-height:1.3;letter-spacing:.5px;color:#2a3a4a}
-.st2{font-size:12px;opacity:.7;margin:6px 0 10px;font-family:'Figtree',sans-serif;max-width:320px;line-height:1.5;color:#4a5a6c}
+.bt{font-family:'Figtree',sans-serif;font-size:26px;font-weight:700;text-shadow:none;line-height:1.3;letter-spacing:.5px;color:#3a2218}
+.st2{font-size:12px;opacity:.7;margin:6px 0 10px;font-family:'Figtree',sans-serif;max-width:320px;line-height:1.5;color:#6a5040}
 .st2 em{color:#b03030;font-style:normal}
-.laws-box{font-family:'Special Elite',monospace;font-size:9px;color:#6a5a48;line-height:1.7;max-width:310px;text-align:left;margin:8px auto 14px;padding:10px;background:rgba(0,0,0,.03);border-radius:8px;border:1px solid rgba(0,0,0,.06);max-height:200px;overflow-y:auto}
+.laws-box{font-family:'Playfair Display',serif;font-size:9px;color:#6a5040;line-height:1.7;max-width:310px;text-align:left;margin:8px auto 14px;padding:10px;background:rgba(0,0,0,.03);border-radius:8px;border:1px solid rgba(0,0,0,.06);max-height:200px;overflow-y:auto}
 .laws-box span{color:#8a5a30}
-.pbtn{font-family:'Figtree',sans-serif;font-size:15px;font-weight:700;padding:9px 28px;border-radius:25px;border:none;background:linear-gradient(135deg,#2D6A6A,#1a4a4a);color:#fff;cursor:pointer;box-shadow:0 3px 15px rgba(45,106,106,.25);-webkit-tap-highlight-color:transparent;margin:4px}
+.pbtn{font-family:'Figtree',sans-serif;font-size:15px;font-weight:700;padding:9px 28px;border-radius:25px;border:none;background:linear-gradient(135deg,#3a2218,#2a1208);color:#fff;cursor:pointer;box-shadow:0 3px 15px rgba(58,34,24,.25);-webkit-tap-highlight-color:transparent;margin:4px}
 .pbtn:active{transform:scale(.96)}
-.pbtn.lang{font-size:13px;padding:7px 20px;background:rgba(0,0,0,.05);color:#3a4a5c;box-shadow:none;border:1px solid rgba(0,0,0,.12)}
-.pbtn.lang:hover,.pbtn.lang.active{background:rgba(45,106,106,.15);border-color:#2D6A6A;color:#2D6A6A}
+.pbtn.lang{font-size:13px;padding:7px 20px;background:rgba(0,0,0,.05);color:#3a2218;box-shadow:none;border:1px solid rgba(0,0,0,.12)}
+.pbtn.lang:hover,.pbtn.lang.active{background:rgba(58,34,24,.15);border-color:#3a2218;color:#3a2218}
 .lang-row{display:flex;gap:8px;margin-bottom:12px}
-#sb{position:absolute;top:5px;right:5px;z-index:15;background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.1);border-radius:7px;color:#3a4a5c;font-family:'Figtree',sans-serif;font-size:11px;font-weight:600;padding:4px 9px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#sb{position:absolute;top:5px;right:5px;z-index:15;background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.1);border-radius:7px;color:#3a2218;font-family:'Figtree',sans-serif;font-size:11px;font-weight:600;padding:4px 9px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 #cf{position:absolute;top:55%;left:50%;transform:translate(-50%,-50%);pointer-events:none;opacity:0;transition:opacity .3s;z-index:18;font-size:16px;font-family:'Figtree',sans-serif;font-weight:700;color:#b08a00;text-shadow:0 0 10px rgba(180,140,0,.3)}
 #cf.show{opacity:1}
-#law{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-family:'Special Elite',monospace;font-size:9px;color:rgba(60,70,80,.18);pointer-events:none;z-index:5;white-space:nowrap;letter-spacing:.5px;max-width:95%;overflow:hidden;text-overflow:ellipsis}
+#law{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-family:'Playfair Display',serif;font-size:9px;color:rgba(60,70,80,.18);pointer-events:none;z-index:5;white-space:nowrap;letter-spacing:.5px;max-width:95%;overflow:hidden;text-overflow:ellipsis}
 </style>
 </head>
 <body>
 <div id="hud">
   <div class="st"><span class="ic">💰</span><span id="gd">80</span></div>
-  <div class="st"><span class="ic">📟</span><span id="wd-label">Shift</span> <span id="wd">0</span></div>
+  <div class="st"><span class="ic">☕</span><span id="wd-label">Schicht</span> <span id="wd">0</span></div>
   <div class="st"><span class="ic">❤️</span><span id="ld">20</span></div>
-  <div class="st"><span class="ic">📋</span><span id="sd">0</span></div>
+  <div class="st"><span class="ic">⭐</span><span id="sd">0</span></div>
 </div>
 <div id="gc">
   <canvas id="cv"></canvas>
@@ -93,30 +93,27 @@ body:has(.ov:not(.hid)) #hud,body:has(.ov:not(.hid)) #tp,body:has(.ov:not(.hid))
     <div class="ic-stats" id="ic-stats"></div>
     <div class="ic-dismiss" id="ic-dismiss">tap anywhere to continue</div>
   </div>
-  <div id="shift-card" class="hid" style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:55;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(220,226,222,.96);padding:16px;text-align:center">
-    <div style="background:#2D6A6A;color:#fff;padding:6px 24px;border-radius:10px;font-family:'Figtree',sans-serif;font-weight:700;font-size:18px;margin-bottom:10px" id="sc-title"></div>
+  <div id="shift-card" class="hid" style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:55;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(240,232,222,.96);padding:16px;text-align:center">
+    <div style="background:#3a2218;color:#fff;padding:6px 24px;border-radius:10px;font-family:'Figtree',sans-serif;font-weight:700;font-size:18px;margin-bottom:10px" id="sc-title"></div>
     <div id="sc-upkeep" style="font-size:14px;color:#b03030;margin:4px 0;font-weight:600;font-family:'Figtree',sans-serif"></div>
-    <div id="sc-gold" style="font-size:13px;color:#3a4a5c;opacity:.7;margin-bottom:8px;font-family:'Figtree',sans-serif"></div>
+    <div id="sc-gold" style="font-size:13px;color:#3a2218;opacity:.7;margin-bottom:8px;font-family:'Figtree',sans-serif"></div>
     <div id="sc-mutators" style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin:4px 0 10px"></div>
-    <div id="sc-law" style="font-family:'Special Elite',monospace;font-size:11px;color:#6a5a48;max-width:300px;margin:0 auto 8px;font-style:italic"></div>
-    <div id="sc-tutorial" style="font-size:11px;color:#2D6A6A;max-width:300px;margin:0 auto 12px;background:rgba(45,106,106,.08);padding:6px 10px;border-radius:8px;display:none"></div>
+    <div id="sc-law" style="font-family:'Playfair Display',serif;font-size:11px;color:#6a5040;max-width:300px;margin:0 auto 8px;font-style:italic"></div>
+    <div id="sc-tutorial" style="font-size:11px;color:#3a2218;max-width:300px;margin:0 auto 12px;background:rgba(58,34,24,.08);padding:6px 10px;border-radius:8px;display:none"></div>
     <button class="pbtn" onclick="dismissShiftCard()" style="font-size:16px;padding:10px 32px">▶️</button>
   </div>
   <div class="ov" id="ss" style="position:fixed;z-index:100">
-    <div class="bt" id="ss-title">🏥</div>
+    <div class="bt" id="ss-title">☕</div>
     <div class="st2" id="ss-desc"></div>
     <div class="laws-box" id="ss-laws"></div>
-    <div class="lang-row">
-      <button class="pbtn lang" onclick="setLang('en')">🇺🇸 English</button>
-      <button class="pbtn lang active" onclick="setLang('de')">🇩🇪 Deutsch</button>
-    </div>
-    <button class="pbtn" id="ss-play" onclick="startGame()">🩺</button>
+    <button class="pbtn" id="ss-play" onclick="startGame()">☕</button>
   </div>
   <div class="ov hid" id="go" style="position:fixed;z-index:100">>
-    <div class="bt" id="go-title">💀</div>
+    <div class="bt" id="go-title">😵</div>
     <div class="st2" id="go-desc"></div>
     <button class="pbtn" id="go-share" onclick="generateScorecard()" style="background:linear-gradient(135deg,#e17055,#c0392b);margin-bottom:4px">📸</button>
-    <button class="pbtn" id="go-play" onclick="startGame()">📟</button>
+    <a href="https://www.kiezkaffeekraft.de/collections/all" target="_blank" rel="noopener" class="pbtn" style="background:linear-gradient(135deg,#6f4e37,#3a2218);color:#f5ede4;margin-bottom:4px;text-decoration:none;display:inline-block">🛒 KRAFT Shop</a>
+    <button class="pbtn" id="go-play" onclick="startGame()">☕</button>
   </div>
 </div>
 <div id="tp"></div>
@@ -129,170 +126,95 @@ body:has(.ov:not(.hid)) #hud,body:has(.ov:not(.hid)) #tp,body:has(.ov:not(.hid))
 let lang='de';
 
 const TX={
-en:{
-  title:'🏥 HOUSE OF GOD\nTOWER DEFENSE',
-  desc:'<em>July 1st.</em> The worst day in American medicine. Every teaching hospital fills with new interns who don\'t know what they\'re doing.<br><br>You are one of them.<br><br>They\'re coming — the <em>gomers</em>, the LOLs, the bounce-backs, the suits. Your only weapons: the hospital\'s equipment, turned against the endless tide.<br><br>Place equipment along the corridor. Combine adjacent equipment for synergies. New equipment unlocks as you survive.',
-  laws_title:'THE LAWS OF THE HOUSE OF GOD:',
-  laws:["I. Gomers don't leave.","II. Gomers go to ground.","III. At a cardiac arrest, the first procedure is to take your own pulse.","IV. The patient is the one with the disease.","V. Placement comes first.","VI. There is no body cavity that cannot be reached with a #14 needle and a good strong arm.","VII. Age + BUN = Lasix dose.","VIII. They can always hurt you more.","IX. The only good admission is a cancelled admission.","X. If you don't take a temperature, you can't find a fever.","XI. Show me a BMS who only triples my work and I will kiss his feet.","XII. If the radiology resident and the BMS both see a lesion on the chest X-ray, there can be no lesion there.","XIII. The delivery of good medical care is to do as much nothing as possible."],
-  play:'🩺 Begin Internship', shift:'Shift', go_title:'🚨 SHIFT OVER',
-  go_desc:(w,s,q)=>`You survived ${w} shifts.<br>Score: ${s}<br><br><em>${q}</em>`,
-  go_play:'📟 New Rotation', dismiss:'tap anywhere to continue',
-  share:'📸 Share Score', sc_title:'HOUSE OF GOD TOWER DEFENSE', sc_survived:'Survived', sc_shifts:'shifts', sc_score:'Score', sc_top:'Top Tower', sc_quote:'Words of wisdom', sc_cta:'Can you survive longer?',
-  go_quotes:['"They can always hurt you more."','"The patient is the one with the disease."','"Gomers don\'t leave. Neither will this shift."','"The delivery of good medical care is to do as much nothing as possible."','"At a cardiac arrest, the first procedure is to take your own pulse. You forgot."'],
-  boss_wave:w=>`⚠️ BOSS: Shift ${w}`, norm_wave:w=>`📟 Shift ${w}`,
-  upkeep:n=>'-'+n+'💰 upkeep', admitted:'ADMITTED',
-  sell_confirm:(name,val)=>'🗑️ Tap again to sell '+name+' (+'+val+'💰)',
-  sell_label:'SELL?',
-  resurge_text:'BACK AGAIN!',
-  sc_shift:w=>'Shift '+w, sc_upkeep:n=>'⚠️ Maintenance: -'+n+'💰', sc_gold:n=>'Budget: '+n+'💰', sc_resume:'▶️ Start Shift', sc_no_mut:'No modifiers this shift.',
-  tutorial:'💡 Select equipment below, then tap an empty room to place it. Tap a placed tower to sell it.',
-  tower_tip:(t)=>t.emoji+' '+t.name+': '+t.desc+' · DMG '+t.dmg+' · RNG '+t.range+' · 💰'+t.cost,
-  new_equip:'NEW EQUIPMENT', new_threat:'INCOMING', boss_incoming:'BOSS INCOMING', crisis:'⚠️ CRISIS',
-  er:'ER',ward:'WARD',
-  // Tower names/intros
-  towers:{
-    iv:{name:'IV Pole',desc:'Saline shots',intro:'"Start every patient with a line. Even the ones who don\'t need one. Especially the ones who don\'t need one."',introName:'The IV Pole'},
-    monitor:{name:'Monitor',desc:'Rapid beeps — annoys everyone',intro:'"The monitor beeps. It always beeps. Nobody knows why. Nobody ever will."',introName:'The Cardiac Monitor'},
-    defib:{name:'Defib',desc:'Area shock — clear!',intro:'"CLEAR! ...Everyone stepped back except the intern holding the bed rail."',introName:'The Defibrillator'},
-    ice:{name:'Ice Bath',desc:'Slows 40% — consumable',intro:'"Therapeutic hypothermia. Or as the nurses call it: Tuesday. Warning: subject to supply shortages."',introName:'The Ice Bath'},
-    xray:{name:'X-Ray',desc:'Piercing radiation beam',intro:'"If the radiology resident and the BMS both see a lesion on the chest X-ray, there can be no lesion there."',introName:'The Portable X-Ray'},
-    laxative:{name:'Laxative',desc:'Toxic DOT — the nuclear option',intro:'"GoLYTELY they called it. There was nothing lightly about it. A weapon of mass destruction in a plastic jug."',introName:'Industrial Laxative'},
-    restraint:{name:'Restraints',desc:'Immobilize 1.5s',intro:'"Soft restraints, they call them. There is nothing soft about a man who cannot move his arms."',introName:'The Restraints'},
-    overhead:{name:'Overhead Page',desc:'Wide disruption — chains 5, slows',intro:'"PAGING DR. BLUE, ROOM 314." The noise reaches everywhere. Everyone stops. Nobody named Blue has ever worked here.',introName:'The Overhead Page'},
-    mri:{name:'MRI',desc:'% max HP damage',intro:'"The MRI suite: a $3 million machine that takes 45 minutes to tell you what you already knew."',introName:'The MRI Machine'},
-    attending:{name:'Attending',desc:'Buffs adjacent +30%',intro:'"The Attending arrives. The Attending pronounces. The Attending leaves. The intern does the work."',introName:'The Attending Physician'},
-    nurse:{name:'Nurse',desc:'Reliable rapid shots',intro:'"The nurse has been here longer than the walls. She knows which drawer has the good tape. She does not need a doctor to tell her what to do."',introName:'The Ward Nurse'},
-    dotbase:{name:'dotbase',desc:'4× vs admin & docs, AoE dissolve',intro:'"Structured data. FHIR-native. The paperwork doesn\'t stand a chance. Every form, every duplicate, every DRG query — vaporized into clean, structured data."',introName:'dotbase'},
-    sell:{name:'Sell',desc:'Sell equip (50%)'},
-  },
-  enemies:{
-    gomer:{name:'GOMER',intro:'"GOMER: Get Out of My Emergency Room. They don\'t leave. That\'s Law number one."',introName:'The GOMER'},
-    lol:{name:'LOL in NAD',intro:'"Little Old Lady in No Apparent Distress. She\'s been this way for decades. She\'ll outlive you, your children, and this hospital."',introName:'LOL in NAD'},
-    bounce:{name:'Bounce-back',intro:'"Discharged at 4 AM. Back in the ER by 7. You clear them — they come right back, faster than before. The chart note just says: see previous."',introName:'The Bounce-Back'},
-    flyer:{name:'3 AM Complainer',intro:'"Has had the same symptoms for three weeks. Chose 3 AM on a Tuesday to demand immediate attention. Fast. Annoying. Fragile — but there are so many of them."',introName:'The 3 AM Complainer'},
-    seeker:{name:'Drug Seeker',intro:'"My pain is fifteen out of ten, doc. I\'m allergic to everything except Dilaudid. Tylenol gives me a rash. Ibuprofen gives me a different rash."',introName:'The Drug Seeker'},
-    paper:{name:'Paperwork',intro:'"Consent forms. Discharge summaries. Insurance pre-auths. Progress notes. The actual medicine was the easy part."',introName:'The Paperwork'},
-    admin:{name:'Administration',intro:'"We need to discuss your throughput metrics. Your average door-to-disposition time is concerning. Also, your parking pass has been revoked."',introName:'HOSPITAL ADMINISTRATION'},
-    lawsuit:{name:'Malpractice Suit',intro:'"30% armored. It moves slowly. It is very patient. It has all the time in the world. You do not."',introName:'THE MALPRACTICE SUIT'},
-    jcaho:{name:'JCAHO Inspector',intro:'"The Joint Commission is here. Unannounced. Your hand sanitizer dispensers are 2 inches too high. Your fire exits are labeled in the wrong font."',introName:'THE JCAHO INSPECTOR'},
-    fatman:{name:'The Fat Man',intro:'"The Fat Man. The legend. He heals those around him because he has seen it all. BUFF them and TURF them."',introName:'THE FAT MAN'},
-    kpi:{name:'KPI Report',intro:'"It splits in two when cleared. You fix one metric, two more go red. The dashboard is never green."',introName:'The KPI Report'},
-    consultant:{name:'Consultant',intro:'"The management consultant. Shields everyone nearby with an impenetrable aura of jargon. No treatment gets through."',introName:'The Management Consultant'},
-    duplicate:{name:'Duplicate Form',intro:'"The same form. Again. It photocopies itself at half health. You will fill it out in triplicate or not at all."',introName:'The Duplicate Form'},
-    secondop:{name:'Second Opinion',intro:'"The patient who demands a second opinion. And a third. Speeds up everyone around them — because nothing moves the queue like a complaint to the Chefarzt."',introName:'The Second Opinion'},
-    compliance:{name:'Compliance Officer',intro:'"Jams your nearest equipment every few seconds. They don\'t need to touch anything. Their mere presence makes everything slower and more complicated."',introName:'The Compliance Officer'},
-    aihype:{name:'AI Hype Slide',intro:'"A pitch deck that regenerates itself. Immune to laxatives. Only structured data from dotbase can cut through the buzzwords."',introName:'The AI Hype Slide'},
-  },
-  combos:{steam:'Cold Purge',chainspore:'Charged Scan',thunderroot:'Code Tackle',soulburn:'Contrast Reaction',grandrounds:'Grand Rounds',digitalnurse:'Digital Nursing'},
-  mutators:{
-    caffeine_crash:{name:'☕ Caffeine Crash',desc:'Incoming 20% faster',explain:'All cases move faster this shift. Place slowing towers strategically.'},
-    budget_cuts:{name:'💸 Budget Cuts',desc:'Rewards -40%',explain:'You earn less per case cleared. Spend wisely.'},
-    burnout:{name:'🔥 Burnout',desc:'Fire rate -20%',explain:'All your equipment fires slower this shift.'},
-    hypochondriacs:{name:'🤒 Hypochondriacs',desc:'+12 fast weak cases',explain:'A swarm of fast, weak cases joins the wave.'},
-    night_shift:{name:'🌙 Night Shift',desc:'Range -25%',explain:'Visibility reduced. All equipment has shorter range.'},
-    armor_up:{name:'🛡️ Armor Plating',desc:'All cases +25% armor',explain:'Cases take less damage. Focus fire or use % damage.'},
-    double_admit:{name:'🚨 Double Admit',desc:'+50% more cases',explain:'50% more cases arrive. Prepare extra defenses.'},
-    power_outage:{name:'⚡ Power Outage',desc:'Electronics offline',flavor:'"The backup generator failed. The MRI is a very expensive coat rack."',explain:'Electronic equipment is disabled this shift. Only non-electronic towers work.'},
-    supply_chain:{name:'📦 Supply Shortage',desc:'Consumables offline',flavor:'"Backorder. Backorder. The pharmacy has nothing."',explain:'IV, Ice Bath and Laxative are unavailable this shift.'},
-    union_action:{name:'✊ Union Action',desc:'Staff offline',flavor:'"The nurses are on strike. The attendings are in a meeting about the strike. You are alone."',explain:'All staff towers (Nurse, Restraints, Overhead, Attending) are offline.'},
-    code_blue:{name:'🚨 Code Blue',desc:'Boss mid-wave',explain:'A random boss arrives mid-wave. Stay alert.'},
-    double_armor_swarm:{name:'🐢 Armored Swarm',desc:'Armored +30% more',explain:'More cases arrive, and they all have extra armor.'},
-    overtime:{name:'⏰ Mandatory Overtime',desc:'2× case HP',explain:'All cases have double health. This will be a long shift.'},
-  },
-},
 de:{
-  title:'🏥 KLINIK UNTER\nBELAGERUNG',
-  desc:'<em>1. Oktober.</em> Neues Quartal. Neue PJler, die nicht wissen wo der Kaffeeautomat steht. Die Stationen sind voll, die Kassen leer, und der MDK hat sich angekündigt.<br><br>Du bist Assistenzarzt. Erstes Jahr.<br><br>Sie kommen den Flur entlang — die <em>Dauerpatienten</em>, die Drehtürfälle, der Papierkram, die Verwaltung. Deine einzige Waffe: die Ausstattung der Klinik, zweckentfremdet gegen die endlose Flut.<br><br>Platziere Ausstattung entlang des Flurs. Kombiniere benachbarte Platzierungen für Synergien. Neue Ausstattung wird mit jeder überstandenen Schicht freigeschaltet.',
-  laws_title:'DIE GESETZE DER UNIKLINIK:',
-  laws:["I. Dauerpatienten gehen nicht. Sie kommen wieder.","II. Jede Entlassung erzeugt eine Wiederaufnahme.","III. Bei einer Reanimation: erst den eigenen Puls fühlen.","IV. Der Patient hat die Krankheit, nicht du. (Meistens.)","V. Verlegung geht vor Behandlung.","VI. Es gibt keine Körperhöhle, die nicht mit einer Braunüle und etwas Entschlossenheit erreicht werden kann.","VII. Alter + Kreatinin = Furosemid-Dosis.","VIII. Die Verwaltung kann dir immer noch mehr aufbürden.","IX. Die einzig gute Aufnahme ist eine abgelehnte Aufnahme.","X. Wer kein Fieber misst, findet auch keins.","XI. Zeig mir einen PJler, der meine Arbeit nur verdreifacht, und ich küsse ihm die Füße.","XII. Sehen Radiologe und PJler beide etwas auf dem Röntgenbild, kann da nichts sein.","XIII. Die beste Medizin ist, so wenig wie möglich zu tun."],
-  play:'🩺 Dienst antreten', shift:'Schicht', go_title:'🚨 SCHICHT VORBEI',
-  go_desc:(w,s,q)=>`Du hast ${w} Schichten überlebt.<br>Punkte: ${s}<br><br><em>${q}</em>`,
-  go_play:'📟 Neue Rotation', dismiss:'tippen zum Fortfahren',
-  share:'📸 Score teilen', sc_title:'KLINIK UNTER BELAGERUNG', sc_survived:'Überlebt', sc_shifts:'Schichten', sc_score:'Punkte', sc_top:'Beste Ausstattung', sc_quote:'Weisheit der Station', sc_cta:'Schaffst du mehr?',
-  go_quotes:['"Die Verwaltung kann dir immer noch mehr aufbürden."','"Der Patient hat die Krankheit, nicht du. Meistens."','"Dauerpatienten gehen nie. Du jetzt schon."','"Die beste Medizin ist, so wenig wie möglich zu tun. Du warst zu gründlich."','"Bei einer Reanimation: erst den eigenen Puls fühlen. Hast du vergessen."'],
-  boss_wave:w=>`⚠️ BOSS: Schicht ${w}`, norm_wave:w=>`📟 Schicht ${w}`,
-  upkeep:n=>'-'+n+'💰 Wartung', admitted:'AUFGENOMMEN',
-  sell_confirm:(name,val)=>'🗑️ Nochmal tippen: '+name+' verkaufen (+'+val+'💰)',
-  sell_label:'VERKAUF?',
-  resurge_text:'SCHON WIEDER!',
-  sc_shift:w=>'Schicht '+w, sc_upkeep:n=>'⚠️ Wartung: -'+n+'💰', sc_gold:n=>'Budget: '+n+'💰', sc_resume:'▶️ Schicht starten', sc_no_mut:'Keine Modifikatoren diese Schicht.',
-  tutorial:'💡 Wähle unten Ausstattung aus, dann tippe auf ein leeres Zimmer zum Platzieren. Tippe auf Platziertes zum Verkaufen.',
-  tower_tip:(t)=>t.emoji+' '+(T(t,'name')||t.id)+': '+(T(t,'desc')||'')+' · DMG '+t.dmg+' · RNG '+t.range+' · 💰'+t.cost,
-  new_equip:'NEUE AUSSTATTUNG', new_threat:'NEUER FALL', boss_incoming:'BOSS KOMMT', crisis:'⚠️ KRISE',
-  er:'ZNA',ward:'STATION',
+  title:'☕ KRAFT: THEKE\nUNTER BESCHUSS',
+  desc:'<em>Montag, 8:29 Uhr. Schivelbeiner Straße, Prenzlauer Berg.</em> Die Schlange reicht bis zur Straße. Der Hafermilch-Vorrat ist halb leer. Jemand fragt nach dem WLAN-Passwort. Es steht an der Wand.<br><br>Du bist Barista bei KRAFT. Erste Woche. Seit 2014 verteidigt das Team hier den Traum von richtig gutem Kaffee und echtem Kiez-Gefühl.<br><br>Sie kommen herein — die <em>Hafermilch-Fanatiker</em>, die Laptop-Besetzer, die Influencer, die Vermieter. Deine Waffen: der Guten-Morgen-Blend, das Banana Bread und das KRAFT-Team.<br><br>Platziere Ausstattung entlang der Theke. Kombiniere Nachbarn für Synergien.',
+  laws_title:'DIE GESETZE DES KIEZ-CAFÉS:',
+  laws:["I. Der Hafermilch-Vorrat ist immer knapper als du denkst.","II. Wer keinen Deckel will, kleckert. Immer.","III. Das WLAN-Passwort steht an der Wand. Trotzdem fragt jeder.","IV. Laptop-Nutzer bestellen einen Kaffee und bleiben vier Stunden.","V. Das Banana Bread ist nie glutenfrei. Hör auf zu fragen.","VI. Bargeld ist immer passend — außer beim 50-Euro-Schein um 8:31.","VII. Es gibt keinen Cortado, der kalt aber nicht Cold Brew ist.","VIII. Die Schlange wird immer länger. Niemals kürzer.","IX. Wenn die Hafermilch alle ist, ist sie alle.","X. Der beste Kaffee braucht Zeit. Die Kunden haben keine.","XI. Jeder zweite Hund heißt Bruno.","XII. Das Trinkgeld-Glas ist das Stimmungsbarometer des Kiezes.","XIII. Am Ende zählt nur: War das Banana Bread warm?"],
+  play:'☕ Schicht starten', shift:'Schicht', go_title:'😵 FEIERABEND',
+  go_desc:(w,s,q)=>'Du hast '+w+' Schichten geschafft.<br>Punkte: '+s+'<br><br><em>'+q+'</em>',
+  go_play:'☕ Nochmal', dismiss:'tippen zum Fortfahren',
+  share:'📸 Score teilen', sc_title:'KRAFT: THEKE UNTER BESCHUSS',
+  sc_survived:'Überlebt', sc_shifts:'Schichten', sc_score:'Punkte', sc_top:'Bestes Tool', sc_quote:'Kiez-Weisheit', sc_cta:'Schaffst du mehr?',
+  go_quotes:['"Die Schlange wird immer länger. Niemals kürzer."','"Das Banana Bread ist nie glutenfrei."','"Das WLAN-Passwort steht an der Wand."','"Am Ende zählt nur eins: War das Banana Bread warm?"','"Wenn die Hafermilch alle ist, ist sie alle."\',\'"KRAFT steht nicht nur für Koffein. Es steht dafür, dass wir Namen lernen. Gesichter erkennen."'],
+  boss_wave:w=>'⚠️ BOSS: Schicht '+w, norm_wave:w=>'☕ Schicht '+w,
+  upkeep:n=>'-'+n+'💰 Miete & Milch',
+  admitted:'BEDIENT & GEGANGEN',
+  sell_confirm:(name,val)=>'🗑️ Nochmal tippen: '+name+' abbauen (+'+val+'💰)',
+  sell_label:'WEG?',
+  resurge_text:'SCHON WIEDER DA!',
+  sc_shift:w=>'Schicht '+w, sc_upkeep:n=>'⚠️ Fixkosten: -'+n+'💰', sc_gold:n=>'Kasse: '+n+'💰', sc_resume:'▶️ Los geht\'s',
+  tutorial:'💡 Wähle Ausstattung unten, tippe auf ein freies Feld zum Platzieren. Tippe auf Platziertes zum Verkaufen.',
+  tower_tip:t=>t.emoji+' '+t.name+': '+t.desc+' · DMG '+t.dmg+' · RNG '+t.range+' · 💰'+t.cost,
+  new_equip:'NEUE AUSSTATTUNG', new_threat:'NEUER GAST', boss_incoming:'ACHTUNG BOSS', crisis:'⚠️ KRISE',
+  er:'TÜR', ward:'THEKE',
   towers:{
-    iv:{name:'Infusionsständer',desc:'Kochsalz-Schüsse',intro:'"Erstmal einen Zugang legen. Ob der Patient einen braucht, ist eine andere Frage."',introName:'Der Infusionsständer'},
-    monitor:{name:'Monitor',desc:'Piept ununterbrochen',intro:'"Der Monitor piept. Er piept immer. Niemand weiß warum. Der Alarm wird ignoriert. Wie immer."',introName:'Der Überwachungsmonitor'},
-    defib:{name:'Defi',desc:'Flächenschock — Weg da!',intro:'"ALLE ZURÜCK! ...Alle traten zurück, außer dem PJler, der die Bettkante festhielt."',introName:'Der Defibrillator'},
-    ice:{name:'Eisbad',desc:'Verlangsamt 40% — Verbrauchsmaterial',intro:'"Therapeutische Hypothermie. Die Pflege nennt es: Dienstag. Achtung: bei Lieferengpässen nicht verfügbar."',introName:'Das Eisbad'},
-    xray:{name:'Röntgen',desc:'Durchdringender Strahl',intro:'"Sehen Radiologe und PJler beide etwas auf dem Bild, kann da nichts sein." — Gesetz XII',introName:'Das mobile Röntgen'},
-    laxative:{name:'Abführmittel',desc:'Toxischer DOT — die Nuklearoption',intro:'"Macrogol, Klistier, Einlauf. Im Flur riecht es nach Kapitulation. Die Massenvernichtungswaffe der Inneren."',introName:'Das Abführmittel'},
-    restraint:{name:'Fixierung',desc:'Immobilisiert 1,5s',intro:'"Weiche Fixierung, heißt es offiziell. Es gibt nichts Weiches daran, wenn ein Mensch seine Arme nicht bewegen kann."',introName:'Die Fixierung'},
-    overhead:{name:'Durchsage',desc:'Breite Störung — Kette 5, verlangsamt',intro:'"DR. MÜLLER BITTE AUF STATION 3." Der Lärm erreicht alle. Alle bleiben stehen. Ein Dr. Müller hat hier nie gearbeitet.',introName:'Die Lautsprecherdurchsage'},
-    mri:{name:'MRT',desc:'% max HP Schaden',intro:'"Das MRT: ein 3-Millionen-Euro-Gerät, das 45 Minuten braucht um dir zu sagen, was du schon wusstest."',introName:'Das MRT'},
-    attending:{name:'Chefarzt',desc:'Bufft Nachbarn +30%',intro:'"Der Chefarzt erscheint. Der Chefarzt begutachtet. Der Chefarzt geht. Der Assistenzarzt macht die Arbeit."',introName:'Der Chefarzt'},
-    nurse:{name:'Schwester',desc:'Zuverlässige Schnellschüsse',intro:'"Die Stationsschwester ist länger hier als die Wände. Sie weiß, in welcher Schublade das gute Pflaster liegt. Sie braucht keinen Arzt, um zu wissen was zu tun ist."',introName:'Die Stationsschwester'},
-    dotbase:{name:'dotbase',desc:'4× vs Verwaltung & Doku, Flächen-Auflösung',intro:'"Strukturierte Daten. FHIR-nativ. Der Papierkram hat keine Chance. Jedes Formular, jedes Duplikat, jede DRG-Anfrage — aufgelöst in saubere, strukturierte Daten."',introName:'dotbase'},
+    espresso:{name:'Siebträger',desc:'Schnelle Guten-Morgen-Schüsse',intro:'"Der Siebträger. 93 Grad, 9 bar, 25 Sekunden. Guten-Morgen-Blend von Field Coffee. Brasilien trifft Äthiopien. Blasphemie ist alles andere."',introName:'Der Siebträger'},
+    steam:{name:'Dampfdüse',desc:'Verlangsamt 40% — Milch braucht Zeit',intro:'"Hafermilch aufschäumen dauert. Die Zeit steht still. Für dich. Nicht für die Schlange. Nein, nicht die Oatly Barista Edition. Die andere."',introName:'Die Dampfdüse'},
+    banana:{name:'Banana Bread',desc:'Flächenschaden — alle wollen ein Stück',intro:'"Das Banana Bread. Täglich frisch. Nie aus dem Tiefkühler. Nie glutenfrei. Vegan seit Tag eins. Die Geheimzutat bleibt geheim. Promise."',introName:'Das Banana Bread'},
+    grinder:{name:'Mühle',desc:'Mahlgut-DOT — feiner Staub überall',intro:'"JB Kaffee aus München, frisch gemahlen. Der feine Staub legt sich auf alles. ALLES. Augen, Kleidung, Seele, Latte Art."',introName:'Die Mühle'},
+    barista:{name:'Barista',desc:'Zuverlässige Schnellschüsse',intro:'"War gestern noch Schauspielstudent. Macht trotzdem den besten Flat White im Kiez. Die KRAFT Family verbringt auch ihre Freizeit zusammen."',introName:'Der Barista'},
+    pourover:{name:'Pour Over',desc:'Präzisionsstrahl — langsam, tödlich',intro:'"V60 oder AeroPress. Handaufguss. Single Origin, wechselnd. Drei Minuten pro Tasse. Die Kunden warten. Der Kaffee ist es wert."',introName:'Die Pour-Over-Station'},
+    cardreader:{name:'EC-Gerät',desc:'Immobilisiert — Verbindung wird aufgebaut...',intro:'"EC-Karte bitte. Kontaktlos geht nicht. Nochmal. Chip rein. PIN. Verbindung wird aufgebaut... Bon? Bargeld ist immer passend. Außer beim 50er."',introName:'Das EC-Kartengerät'},
+    callout:{name:'Rufanlage',desc:'Kette 5, verlangsamt — alle drehen sich um',intro:'"FLAT WHITE FÜR STEFFEN!" Jeder dreht sich um. Niemand heißt Steffen. Trotzdem stehen alle still. Seit 2014. Jeden Tag."',introName:'Die Rufanlage'},
+    putzplan:{name:'Putzplan',desc:'% max HP — niemand entkommt',intro:'"Der Putzplan. Er hängt an der Wand. Er ist unausweichlich. Drei Standorte, dreimal Putzplan. Er kennt keine Gnade."',introName:'Der Putzplan'},
+    robii:{name:'Robii',desc:'Bufft Nachbarn +30%',intro:'"Robii. Gründer. Wenn er da ist, läuft alles besser. Er kennt jeden Gast beim Namen. Das KRAFT steht nicht nur für Koffein."',introName:'Robii'},
+    croissant:{name:'Croissant-Vitrine',desc:'Breite AoE-Verlangsamung',intro:'"Die Vitrine. Lemon Cake, Carrot Cake, Brownies. Jeder bleibt stehen. Jeder guckt. Jeder überlegt. Niemand kann widerstehen."',introName:'Die Croissant-Vitrine'},
+    onlineshop:{name:'Online Shop',desc:'4× vs Influencer & Bürokratie',intro:'"kiezkaffeekraft.de — Guten-Morgen-Blend, Merch, Gutscheine für P-Berg, Pankow und Moabit. Digital löst alles. Ab 60 Euro versandkostenfrei."',introName:'Der Online Shop'},
     sell:{name:'Verkauf',desc:'Verkaufen (50%)'},
   },
   enemies:{
-    gomer:{name:'Dauerpatient',intro:'"Der Dauerpatient. Er geht nicht. Das ist Gesetz Nummer eins. Er war schon hier, bevor du angefangen hast."',introName:'Der Dauerpatient'},
-    lol:{name:'Alte Dame o.B.',intro:'"Alte Dame ohne Befund. Ihr geht es gut. Ihr ging es schon immer gut. Sie wird uns alle überleben — und unsere Kinder auch."',introName:'Die Alte Dame ohne Befund'},
-    bounce:{name:'Drehtürfall',intro:'"Entlassen um 4 Uhr morgens. Um 7 wieder in der ZNA. Du wirst ihn los — er kommt direkt wieder, schneller als vorher. Im Arztbrief steht nur: siehe Vorakte."',introName:'Der Drehtürfall'},
-    flyer:{name:'3-Uhr-Nachts-Patient',intro:'"Hat die Beschwerden seit drei Wochen. Kommt um 3 Uhr nachts und verlangt sofortige Behandlung. Schnell. Nervig. Zerbrechlich — aber es sind so viele."',introName:'Der 3-Uhr-Nachts-Patient'},
-    seeker:{name:'Rezeptjäger',intro:'"Mein Schmerz ist fünfzehn von zehn, Herr Doktor. Gegen Ibuprofen bin ich allergisch. Gegen Paracetamol auch. Nur Tilidin hilft. Nein, Tropfen, keine Tabletten."',introName:'Der Rezeptjäger'},
-    paper:{name:'Papierkram',intro:'"Aufnahmeformulare. DRG-Kodierung. MDK-Anfragen. Arztbriefe. Die eigentliche Medizin war der leichte Teil."',introName:'Der Papierkram'},
-    admin:{name:'Verwaltung',intro:'"Wir müssen über Ihre Fallzahlen reden. Die durchschnittliche Verweildauer ist nicht akzeptabel. Ach, und Ihr Parkausweis wurde eingezogen."',introName:'DIE VERWALTUNG'},
-    lawsuit:{name:'MDK-Prüfung',intro:'"30% gepanzert. Sie bewegt sich langsam. Sie ist sehr geduldig. Sie hat alle Zeit der Welt. Du nicht."',introName:'DIE MDK-PRÜFUNG'},
-    jcaho:{name:'Hygiene-Audit',intro:'"Die Hygiene-Kommission ist da. Unangekündigt. Ihre Desinfektionsspender hängen 2 cm zu hoch. Ihre Fluchtwege sind falsch beschildert. Viel Glück."',introName:'DAS HYGIENE-AUDIT'},
-    fatman:{name:'Privatpatient',intro:'"Der Privatpatient. Freund des Chefarztes. Einzelzimmer, Chefarztbehandlung, und er heilt alle in seiner Nähe — weil für ihn immer jemand springt."',introName:'DER PRIVATPATIENT'},
-    kpi:{name:'KPI-Bericht',intro:'"Wird er erledigt, teilt er sich in zwei. Du reparierst eine Kennzahl, zwei weitere werden rot. Das Dashboard ist nie grün."',introName:'Der KPI-Bericht'},
-    consultant:{name:'Berater',intro:'"Der Unternehmensberater. Schirmt alle in seiner Nähe mit einer undurchdringlichen Aura aus Buzzwords ab. Keine Behandlung kommt durch."',introName:'Der Unternehmensberater'},
-    duplicate:{name:'Duplikat-Formular',intro:'"Dasselbe Formular. Schon wieder. Bei halber Gesundheit kopiert es sich selbst. Dreifache Ausfertigung, oder gar nicht."',introName:'Das Duplikat-Formular'},
-    secondop:{name:'Zweitmeinung',intro:'"Der Patient, der eine Zweitmeinung will. Und eine Dritte. Beschleunigt alle in der Nähe — denn nichts bewegt die Warteschlange wie eine Beschwerde beim Chefarzt."',introName:'Die Zweitmeinung'},
-    compliance:{name:'Compliance-Beauftragter',intro:'"Blockiert regelmäßig die nächste Ausstattung. Muss nichts anfassen. Die bloße Anwesenheit macht alles langsamer und komplizierter."',introName:'Der Compliance-Beauftragte'},
-    aihype:{name:'KI-Hype-Folie',intro:'"Eine Pitch-Folie, die sich selbst regeneriert. Immun gegen Abführmittel. Nur strukturierte Daten von dotbase durchdringen den Buzzword-Nebel."',introName:'Die KI-Hype-Folie'},
+    regular:{name:'Normalo',intro:'"Ein normaler Kunde. Bestellt einen Cappuccino. Sagt Danke. Gibt Trinkgeld. Gibt es tatsächlich noch."',introName:'Der Normalo'},
+    stammgast:{name:'Stammkundin',intro:'"Sie kommt jeden Tag um 9:14. Bestellt immer dasselbe. Kennt das Team beim Vornamen. Bleibt bis Mittag."',introName:'Die Stammkundin'},
+    drehtuer:{name:'Drehtürkunde',intro:'"Gerade bestellt, kurz raus, direkt wieder rein. Zucker vergessen. Serviette vergessen. Eigentlich doch Hafer statt Kuh."',introName:'Der Drehtürkunde'},
+    hafermilch:{name:'Hafermilch-Extrawunsch',intro:'"Extra heiß, aber nicht zu heiß. Hafermilch von Oatly, nicht die andere. Schaum, aber weniger. Eigentlich ein anderes Getränk."',introName:'Der Hafermilch-Extrawunsch'},
+    bargeld:{name:'50-Euro-Schein',intro:'"Einen kleinen Espresso bitte. Hier, ein Fünfziger. Kleiner hab ich nicht. Wechselgeld? Tja."',introName:'Der 50-Euro-Schein'},
+    influencer:{name:'Influencer',intro:'"Kann ich den Flat White nochmal neu machen? Das Licht war schlecht. Könnt ihr das Banana Bread etwas weiter links legen? Für die Story."',introName:'Der Influencer'},
+    vermieter:{name:'Vermieter',intro:'"Guten Tag. Wir müssen über die Mietanpassung reden. Und die Außenbestuhlung. Und Paragraf 7 Absatz 3."',introName:'DER VERMIETER'},
+    hygiene:{name:'Hygienekontrolle',intro:'"Ihr Kühlschrank hat 8,2 Grad. Erlaubt sind 7. Wo ist das HACCP-Konzept? Wo ist die Schulungsdokumentation?"',introName:'DIE HYGIENEKONTROLLE'},
+    bezirksamt:{name:'Bezirksamt',intro:'"Ihr Antrag auf Außengastronomie ist unvollständig. Es fehlt Anlage 3b. Die Unterschrift auf Seite 12 ist unleserlich."',introName:'DAS BEZIRKSAMT'},
+    gentrifizierer:{name:'Gentrifizier',intro:'"Will hier ein Co-Working-Space eröffnen. Mit Avocado-Toast und Mitgliedschaft. Alle um ihn herum werden teurer. Heilt Nachbarn."',introName:'DER GENTRIFIZIER'},
+    kpibericht:{name:'Yelp-Bewertung',intro:'"⭐ — Kein WLAN-Passwort am Tisch. Banana Bread war nicht glutenfrei. Teilt sich in zwei Beschwerden auf."',introName:'Die Yelp-Bewertung'},
+    berater:{name:'Franchise-Berater',intro:'"Haben Sie über Skalierung nachgedacht? Fünf Standorte bis 2027. Investor hab ich. Seine Buzzword-Aura schirmt alle ab."',introName:'Der Franchise-Berater'},
+    duplikat:{name:'Doppelbestellung',intro:'"Einmal das Gleiche nochmal bitte. Kopiert sich bei halber Geduld selbst."',introName:'Die Doppelbestellung'},
+    secondop:{name:'Änderer',intro:'"Eigentlich doch lieber Latte. Nee, warte, Cappuccino. Oder Flat White? Beschleunigt die Unentschlossenheit aller."',introName:'Der Änderer'},
+    compliance:{name:'Finanzamt',intro:'"TSE-Modul korrekt? Bonpflicht eingehalten? Kassennachschau. Blockiert regelmäßig die nächste Ausstattung."',introName:'Das Finanzamt'},
+    aihype:{name:'Café-App-Pitch',intro:'"Wir revolutionieren Kaffee mit KI. Regeneriert sich selbst. Immun gegen Koffein. Nur der Online Shop schneidet durch den Buzzword-Nebel."',introName:'Der Café-App-Pitch'},
   },
-  combos:{steam:'Kalte Spülung',chainspore:'Geladener Scan',thunderroot:'Code-Angriff',soulburn:'Kontrastreaktion',grandrounds:'Chefarztvisite',digitalnurse:'Digitale Pflege'},
+  combos:{steam:'Latte-Art-Combo',chainspore:'Charged Shot',thunderroot:'Kaffee-Koma',soulburn:'Bitterer Nachgeschmack',grandrounds:'Robiis Runde',digitalnurse:'Digital Barista'},
   mutators:{
-    caffeine_crash:{name:'☕ Koffeinentzug',desc:'Fälle 20% schneller',explain:'Alle Fälle bewegen sich schneller. Verlangsamende Ausstattung hilft.'},
-    budget_cuts:{name:'💸 Sparmaßnahmen',desc:'Belohnung -40%',explain:'Du verdienst weniger pro erledigtem Fall. Spare weise.'},
-    burnout:{name:'🔥 Burnout',desc:'Feuerrate -20%',explain:'Alle Ausstattung feuert langsamer diese Schicht.'},
-    hypochondriacs:{name:'🤒 Hypochonder',desc:'+12 schnelle Harmlose',explain:'Ein Schwarm schneller, harmloser Fälle kommt zusätzlich.'},
-    night_shift:{name:'🌙 Nachtdienst',desc:'Reichweite -25%',explain:'Sichtbarkeit eingeschränkt. Alles hat weniger Reichweite.'},
-    armor_up:{name:'🛡️ Gepanzert',desc:'+25% Rüstung',explain:'Fälle nehmen weniger Schaden. Fokussiere oder nutze %-Schaden.'},
-    double_admit:{name:'🚨 Doppelaufnahme',desc:'+50% mehr Fälle',explain:'50% mehr Fälle kommen an. Bereite extra Verteidigung vor.'},
-    power_outage:{name:'⚡ Stromausfall',desc:'Elektronik offline',flavor:'"Das Notstromaggregat ist ausgefallen. Wieder. Das MRT ist ein sehr teurer Garderobenständer."',explain:'Elektronische Ausstattung ist diese Schicht deaktiviert.'},
-    supply_chain:{name:'📦 Lieferengpass',desc:'Verbrauchsmaterial offline',flavor:'"Nachbestellung. Nachbestellung. Nachbestellung. Die Apotheke hat nichts mehr."',explain:'Infusion, Eisbad und Abführmittel sind nicht verfügbar.'},
-    union_action:{name:'✊ Streiktag',desc:'Personal offline',flavor:'"Die Pflege streikt. Die Chefärzte haben eine Sitzung über den Streik. Du bist allein."',explain:'Schwester, Fixierung, Durchsage und Chefarzt sind offline.'},
-    code_blue:{name:'🚨 Reanimation',desc:'Zufälliger Boss',explain:'Ein zufälliger Boss erscheint mitten in der Welle.'},
-    double_armor_swarm:{name:'🐢 Gepanzerter Ansturm',desc:'Rüstung +30% mehr',explain:'Mehr Fälle kommen, alle mit extra Rüstung.'},
-    overtime:{name:'⏰ Pflichtüberstunden',desc:'2× Fall-HP',explain:'Alle Fälle haben doppelte Gesundheit. Lange Schicht.'},
+    caffeine_crash:{name:'☕ Koffeinentzug',desc:'Gäste 20% schneller',explain:'Alle Gäste sind ungeduldiger und bewegen sich schneller.'},
+    budget_cuts:{name:'💸 Preisdruck',desc:'Trinkgeld -40%',explain:'Weniger Einnahmen pro bedientem Gast.'},
+    burnout:{name:'🔥 Burnout',desc:'Feuerrate -20%',explain:'Alle Ausstattung arbeitet langsamer.'},
+    hypochondriacs:{name:'🤧 Allergie-Welle',desc:'+12 schnelle Harmlose',explain:'Plötzlich sind alle laktoseintolerant.'},
+    night_shift:{name:'🌙 Spätschicht',desc:'Reichweite -25%',explain:'Dunkel und müde. Weniger Reichweite.'},
+    armor_up:{name:'🛡️ Dickfellig',desc:'+25% Geduld',explain:'Gäste sind schwerer zufriedenzustellen.'},
+    double_admit:{name:'🚨 Ansturm',desc:'+50% mehr Gäste',explain:'Die S-Bahn hat Verspätung. Alle kommen gleichzeitig.'},
+    power_outage:{name:'⚡ Stromausfall',desc:'Elektronik offline',flavor:'"Der Strom ist weg. Die Mühle schweigt. Der Siebträger ist kalt."',explain:'Siebträger, Mühle, EC-Gerät und Online Shop offline.'},
+    supply_chain:{name:'📦 Lieferengpass',desc:'Essen & Milch offline',flavor:'"Die Hafermilch ist alle. Das Banana Bread kam nicht."',explain:'Dampfdüse, Banana Bread und Croissant-Vitrine nicht verfügbar.'},
+    union_action:{name:'✊ Team krank',desc:'Personal offline',flavor:'"Die Baristas sind krank. Robii läuft Marathon. Du bist allein."',explain:'Barista, Rufanlage und Robii sind offline.'},
+    code_blue:{name:'🚨 VIP-Alarm',desc:'Zufälliger Boss',explain:'Ein Boss-Gast erscheint mitten in der Welle.'},
+    double_armor_swarm:{name:'🐢 Berliner Schnauze',desc:'Dickfellig +30% mehr',explain:'Mehr Gäste kommen, alle mit extra Berliner Dickfelligkeit.'},
+    overtime:{name:'⏰ Überstunden',desc:'2× Gast-HP',explain:'Alle Gäste haben doppelte Geduld. Lange Schicht.'},
   },
 },
 };
 
 function L(key){return TX[lang][key];}
 function T(tower,prop){const tid=tower.id;const lt=TX[lang].towers[tid];return lt?lt[prop]||'':'';}
-function E(idx,prop){const keys=['gomer','lol','bounce','flyer','seeker','paper','admin','lawsuit','jcaho','fatman','kpi','consultant','duplicate','secondop','compliance','aihype'];const le=TX[lang].enemies[keys[idx]];return le?le[prop]||'':'';}
+function E(idx,prop){const keys=['regular','stammgast','drehtuer','hafermilch','bargeld','influencer','vermieter','hygiene','bezirksamt','gentrifizierer','kpibericht','berater','duplikat','secondop','compliance','aihype'];const le=TX[lang].enemies[keys[idx]];return le?le[prop]||'':'';}
 function M(mutId,prop){const lm=TX[lang].mutators[mutId];return lm?lm[prop]||'':'';}
 function comboName(effect){return TX[lang].combos[effect]||effect;}
-function setLang(l){
-  lang=l;
-  document.querySelectorAll('.lang').forEach(b=>b.classList.remove('active'));
-  document.querySelector(`.lang[onclick="setLang('${l}')"]`).classList.add('active');
-  renderStartScreen();
-}
 
 function renderStartScreen(){
   document.getElementById('ss-title').innerHTML=L('title').replace('\n','<br>');
   document.getElementById('ss-desc').innerHTML=L('desc');
-  const lawsHtml='<span>'+L('laws_title')+'</span><br>'+L('laws').join('<br>');
-  document.getElementById('ss-laws').innerHTML=lawsHtml;
+  document.getElementById('ss-laws').innerHTML='<span>'+L('laws_title')+'</span><br>'+L('laws').join('<br>');
   document.getElementById('ss-play').textContent=L('play');
   document.getElementById('ic-dismiss').textContent=L('dismiss');
   document.getElementById('wd-label').textContent=L('shift');
 }
+
 
 // ══════════════════════════════════════════
 const C=document.getElementById('cv'),X=C.getContext('2d');
@@ -342,51 +264,51 @@ function pathPos(p){const i=Math.min(Math.floor(p),PATH.length-2),t=p-i;const[x1
 
 // ── TOWERS (language-neutral stats, text via T()) ──
 const TOWERS=[
-  {id:'iv',emoji:'💉',cost:25,range:2.5,dmg:8,rate:45,color:'#4aadcc',projC:'#7ec8e3',projS:3,unlock:0},
-  {id:'monitor',emoji:'📟',cost:35,range:2.5,dmg:4,rate:15,color:'#2ecc71',projC:'#55efc4',projS:2,unlock:0},
-  {id:'defib',emoji:'⚡',cost:55,range:2,dmg:18,rate:65,color:'#e74c3c',splash:1.2,projC:'#ff6b6b',projS:5,unlock:0},
-  {id:'ice',emoji:'🧊',cost:60,range:2.5,dmg:5,rate:55,color:'#74b9ff',slow:.4,projC:'#a8d8ea',projS:4,unlock:0},
-  {id:'nurse',emoji:'👩‍⚕️',cost:40,range:2,dmg:10,rate:35,color:'#ff6b81',projC:'#ff6b81',projS:3,unlock:2},
-  {id:'xray',emoji:'☢️',cost:85,range:3,dmg:28,rate:80,color:'#a29bfe',beam:true,projC:'#d2b4de',projS:2,unlock:3},
-  {id:'laxative',emoji:'💊',cost:75,range:2,dmg:12,rate:40,color:'#e17055',burn:{dmg:3,dur:120},projC:'#fab1a0',projS:4,unlock:4},
-  {id:'restraint',emoji:'🪢',cost:70,range:1.5,dmg:2,rate:100,color:'#00b894',root:{dur:55},projC:'#55efc4',projS:4,unlock:6},
-  {id:'overhead',emoji:'📢',cost:90,range:4,dmg:8,rate:60,color:'#fdcb6e',chain:5,slow:.25,projC:'#ffeaa7',projS:3,unlock:8},
-  {id:'mri',emoji:'🧲',cost:130,range:2.5,dmg:15,rate:60,color:'#6c5ce7',pctDmg:.03,projC:'#a29bfe',projS:4,unlock:10},
-  {id:'attending',emoji:'👨‍⚕️',cost:160,range:3.5,dmg:35,rate:100,color:'#dfe6e9',aura:{range:1.5,dmgMult:1.3},beam:true,projC:'#dfe6e9',projS:3,unlock:13},
-  {id:'dotbase',emoji:'💻',cost:200,range:3,dmg:10,rate:50,color:'#2D6A6A',projC:'#5ce0d0',projS:4,unlock:15,beam:true,dotbase:true},
+  {id:'espresso',emoji:'☕',cost:25,range:2.5,dmg:8,rate:45,color:'#6f4e37',projC:'#8b6914',projS:3,unlock:0},
+  {id:'steam',emoji:'🥛',cost:60,range:2.5,dmg:5,rate:55,color:'#c9b8a8',slow:.4,projC:'#e8ddd0',projS:4,unlock:0},
+  {id:'banana',emoji:'🍌',cost:55,range:2,dmg:18,rate:65,color:'#f0c030',splash:1.2,projC:'#f7d060',projS:5,unlock:0},
+  {id:'grinder',emoji:'💨',cost:75,range:2,dmg:12,rate:40,color:'#6a5040',burn:{dmg:3,dur:120},projC:'#8b7355',projS:4,unlock:0},
+  {id:'barista',emoji:'👩‍🍳',cost:40,range:2,dmg:10,rate:35,color:'#ff6b81',projC:'#ff6b81',projS:3,unlock:2},
+  {id:'pourover',emoji:'🫖',cost:85,range:3,dmg:28,rate:80,color:'#a29bfe',beam:true,projC:'#d2b4de',projS:2,unlock:3},
+  {id:'croissant',emoji:'🥐',cost:70,range:3,dmg:3,rate:50,color:'#deb887',slow:.35,splash:1.5,projC:'#f5deb3',projS:4,unlock:4},
+  {id:'cardreader',emoji:'📱',cost:70,range:1.5,dmg:2,rate:100,color:'#00b894',root:{dur:55},projC:'#55efc4',projS:4,unlock:6},
+  {id:'callout',emoji:'📢',cost:90,range:4,dmg:8,rate:60,color:'#fdcb6e',chain:5,slow:.25,projC:'#ffeaa7',projS:3,unlock:8},
+  {id:'putzplan',emoji:'🧹',cost:130,range:2.5,dmg:15,rate:60,color:'#6c5ce7',pctDmg:.03,projC:'#a29bfe',projS:4,unlock:10},
+  {id:'robii',emoji:'🏃',cost:160,range:3.5,dmg:35,rate:100,color:'#e8d5b7',aura:{range:1.5,dmgMult:1.3},beam:true,projC:'#e8d5b7',projS:3,unlock:13},
+  {id:'onlineshop',emoji:'💻',cost:200,range:3,dmg:10,rate:50,color:'#3a2218',projC:'#6f4e37',projS:4,unlock:15,beam:true,dotbase:true},
 ];
 // Add getters
 TOWERS.forEach(t=>{Object.defineProperty(t,'name',{get(){return T(t,'name')||t.id}});Object.defineProperty(t,'desc',{get(){return T(t,'desc')||''}});});
 
 const COMBOS=[
-  {a:'ice',b:'laxative',effect:'steam'},
-  {a:'defib',b:'xray',effect:'chainspore'},
-  {a:'restraint',b:'overhead',effect:'thunderroot'},
-  {a:'laxative',b:'mri',effect:'soulburn'},
-  {a:'iv',b:'attending',effect:'grandrounds'},
-  {a:'nurse',b:'dotbase',effect:'digitalnurse'},
+  {a:'steam',b:'grinder',effect:'steam'},
+  {a:'banana',b:'pourover',effect:'chainspore'},
+  {a:'cardreader',b:'callout',effect:'thunderroot'},
+  {a:'grinder',b:'putzplan',effect:'soulburn'},
+  {a:'espresso',b:'robii',effect:'grandrounds'},
+  {a:'barista',b:'onlineshop',effect:'digitalnurse'},
 ];
 
 const ETYPES=[
-  {idx:0,emoji:'🧓',hp:35,spd:.55,reward:4,color:'#b2bec3',size:1,animType:'shuffle',tags:['patient']},
-  {idx:1,emoji:'👵',hp:50,spd:.45,reward:5,color:'#dfe6e9',size:1,animType:'slide',tags:['patient']},
-  {idx:2,emoji:'🚶‍♂️',hp:22,spd:1.4,reward:6,color:'#fd79a8',size:.95,animType:'scurry',tags:['patient'],resurge:true},
-  {idx:3,emoji:'😩',hp:20,spd:1.8,reward:7,color:'#e17055',size:.85,animType:'scurry',tags:['patient']},
-  {idx:4,emoji:'😤',hp:25,spd:2.0,reward:3,color:'#00b894',size:.8,animType:'scurry',tags:['patient']},
-  {idx:5,emoji:'📄',hp:60,spd:1.0,reward:8,color:'#636e72',size:1.1,animType:'bob',tags:['admin','document']},
+  {idx:0,emoji:'🧑',hp:35,spd:.55,reward:4,color:'#b2bec3',size:1,animType:'shuffle',tags:['customer']},
+  {idx:1,emoji:'👵',hp:50,spd:.45,reward:5,color:'#dfe6e9',size:1,animType:'slide',tags:['customer']},
+  {idx:2,emoji:'🚶‍♂️',hp:22,spd:1.4,reward:6,color:'#fd79a8',size:.95,animType:'scurry',tags:['customer'],resurge:true},
+  {idx:3,emoji:'😩',hp:20,spd:1.8,reward:7,color:'#e17055',size:.85,animType:'scurry',tags:['customer']},
+  {idx:4,emoji:'😤',hp:25,spd:2.0,reward:3,color:'#00b894',size:.8,animType:'scurry',tags:['customer']},
+  {idx:5,emoji:'📱',hp:60,spd:1.0,reward:8,color:'#636e72',size:1.1,animType:'bob',tags:['admin','influencer']},
   // Bosses
   {idx:6,emoji:'👔',hp:280,spd:.65,reward:20,color:'#e74c3c',size:1.3,animType:'bob',boss:true,tags:['admin']},
-  {idx:7,emoji:'⚖️',hp:500,spd:.5,reward:30,color:'#6c5ce7',size:1.5,animType:'pulse',boss:true,armor:.3,tags:['admin']},
-  {idx:8,emoji:'🔍',hp:400,spd:1.1,reward:35,color:'#fdcb6e',size:1.3,animType:'scurry',boss:true,flying:true,tags:['admin']},
-  {idx:9,emoji:'🎩',hp:650,spd:.35,reward:50,color:'#ffd700',size:1.7,animType:'pulse',boss:true,healer:true,tags:['patient']},
+  {idx:7,emoji:'🔍',hp:400,spd:1.1,reward:35,color:'#fdcb6e',size:1.3,animType:'scurry',boss:true,flying:true,tags:['admin']},
+  {idx:8,emoji:'🏛️',hp:500,spd:.5,reward:30,color:'#6c5ce7',size:1.5,animType:'pulse',boss:true,armor:.3,tags:['admin']},
+  {idx:9,emoji:'🎩',hp:650,spd:.35,reward:50,color:'#ffd700',size:1.7,animType:'pulse',boss:true,healer:true,tags:['admin']},
   // Late-stage (shift 12+)
-  {idx:10,emoji:'📊',hp:70,spd:1.3,reward:9,color:'#a29bfe',size:1,animType:'bob',tags:['admin','document'],splitter:true},
+  {idx:10,emoji:'⭐',hp:70,spd:1.3,reward:9,color:'#a29bfe',size:1,animType:'bob',tags:['admin'],splitter:true},
   {idx:11,emoji:'🧑‍💼',hp:150,spd:.9,reward:15,color:'#fd79a8',size:1.15,animType:'shuffle',tags:['admin'],shielder:true},
-  {idx:12,emoji:'📋',hp:90,spd:1.1,reward:10,color:'#00cec9',size:1,animType:'scurry',tags:['admin','document','repetitive'],copier:true},
+  {idx:12,emoji:'🔁',hp:90,spd:1.1,reward:10,color:'#00cec9',size:1,animType:'scurry',tags:['admin','repetitive'],copier:true},
   // Very late-stage (shift 15+)
-  {idx:13,emoji:'🧑‍⚕️',hp:120,spd:.8,reward:12,color:'#e056a0',size:1.1,animType:'bob',tags:['patient'],rusher:true},
+  {idx:13,emoji:'🤷',hp:120,spd:.8,reward:12,color:'#e056a0',size:1.1,animType:'bob',tags:['customer'],rusher:true},
   {idx:14,emoji:'💼',hp:180,spd:.7,reward:18,color:'#2c3e50',size:1.2,animType:'shuffle',tags:['admin'],disabler:true},
-  {idx:15,emoji:'🤖',hp:100,spd:1.0,reward:14,color:'#00b4d8',size:1,animType:'pulse',tags:['admin','document'],regen:true,burnImmune:true},
+  {idx:15,emoji:'🤖',hp:100,spd:1.0,reward:14,color:'#00b4d8',size:1,animType:'pulse',tags:['admin'],regen:true,burnImmune:true},
 ];
 
 const MUTATORS=[
@@ -397,9 +319,9 @@ const MUTATORS=[
   {id:'night_shift',tier:2,apply:()=>{},towerEffect:{rangeMult:.75}},
   {id:'armor_up',tier:2,apply:q=>{q.forEach(e=>{e.armorAdd=(e.armorAdd||0)+.25});}},
   {id:'double_admit',tier:2,apply:q=>{const ex=[];q.forEach((e,i)=>{if(i%2===0)ex.push({...e,delay:e.delay+8});});q.push(...ex);}},
-  {id:'power_outage',tier:2,disable:['monitor','defib','xray','mri','dotbase'],apply:()=>{}},
-  {id:'supply_chain',tier:2,disable:['iv','laxative','ice'],apply:()=>{}},
-  {id:'union_action',tier:2,disable:['nurse','restraint','overhead','attending'],apply:()=>{}},
+  {id:'power_outage',tier:2,disable:['espresso','grinder','cardreader','onlineshop'],apply:()=>{}},
+  {id:'supply_chain',tier:2,disable:['steam','banana','croissant'],apply:()=>{}},
+  {id:'union_action',tier:2,disable:['barista','callout','robii'],apply:()=>{}},
   {id:'code_blue',tier:3,apply:q=>{q.push({type:ETYPES[6+Math.floor(Math.random()*4)],delay:Math.floor(q.length*8),hpM:1});}},
   {id:'double_armor_swarm',tier:3,apply:q=>{q.forEach(e=>{e.armorAdd=(e.armorAdd||0)+.15});const ex=[];q.forEach((e,i)=>{if(i%3===0)ex.push({...e,delay:e.delay+10});});q.push(...ex);}},
   {id:'overtime',tier:3,apply:q=>{q.forEach(e=>{e.hpM*=2});}},
@@ -437,7 +359,7 @@ function showNextIntro(){
   const isCrisis=item.type===L('crisis');
   card.classList.remove('threat');
   typeEl.className='ic-type';
-  if(isEquip){typeEl.classList.add('equip-type');card.style.borderLeftColor='#2D6A6A';}
+  if(isEquip){typeEl.classList.add('equip-type');card.style.borderLeftColor='#3a2218';}
   else if(isCrisis){typeEl.classList.add('crisis-type');card.style.borderLeftColor='#d4820a';card.classList.add('threat');}
   else{typeEl.classList.add('threat-type');card.style.borderLeftColor='#c0392b';card.classList.add('threat');}
   card.classList.add('show');
@@ -499,7 +421,7 @@ function queueShiftCard(upkeep){
 
 function showShiftCard(upkeep){
   const sc=document.getElementById('shift-card');
-  document.getElementById('sc-title').textContent='📟 '+L('sc_shift')(wave);
+  document.getElementById('sc-title').textContent='☕ '+L('sc_shift')(wave);
 
   // Upkeep — only show if there is one
   const upEl=document.getElementById('sc-upkeep');
@@ -519,7 +441,7 @@ function showShiftCard(upkeep){
       if(!seenMutators.has(m.id+'_explained')){
         seenMutators.add(m.id+'_explained');
         const expl=M(m.id,'explain')||'';
-        if(expl) html+='<div style="width:100%;font-size:10px;color:#5a6a7c;margin:2px 0 4px;font-style:italic">'+expl+'</div>';
+        if(expl) html+='<div style="width:100%;font-size:10px;color:#6a5040;margin:2px 0 4px;font-style:italic">'+expl+'</div>';
       }
     });
     mutBox.innerHTML=html;
@@ -594,25 +516,25 @@ function fire(tw,tgt){
   if(combo&&combo.effect==='grandrounds')tw.cooldown=Math.floor(tw.rate/3);
   // dotbase: massive bonus vs admin/document/repetitive tags
   if(tw.dotbase){
-    const isAdmin=tgt.tags&&(tgt.tags.includes('admin')||tgt.tags.includes('document')||tgt.tags.includes('repetitive'));
+    const isAdmin=tgt.tags&&(tgt.tags.includes('admin')||tgt.tags.includes('influencer')||tgt.tags.includes('repetitive'));
     const mult=isAdmin?4:1;
     dmg*=mult;
     // AoE dissolve effect on all nearby admin/doc targets
     if(isAdmin){
-      enemies.forEach(o=>{if(o!==tgt&&o.tags&&(o.tags.includes('admin')||o.tags.includes('document'))&&Math.sqrt((o.x-tgt.x)**2+(o.y-tgt.y)**2)<2*TILE){o.hp-=dmg*.3;spawnP(o.x,o.y,'#5ce0d0',3);}});
+      enemies.forEach(o=>{if(o!==tgt&&o.tags&&(o.tags.includes('admin')||o.tags.includes('influencer'))&&Math.sqrt((o.x-tgt.x)**2+(o.y-tgt.y)**2)<2*TILE){o.hp-=dmg*.3;spawnP(o.x,o.y,'#6f4e37',3);}});
     }
     // Cool teal dissolve beam
-    particles.push({x:tw.x,y:tw.y,x2:tgt.x,y2:tgt.y,life:12,maxLife:12,beam:true,color:'#2D6A6A',width:isAdmin?4:2});
+    particles.push({x:tw.x,y:tw.y,x2:tgt.x,y2:tgt.y,life:12,maxLife:12,beam:true,color:'#3a2218',width:isAdmin?4:2});
     // Secondary sparkle beam
-    particles.push({x:tw.x,y:tw.y,x2:tgt.x,y2:tgt.y,life:8,maxLife:8,beam:true,color:'#5ce0d0',width:isAdmin?2:1});
-    if(isAdmin){spawnP(tgt.x,tgt.y,'#5ce0d0',6);floatText(tgt.x,tgt.y-15,'STRUCTURED','#5ce0d0');}
+    particles.push({x:tw.x,y:tw.y,x2:tgt.x,y2:tgt.y,life:8,maxLife:8,beam:true,color:'#6f4e37',width:isAdmin?2:1});
+    if(isAdmin){spawnP(tgt.x,tgt.y,'#6f4e37',6);floatText(tgt.x,tgt.y-15,'BESTELLT!','#6f4e37');}
     dealDmg(tgt,dmg,tw,combo);
     // digitalnurse combo: dotbase+nurse adjacent = also slow admin targets
     if(combo&&combo.effect==='digitalnurse'){enemies.forEach(o=>{if(o.tags&&o.tags.includes('admin')&&Math.sqrt((o.x-tgt.x)**2+(o.y-tgt.y)**2)<2.5*TILE){o.slowTimer=80;o.spd=o.baseSpd*.4;}});spawnP(tgt.x,tgt.y,'#ff6b81',5);}
     return;
   }
-  if(tw.beam){dealDmg(tgt,dmg,tw,combo);particles.push({x:tw.x,y:tw.y,x2:tgt.x,y2:tgt.y,life:10,maxLife:10,beam:true,color:tw.projC,width:tw.id==='attending'?3:2});}
-  else if(tw.chain){let h=[tgt];dealDmg(tgt,dmg,tw,combo);let pv=tgt;const chainRange=(tw.id==='overhead'?3.5:2.5)*TILE;for(let c=0;c<tw.chain;c++){let cl=null,cd=Infinity;enemies.forEach(e=>{if(h.includes(e)||e.hp<=0)return;const dx=e.x-pv.x,dy=e.y-pv.y,d=Math.sqrt(dx*dx+dy*dy);if(d<chainRange&&d<cd){cl=e;cd=d;}});if(cl){h.push(cl);dealDmg(cl,dmg*.6,tw,combo);particles.push({x:pv.x,y:pv.y,x2:cl.x,y2:cl.y,life:8,maxLife:8,beam:true,color:tw.id==='overhead'?'#fdcb6e':'#ffeaa7',width:tw.id==='overhead'?2:1.5});pv=cl;}}}
+  if(tw.beam){dealDmg(tgt,dmg,tw,combo);particles.push({x:tw.x,y:tw.y,x2:tgt.x,y2:tgt.y,life:10,maxLife:10,beam:true,color:tw.projC,width:tw.id==='robii'?3:2});}
+  else if(tw.chain){let h=[tgt];dealDmg(tgt,dmg,tw,combo);let pv=tgt;const chainRange=(tw.id==='callout'?3.5:2.5)*TILE;for(let c=0;c<tw.chain;c++){let cl=null,cd=Infinity;enemies.forEach(e=>{if(h.includes(e)||e.hp<=0)return;const dx=e.x-pv.x,dy=e.y-pv.y,d=Math.sqrt(dx*dx+dy*dy);if(d<chainRange&&d<cd){cl=e;cd=d;}});if(cl){h.push(cl);dealDmg(cl,dmg*.6,tw,combo);particles.push({x:pv.x,y:pv.y,x2:cl.x,y2:cl.y,life:8,maxLife:8,beam:true,color:tw.id==='callout'?'#fdcb6e':'#ffeaa7',width:tw.id==='callout'?2:1.5});pv=cl;}}}
   else{projectiles.push({x:tw.x,y:tw.y,tx:tgt.x,ty:tgt.y,target:tgt,speed:5,damage:dmg,splash:tw.splash||0,slow:tw.slow||0,burn:tw.burn||null,root:tw.root||null,color:tw.projC,size:tw.projS,combo,pctDmg:tw.pctDmg||0});}
 }
 
@@ -672,24 +594,24 @@ function update(){
 }
 
 function draw(){
-  X.clearRect(0,0,IW,IH);const g=X.createLinearGradient(0,0,0,IH);g.addColorStop(0,'#d4dad6');g.addColorStop(.5,'#cdd4cf');g.addColorStop(1,'#c6cec8');X.fillStyle=g;X.fillRect(0,0,IW,IH);
+  X.clearRect(0,0,IW,IH);const g=X.createLinearGradient(0,0,0,IH);g.addColorStop(0,'#e8ddd0');g.addColorStop(.5,'#e2d5c6');g.addColorStop(1,'#dccebb');X.fillStyle=g;X.fillRect(0,0,IW,IH);
   for(let cx=0;cx<COLS;cx++)for(let cy=0;cy<ROWS;cy++){X.fillStyle=(cx+cy)%2===0?'rgba(255,255,255,0.15)':'rgba(0,0,0,0.02)';X.fillRect(cx*TILE,cy*TILE,TILE,TILE);}
   X.strokeStyle='rgba(0,0,0,.04)';X.lineWidth=1;for(let x=0;x<=COLS;x++){X.beginPath();X.moveTo(x*TILE,0);X.lineTo(x*TILE,IH);X.stroke();}for(let y=0;y<=ROWS;y++){X.beginPath();X.moveTo(0,y*TILE);X.lineTo(IW,y*TILE);X.stroke();}
   if(activeMutators.some(m=>m.id==='night_shift')){X.fillStyle='rgba(20,20,40,.25)';X.fillRect(0,0,IW,IH);towers.forEach(t=>{const gr=X.createRadialGradient(t.x,t.y,0,t.x,t.y,t.range*TILE*.7);gr.addColorStop(0,'rgba(255,255,220,.12)');gr.addColorStop(1,'rgba(0,0,0,0)');X.fillStyle=gr;X.fillRect(0,0,IW,IH);});}
-  PATH.forEach(([px,py])=>{X.fillStyle='rgba(160,140,110,.35)';X.fillRect(px*TILE,py*TILE,TILE,TILE);X.strokeStyle='rgba(140,120,90,.15)';X.lineWidth=1;X.strokeRect(px*TILE+1,py*TILE+1,TILE-2,TILE-2);});
-  const s0=pathPos(0);X.font='15px serif';X.textAlign='center';X.textBaseline='middle';X.fillText('🚪',s0.x,s0.y);X.font='bold 8px Figtree,sans-serif';X.fillStyle='rgba(80,70,50,.35)';X.fillText(L('er'),s0.x,s0.y+13);
-  const ep=pathPos(PATH.length-1);X.font='15px serif';X.fillText('🛏️',ep.x,ep.y);X.font='bold 8px Figtree,sans-serif';X.fillStyle='rgba(80,70,50,.35)';X.fillText(L('ward'),ep.x,ep.y+13);
-  if(hoveredTile&&selectedTower&&gameRunning){const[hx,hy]=hoveredTile;const def=TOWERS.find(d=>d.id===selectedTower);if(def&&!def.sell){const can=!pathSet.has(`${hx},${hy}`)&&!towers.find(t=>t.col===hx&&t.row===hy)&&gold>=def.cost&&!disabledTowers.has(def.id);X.fillStyle=can?'rgba(45,106,106,.12)':'rgba(214,48,49,.12)';X.fillRect(hx*TILE,hy*TILE,TILE,TILE);if(can){const rr=def.range*TILE*activeTowerEffects.rangeMult;X.beginPath();X.arc((hx+.5)*TILE,(hy+.5)*TILE,rr,0,Math.PI*2);X.fillStyle='rgba(45,106,106,.06)';X.fill();X.strokeStyle='rgba(45,106,106,.35)';X.lineWidth=2;X.stroke();}}}  towers.forEach(t=>{if(t.aura){const r=t.aura.range*TILE+TILE/2;X.beginPath();X.arc(t.x,t.y,r,0,Math.PI*2);X.strokeStyle=`rgba(223,230,233,${.06+Math.sin(tick*.03)*.04})`;X.lineWidth=1;X.setLineDash([4,4]);X.stroke();X.setLineDash([]);}
-    if(t.dotbase){const r=t.range*TILE;const pulse=Math.sin(tick*.04)*.08+.1;X.beginPath();X.arc(t.x,t.y,r,0,Math.PI*2);X.strokeStyle=`rgba(45,106,106,${pulse})`;X.lineWidth=1.5;X.setLineDash([2,6]);X.stroke();X.setLineDash([]);
+  PATH.forEach(([px,py])=>{X.fillStyle='rgba(120,90,60,.3)';X.fillRect(px*TILE,py*TILE,TILE,TILE);X.strokeStyle='rgba(100,70,40,.12)';X.lineWidth=1;X.strokeRect(px*TILE+1,py*TILE+1,TILE-2,TILE-2);});
+  const s0=pathPos(0);X.font='15px serif';X.textAlign='center';X.textBaseline='middle';X.fillText('🚪',s0.x,s0.y);X.font='bold 8px Figtree,sans-serif';X.fillStyle='rgba(58,34,24,.3)';X.fillText(L('er'),s0.x,s0.y+13);
+  const ep=pathPos(PATH.length-1);X.font='15px serif';X.fillText('☕',ep.x,ep.y);X.font='bold 8px Figtree,sans-serif';X.fillStyle='rgba(58,34,24,.3)';X.fillText(L('ward'),ep.x,ep.y+13);
+  if(hoveredTile&&selectedTower&&gameRunning){const[hx,hy]=hoveredTile;const def=TOWERS.find(d=>d.id===selectedTower);if(def&&!def.sell){const can=!pathSet.has(`${hx},${hy}`)&&!towers.find(t=>t.col===hx&&t.row===hy)&&gold>=def.cost&&!disabledTowers.has(def.id);X.fillStyle=can?'rgba(58,34,24,.12)':'rgba(214,48,49,.12)';X.fillRect(hx*TILE,hy*TILE,TILE,TILE);if(can){const rr=def.range*TILE*activeTowerEffects.rangeMult;X.beginPath();X.arc((hx+.5)*TILE,(hy+.5)*TILE,rr,0,Math.PI*2);X.fillStyle='rgba(58,34,24,.06)';X.fill();X.strokeStyle='rgba(58,34,24,.35)';X.lineWidth=2;X.stroke();}}}  towers.forEach(t=>{if(t.aura){const r=t.aura.range*TILE+TILE/2;X.beginPath();X.arc(t.x,t.y,r,0,Math.PI*2);X.strokeStyle=`rgba(223,230,233,${.06+Math.sin(tick*.03)*.04})`;X.lineWidth=1;X.setLineDash([4,4]);X.stroke();X.setLineDash([]);}
+    if(t.dotbase){const r=t.range*TILE;const pulse=Math.sin(tick*.04)*.08+.1;X.beginPath();X.arc(t.x,t.y,r,0,Math.PI*2);X.strokeStyle=`rgba(58,34,24,${pulse})`;X.lineWidth=1.5;X.setLineDash([2,6]);X.stroke();X.setLineDash([]);
     // Orbiting data dots
-    for(let d=0;d<3;d++){const a=tick*.02+d*Math.PI*2/3;const ox=Math.cos(a)*r*.6,oy=Math.sin(a)*r*.6;X.fillStyle=`rgba(92,224,208,${.2+Math.sin(tick*.06+d)*.1})`;X.beginPath();X.arc(t.x+ox,t.y+oy,2,0,Math.PI*2);X.fill();}}
+    for(let d=0;d<3;d++){const a=tick*.02+d*Math.PI*2/3;const ox=Math.cos(a)*r*.6,oy=Math.sin(a)*r*.6;X.fillStyle=`rgba(111,78,55,${.2+Math.sin(tick*.06+d)*.1})`;X.beginPath();X.arc(t.x+ox,t.y+oy,2,0,Math.PI*2);X.fill();}}
   });
   towers.forEach(t=>{const off=disabledTowers.has(t.id);if(!off){X.save();X.shadowColor=t.color;X.shadowBlur=7;X.fillStyle=t.color+'18';X.beginPath();X.arc(t.x,t.y,13,0,Math.PI*2);X.fill();X.restore();}
     // Sell selection highlight + range ring
     if(selectedForSell&&selectedForSell.col===t.col&&selectedForSell.row===t.row){
       // Range ring
       const sr=t.range*TILE*activeTowerEffects.rangeMult;
-      X.beginPath();X.arc(t.x,t.y,sr,0,Math.PI*2);X.fillStyle='rgba(45,106,106,.06)';X.fill();X.strokeStyle='rgba(45,106,106,.3)';X.lineWidth=2;X.stroke();
+      X.beginPath();X.arc(t.x,t.y,sr,0,Math.PI*2);X.fillStyle='rgba(58,34,24,.06)';X.fill();X.strokeStyle='rgba(58,34,24,.3)';X.lineWidth=2;X.stroke();
       // Sell ring
       X.strokeStyle='rgba(231,76,60,.6)';X.lineWidth=2;X.setLineDash([4,3]);X.beginPath();X.arc(t.x,t.y,16,0,Math.PI*2);X.stroke();X.setLineDash([]);
       // Stats text
@@ -758,7 +680,7 @@ function generateScorecard(){
 
   // Hospital background
   const bg=c.createLinearGradient(0,0,0,H);
-  bg.addColorStop(0,'#d4dad6');bg.addColorStop(1,'#c0c8c2');
+  bg.addColorStop(0,'#e8ddd0');bg.addColorStop(1,'#dccebb');
   c.fillStyle=bg;c.fillRect(0,0,W,H);
 
   // Floor tile pattern
@@ -774,32 +696,32 @@ function generateScorecard(){
   for(let y=0;y<=H;y+=ts){c.beginPath();c.moveTo(0,y);c.lineTo(W,y);c.stroke();}
 
   // Top banner
-  c.fillStyle='rgba(45,106,106,0.12)';
+  c.fillStyle='rgba(58,34,24,0.12)';
   c.fillRect(0,0,W,90);
-  c.fillStyle='rgba(45,106,106,0.06)';
+  c.fillStyle='rgba(58,34,24,0.06)';
   c.fillRect(0,88,W,2);
 
   // Title
-  c.font='bold 36px Figtree, sans-serif';c.fillStyle='#2D6A6A';c.textAlign='center';c.textBaseline='middle';
-  c.fillText('🏥 '+L('sc_title'),W/2,50);
+  c.font='bold 36px Figtree, sans-serif';c.fillStyle='#3a2218';c.textAlign='center';c.textBaseline='middle';
+  c.fillText('☕ '+L('sc_title'),W/2,50);
 
   // Central score area
   const cx=W/2, cy=260;
 
   // Big score circle
   c.beginPath();c.arc(cx,cy,100,0,Math.PI*2);
-  c.fillStyle='rgba(45,106,106,0.08)';c.fill();
-  c.strokeStyle='rgba(45,106,106,0.2)';c.lineWidth=3;c.stroke();
+  c.fillStyle='rgba(58,34,24,0.08)';c.fill();
+  c.strokeStyle='rgba(58,34,24,0.2)';c.lineWidth=3;c.stroke();
 
-  c.font='bold 72px Figtree, sans-serif';c.fillStyle='#2a3a4a';c.textAlign='center';
+  c.font='bold 72px Figtree, sans-serif';c.fillStyle='#3a2218';c.textAlign='center';
   c.fillText(score.toString(),cx,cy+8);
-  c.font='16px Figtree, sans-serif';c.fillStyle='#5a6a7c';
+  c.font='16px Figtree, sans-serif';c.fillStyle='#6a5040';
   c.fillText(L('sc_score').toUpperCase(),cx,cy-50);
 
   // Shifts survived (left)
-  c.font='bold 48px Figtree, sans-serif';c.fillStyle='#2a3a4a';
+  c.font='bold 48px Figtree, sans-serif';c.fillStyle='#3a2218';
   c.fillText(wave.toString(),cx-220,cy+5);
-  c.font='14px Figtree, sans-serif';c.fillStyle='#5a6a7c';
+  c.font='14px Figtree, sans-serif';c.fillStyle='#6a5040';
   c.fillText(L('sc_survived'),cx-220,cy-35);
   c.fillText(L('sc_shifts'),cx-220,cy+35);
 
@@ -807,8 +729,8 @@ function generateScorecard(){
   let topTower=null,topKills=0;
   towers.forEach(t=>{if(t.kills>topKills){topKills=t.kills;topTower=t;}});
   c.font='44px serif';
-  c.fillText(topTower?topTower.emoji:'🏥',cx+220,cy-5);
-  c.font='14px Figtree, sans-serif';c.fillStyle='#5a6a7c';
+  c.fillText(topTower?topTower.emoji:'☕',cx+220,cy-5);
+  c.font='14px Figtree, sans-serif';c.fillStyle='#6a5040';
   c.fillText(L('sc_top'),cx+220,cy-40);
   if(topTower){
     c.font='12px Figtree, sans-serif';c.fillStyle='#7a8a9c';
@@ -820,7 +742,7 @@ function generateScorecard(){
   c.beginPath();c.moveTo(100,390);c.lineTo(W-100,390);c.stroke();
 
   // Quote
-  c.font='italic 18px Special Elite, monospace';c.fillStyle='#6a5a48';c.textAlign='center';
+  c.font='italic 18px Playfair Display, serif';c.fillStyle='#6a5040';c.textAlign='center';
   const quote=lastGoQuote||L('go_quotes')[0];
   // Word wrap
   const maxW=W-200;
@@ -828,7 +750,7 @@ function generateScorecard(){
   let lines=[],line='';
   words.forEach(w=>{const test=line?line+' '+w:w;if(c.measureText(test).width>maxW){lines.push(line);line=w;}else line=test;});
   if(line)lines.push(line);
-  c.font='italic 18px Special Elite, monospace';
+  c.font='italic 18px Playfair Display, serif';
   lines.forEach((l,i)=>{c.fillText('"'+l+(i===lines.length-1?'"':''),cx,420+i*28);});
 
   // CTA at bottom
@@ -837,7 +759,7 @@ function generateScorecard(){
 
   // Decorative emojis scattered
   c.globalAlpha=0.15;c.font='30px serif';
-  const emojis=['💉','📟','⚡','🧊','💊','🪢','📢','🧲','👩‍⚕️','💻','🧓','📄','👔'];
+  const emojis=['☕','🥛','🍌','💨','👩‍🍳','🫖','📱','📢','🧹','🏃','🥐','💻','🧑'];
   emojis.forEach((em,i)=>{
     const ex=60+((i*97)%11)/11*(W-120);
     const ey=100+((i*173)%7)/7*(H-200);
@@ -846,21 +768,21 @@ function generateScorecard(){
   c.globalAlpha=1;
 
   // Bottom bar
-  c.fillStyle='rgba(45,106,106,0.08)';c.fillRect(0,H-30,W,30);
-  c.font='11px Figtree, sans-serif';c.fillStyle='rgba(45,106,106,0.5)';
-  c.fillText('🏥 '+L('sc_title')+' · dotbase.org',cx,H-12);
+  c.fillStyle='rgba(58,34,24,0.08)';c.fillRect(0,H-30,W,30);
+  c.font='11px Figtree, sans-serif';c.fillStyle='rgba(58,34,24,0.5)';
+  c.fillText('☕ '+L('sc_title')+' · kiezkaffeekraft.de',cx,H-12);
 
   // Convert and download/share
   cv.toBlob(blob=>{
     if(!blob)return;
-    const file=new File([blob],'hospital-defense-score.png',{type:'image/png'});
+    const file=new File([blob],'kraft-td-score.png',{type:'image/png'});
     // Try Web Share API first (mobile)
     if(navigator.canShare&&navigator.canShare({files:[file]})){
       navigator.share({files:[file],title:L('sc_title'),text:L('sc_survived')+' '+wave+' '+L('sc_shifts')+' · '+L('sc_score')+': '+score}).catch(()=>{});
     } else {
       // Fallback: download
       const url=URL.createObjectURL(blob);
-      const a=document.createElement('a');a.href=url;a.download='hospital-defense-score.png';
+      const a=document.createElement('a');a.href=url;a.download='kraft-td-score.png';
       document.body.appendChild(a);a.click();document.body.removeChild(a);
       setTimeout(()=>URL.revokeObjectURL(url),5000);
     }
