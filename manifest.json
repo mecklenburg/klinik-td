@@ -1,0 +1,24 @@
+{
+  "name": "Klinik unter Belagerung",
+  "short_name": "Klinik TD",
+  "description": "Hospital Tower Defense – Defend the corridor!",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#e8ece9",
+  "theme_color": "#2D6A6A",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
