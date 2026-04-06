@@ -96,24 +96,26 @@ body:has(.ov:not(.hid)) #hud,body:has(.ov:not(.hid)) #tp,body:has(.ov:not(.hid))
     <div class="ic-stats" id="ic-stats"></div>
     <div class="ic-dismiss" id="ic-dismiss">tap anywhere to continue</div>
   </div>
-  <div id="shift-card" class="hid" style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:55;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(240,232,222,.96);padding:16px;text-align:center">
-    <div style="background:#1a1a1a;color:#FFD600;padding:6px 24px;border-radius:10px;font-family:'Figtree',sans-serif;font-weight:700;font-size:18px;margin-bottom:10px" id="sc-title"></div>
-    <div id="sc-narrative" style="font-family:'Playfair Display',serif;font-size:12px;color:#6a6a6a;max-width:300px;margin:0 auto 10px;line-height:1.5;font-style:italic"></div>
-    <div id="sc-upkeep" style="font-size:14px;color:#b03030;margin:4px 0;font-weight:600;font-family:'Figtree',sans-serif"></div>
-    <div id="sc-gold" style="font-size:13px;color:#1a1a1a;opacity:.7;margin-bottom:8px;font-family:'Figtree',sans-serif"></div>
-    <div id="sc-mutators" style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin:4px 0 10px"></div>
-    <div id="sc-law" style="font-family:'Playfair Display',serif;font-size:11px;color:#6a5040;max-width:300px;margin:0 auto 8px;font-style:italic"></div>
-    <div id="sc-tutorial" style="font-size:11px;color:#1a1a1a;max-width:300px;margin:0 auto 12px;background:rgba(58,34,24,.08);padding:6px 10px;border-radius:8px;display:none"></div>
-    <button class="pbtn" onclick="dismissShiftCard()" style="font-size:16px;padding:10px 32px">▶️</button>
+  <div id="shift-card" class="hid" style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:55;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(250,246,240,.97);padding:20px;text-align:center">
+    <div style="background:#1a1a1a;color:#FFD600;padding:8px 28px;border-radius:20px;font-family:'Figtree',sans-serif;font-weight:700;font-size:20px;margin-bottom:14px;letter-spacing:.5px" id="sc-title"></div>
+    <div id="sc-narrative" style="font-family:'Playfair Display',serif;font-size:13px;color:#555;max-width:280px;margin:0 auto 16px;line-height:1.6;font-style:italic"></div>
+    <div id="sc-status" style="display:flex;gap:12px;justify-content:center;margin-bottom:14px;font-family:'Figtree',sans-serif;font-size:13px">
+      <div id="sc-gold" style="background:rgba(0,0,0,.05);padding:4px 12px;border-radius:10px;color:#1a1a1a;font-weight:600"></div>
+      <div id="sc-upkeep" style="background:rgba(180,40,40,.08);padding:4px 12px;border-radius:10px;color:#b03030;font-weight:600"></div>
+    </div>
+    <div id="sc-mutators" style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin:0 0 12px;max-width:300px"></div>
+    <div id="sc-tutorial" style="font-size:11px;color:#1a1a1a;max-width:280px;margin:0 auto 14px;background:rgba(26,26,26,.06);padding:8px 12px;border-radius:10px;display:none;line-height:1.5"></div>
+    <button class="pbtn" onclick="dismissShiftCard()" style="font-size:18px;padding:12px 40px;border-radius:20px">▶️</button>
   </div>
   <div class="ov" id="ss" style="position:fixed;z-index:100">
     <div class="bt" id="ss-title">☕</div>
     <div class="st2" id="ss-desc"></div>
     <button class="pbtn" id="ss-play" onclick="startGame()">☕</button>
   </div>
-  <div class="ov hid" id="go" style="position:fixed;z-index:100">>
+  <div class="ov hid" id="go" style="position:fixed;z-index:100">
     <div class="bt" id="go-title">😵</div>
     <div class="st2" id="go-desc"></div>
+    <div id="go-rewards" style="margin:8px 0"></div>
     <button class="pbtn" id="go-share" onclick="generateScorecard()" style="background:linear-gradient(135deg,#e17055,#c0392b);margin-bottom:4px">📸</button>
     <a href="https://www.kiezkaffeekraft.de/collections/all" target="_blank" rel="noopener" class="pbtn" style="background:#1a1a1a;color:#FFD600;margin-bottom:4px;text-decoration:none;display:inline-block">⚡ KRAFT Shop</a>
     <button class="pbtn" id="go-play" onclick="startGame()">☕</button>
@@ -130,15 +132,20 @@ let lang='de';
 
 const TX={
 de:{
-  title:'⚡ KRAFT: THEKE\nUNTER BESCHUSS',
-  desc:'<em>Montag, 8:29 Uhr. Schivelbeiner Straße.</em> Die Schlange geht bis zum Bürgersteig. Die Hafermilch reicht vielleicht noch bis elf. Jemand buchstabiert dir seinen Namen für den Becher. Du hast keine Becher. Das ist kein Starbucks.<br><br>Du bist Barista bei KRAFT. Erste Woche. Seit 2014 wird hier der Kiez mit Koffein versorgt — drei Standorte, ein Banana Bread, null Kompromisse.<br><br>Sie kommen. Die <em>Extrawunsch-Fraktion</em>. Die Vermieter. Das Bezirksamt. Und irgendjemand will wissen, ob der Chai auch mit Kokosmilch geht.<br><br>Deine Waffen: Siebträger, Banana Bread und das KRAFT-Team. Platziere Ausstattung. Verteidige die Theke.',
+  title:'⚡ KRAFT\nDEINE ERSTE SCHICHT',
+  desc:'<em>Montag, 8:29 Uhr. Breite Straße, Pankow.</em> Die Schlange geht bis zum Bürgersteig. Die Hafermilch reicht vielleicht noch bis elf. Jemand buchstabiert dir seinen Namen für den Becher. Du hast keine Becher. Das ist kein Starbucks.<br><br>Du bist Barista bei KRAFT. Erste Woche. Seit 2021 wird in Pankow der Kiez mit Koffein versorgt — der Bungalow mit Terrasse, ein Banana Bread, null Kompromisse.<br><br>Sie kommen. Die <em>Sonderwunsch-Fraktion</em>. Die Vermieter. Das Bezirksamt. Und irgendjemand will wissen, ob der Chai auch mit Kokosmilch geht.<br><br>Deine Waffen: Filterkaffee, Banana Bread und das KRAFT-Team. Platziere Ausstattung. Verteidige die Theke.',
   laws_title:'DIE GESETZE DES KIEZ-CAFÉS:',
-  laws:["I. Hafermilch ist kein Lifestyle. Hafermilch ist Infrastruktur.","II. Der Laptop-Gast bestellt um 9 einen Americano und geht um 17 Uhr. Er hat 1,80 Euro Umsatz gemacht.","III. Das WLAN-Passwort steht an der Wand. In Großbuchstaben. Seit drei Jahren. Trotzdem fragt jeder.","IV. Es gibt kein glutenfreies Banana Bread. Es wird nie ein glutenfreies Banana Bread geben. Beerdige den Traum.","V. Wer mit einem Fünfziger einen Espresso zahlt, hat die Kontrolle über sein Leben verloren.","VI. Zwischen Flat White und Cappuccino liegt eine Glaubensfrage, kein Rezeptunterschied.","VII. Der Hund unter dem Tisch heißt entweder Bruno, Balu oder Karl. Ausnahmslos.","VIII. Die Schlange wird nie kürzer. Sie wächst nach. Wie Unkraut. Wie Miete.","IX. Das Trinkgeld-Glas ist das ehrlichste Stimmungsbarometer im Kiez.","X. Wer den Putzplan ignoriert, wird vom Putzplan gefunden.","XI. Jeder dritte Gast fragt, ob ihr auch warmes Essen habt. Nein. Banana Bread. Warm.","XII. Die Geheimzutat im Banana Bread ist Liebe. Und dass wir es dir nicht sagen.","XIII. Am Ende jeder Schicht gilt: Wenn das Banana Bread warm war, war der Tag gut."],
+  laws:["I. Hafermilch ist kein Lifestyle. Hafermilch ist Infrastruktur.","II. Der Laptop-Gast bestellt um 9 einen Americano und geht um 17 Uhr. Er hat 1,80 Euro Umsatz gemacht.","III. Das WLAN-Passwort steht an der Wand. In Großbuchstaben. Seit drei Jahren. Trotzdem fragt jeder.","IV. Es gibt kein glutenfreies Banana Bread. Es wird nie ein glutenfreies Banana Bread geben. Beerdige den Traum.","V. Wer mit einem Hunderter einen Espresso zahlt, hat die Kontrolle über sein Leben verloren.","VI. Zwischen Flat White und Cappuccino liegt eine Glaubensfrage, kein Rezeptunterschied.","VII. Der Hund unter dem Tisch heißt entweder Bruno, Balu oder Karl. Ausnahmslos.","VIII. Die Schlange wird nie kürzer. Sie wächst nach. Wie Unkraut. Wie Miete.","IX. Das Trinkgeld-Glas ist das ehrlichste Stimmungsbarometer im Kiez.","X. Wer den Putzplan ignoriert, wird vom Putzplan gefunden.","XI. Jeder dritte Gast fragt, ob ihr auch warmes Essen habt. Nein. Banana Bread. Warm.","XII. Die Geheimzutat im Banana Bread ist Liebe. Und dass wir es dir nicht sagen.","XIII. Am Ende jeder Schicht gilt: Wenn das Banana Bread warm war, war der Tag gut."],
   play:'⚡ Schicht antreten', shift:'Schicht', go_title:'😵 SCHICHT GELAUFEN',
-  go_desc:(w,s,q)=>'Du hast '+w+' Schichten durchgehalten.<br>Punkte: '+s+'<br><br><em>'+q+'</em>',
+  go_desc:(w,s,q)=>{
+    let txt='Du hast '+w+' Schichten durchgehalten.<br>Punkte: '+s+'<br><br><em>'+q+'</em>';
+    if(w>=30) txt+='<br><br>🎉 <b>30+ Schichten!</b> Zeig diesen Screen an der Theke bei KRAFT für einen Gratis-Kaffee!';
+    else if(w>=20) txt+='<br><br>💪 <b>20+ Schichten!</b> Du hast das Zeug zum Barista.';
+    return txt;
+  },
   go_play:'⚡ Nochmal', dismiss:'tippen zum Fortfahren',
-  share:'📸 Score teilen', sc_title:'KRAFT: THEKE UNTER BESCHUSS',
-  sc_survived:'Überlebt', sc_shifts:'Schichten', sc_score:'Punkte', sc_top:'MVP', sc_quote:'Kiez-Weisheit', sc_cta:'Schaffst du mehr?',
+  share:'📸 Score teilen',
+  sc_survived:'Überlebt', sc_shifts:'Schichten', sc_score:'Punkte', sc_top:'MVP', sc_quote:'Kiez-Weisheit', sc_cta:'Schaffst du mehr?', sc_title:'KRAFT: DEINE ERSTE SCHICHT',
   go_quotes:['"Die Schlange wird nie kürzer. Sie wächst nach. Wie Unkraut. Wie Miete."','"Es gibt kein glutenfreies Banana Bread. Beerdige den Traum."','"Hafermilch ist kein Lifestyle. Hafermilch ist Infrastruktur."','"Wenn das Banana Bread warm war, war der Tag gut."','"KRAFT steht nicht nur für Koffein. Es steht dafür, dass wir seit zehn Jahren Namen lernen."','"Zwischen Flat White und Cappuccino liegt eine Glaubensfrage."'],
   boss_wave:w=>'\u26a0\ufe0f BOSS: Schicht '+w, norm_wave:w=>'\u26a1 Schicht '+w,
   shift_flavor:(w,isBoss,gold,towers)=>{
@@ -148,12 +155,12 @@ de:{
     if(w===5&&isBoss) return 'Der Vermieter kommt. Er riecht Nebenkostenabrechnung wie andere Leute Kaffee.';
     if(w===10&&isBoss) return 'Das Bezirksamt ist da. Dein Antrag auf Au\u00dfengastronomie fehlt. Der von 2019.';
     if(w===15&&isBoss) return 'F\u00fcnfzehn Schichten. Die Stammkundin gr\u00fc\u00dft dich mit Vornamen. Der Vermieter auch.';
-    if(w===20&&isBoss) return 'Zwanzig Schichten. Du bist KRAFT. KRAFT bist du. Die Schivelbeiner geh\u00f6rt dir.';
+    if(w===20&&isBoss) return 'Zwanzig Schichten. Du bist KRAFT. KRAFT bist du. Pankow geh\u00f6rt dir.';
     if(isBoss) return ['Irgendjemand Wichtiges kommt rein.','Die Google-Bewertungen werden gelesen. Von jemandem mit Macht.','Der Franchise-Typ hat einen Termin. Den du nicht kennst.','Drau\u00dfen parkt ein SUV. Das ist nie ein gutes Zeichen.'][w%4];
-    if(w>=20) return ['Du tr\u00e4umst in Latte Art.','Die Schivelbeiner geh\u00f6rt dir. Zumindest bis zur Mieterh\u00f6hung.','Der Putzplan hat dich geformt. Du bist jetzt ein besserer Mensch.','Robii w\u00e4re stolz.','Drei Standorte. Ein Traum. Null Kompromisse.'][w%5];
-    if(w>=15) return ['Die Hafermilch geht immer als erstes leer. Immer.','Jemand fragt nach dem WLAN-Passwort. Es steht an der Wand. Seit drei Jahren.','Der Pour Over braucht drei Minuten. Der Gast hat keine.','Du verstehst jetzt, warum Robii laufen geht.'][w%4];
-    if(w>=10) return ['Die Schlange reicht bis zur Schivelbeiner. Wie jeden Montag.','Ein Laptop-Gast hat seit 9 Uhr einen Americano bestellt. Es ist 16 Uhr.','Das Banana Bread ist warm. Der Tag kann nicht schlecht werden.','Jemand will wissen, ob der Chai auch mit Kokosmilch geht.'][w%4];
-    if(gold<40) return 'Die Kasse ist d\u00fcnn. Hoffentlich zahlt der N\u00e4chste nicht mit F\u00fcnfziger.';
+    if(w>=20) return ['Du tr\u00e4umst in Latte Art.','Pankow geh\u00f6rt dir. Zumindest bis zur Mieterh\u00f6hung.','Der Putzplan hat dich geformt. Du bist jetzt ein besserer Mensch.','Drei Standorte. Ein Traum. Null Kompromisse.','Drei Standorte. Ein Traum. Null Kompromisse.'][w%5];
+    if(w>=15) return ['Die Hafermilch geht immer als erstes leer. Immer.','Jemand fragt nach dem WLAN-Passwort. Es steht an der Wand. Seit drei Jahren.','Der Pour Over braucht drei Minuten. Der Gast hat keine.','Der Siebtr\u00e4ger l\u00e4uft. Du auch. Irgendwie.'][w%4];
+    if(w>=10) return ['Die Schlange reicht bis zur Straße. Wie jeden Montag. Wie jeden Montag.','Ein Laptop-Gast hat seit 9 Uhr einen Americano bestellt. Es ist 16 Uhr.','Das Banana Bread ist warm. Der Tag kann nicht schlecht werden.','Jemand will wissen, ob der Chai auch mit Kokosmilch geht.'][w%4];
+    if(gold<40) return 'Die Kasse ist d\u00fcnn. Hoffentlich zahlt der N\u00e4chste nicht mit Hunderter.';
     if(towers.length>=8) return 'Die Theke steht. Mal sehen, ob sie h\u00e4lt.';
     return ['Noch eine Schicht, noch ein Flat White.','Der Siebtr\u00e4ger dampft. Der Kiez wacht auf.','Hafermilch, Hafermilch, Hafermilch.','Jemand bestellt einen Cortado. Du weisst, was er meint. Er nicht.','Die Vitrine ist voll. Die Seele auch.'][w%5];
   },
@@ -163,32 +170,34 @@ de:{
   sell_label:'WEG?',
   resurge_text:'KOMMT WIEDER!',
   sc_shift:w=>'Schicht '+w, sc_upkeep:n=>'\u26a0\ufe0f Fixkosten: -'+n+'\ud83d\udcb0', sc_gold:n=>'Kasse: '+n+'\ud83d\udcb0', sc_resume:'\u25b6\ufe0f Ran da',
-  tutorial:'\ud83d\udca1 W\u00e4hle unten Ausstattung, tippe auf ein freies Feld. Tippe auf Platziertes zum Abbauen.',
+  tutorial:'\ud83d\udca1 W\u00e4hle unten Ausstattung, tippe auf ein freies Feld zum Platzieren. Nah am Weg ist am besten!',
+  tutorial2:'\ud83d\udca1 Tippe auf platzierte Ausstattung zum Upgraden oder Abbauen. Upgraden lohnt sich oft mehr!',
+  tutorial3:'\ud83d\udca1 Ausstattung nebeneinander kann Combos ausl\u00f6sen. Experimentiere mit der Platzierung!',
   tower_tip:t=>t.emoji+' '+t.name+': '+t.desc+' \u00b7 DMG '+t.dmg+' \u00b7 RNG '+t.range+' \u00b7 \ud83d\udcb0'+t.cost,
   new_equip:'NEUE AUSSTATTUNG', new_threat:'NEUER GAST', boss_incoming:'OH NEIN', crisis:'\u26a0\ufe0f KRISE',
   er:'T\u00dcR', ward:'THEKE',
   towers:{
-    espresso:{name:'Siebtr\u00e4ger',desc:'Guten-Morgen-Salven',intro:'"93 Grad. 9 bar. 25 Sekunden. Guten-Morgen-Blend von Field Coffee. Wer l\u00e4nger br\u00fcht, hat die Kontrolle verloren. Wer k\u00fcrzer br\u00fcht, hatte sie nie."',introName:'Der Siebtr\u00e4ger'},
+    espresso:{name:'Filterkaffee',desc:'Einfach, ehrlich, g\u00fcnstig',intro:'"Der Filterkaffee. Kein Druck, keine Crema, kein Tamper. Einfach hei\u00dfes Wasser und Vertrauen. Damit hat alles angefangen."',introName:'Der Filterkaffee'},
     steam:{name:'Dampfd\u00fcse',desc:'Verlangsamt 40%',intro:'"Hafermilch sch\u00e4umen ist Meditation. F\u00fcr dich. F\u00fcr die Schlange ist es die H\u00f6lle. 65 Grad. Nicht 70. Wer 70 will, kriegt Brei. Und Verachtung."',introName:'Die Dampfd\u00fcse'},
     banana:{name:'Banana Bread',desc:'Fl\u00e4chenschaden',intro:'"Vegan. Frisch. Warm. Nie glutenfrei. Wenn jemand fragt, sag: Nein. Wenn er nochmal fragt, sag: Immer noch nein. Die Geheimzutat ist Konsequenz."',introName:'Das Banana Bread'},
     grinder:{name:'M\u00fchle',desc:'Mahlgut-DOT',intro:'"JB Kaffee, M\u00fcnchen. Single Origin, frisch gemahlen. Der Staub legt sich auf Laptops, Kinderwagen und Lebensentscheidungen. Gleichm\u00e4\u00dfig."',introName:'Die M\u00fchle'},
-    barista:{name:'Barista',desc:'Schnellsch\u00fcsse',intro:'"Studiert Regie an der UdK. Kellnert seit vier Jahren. Kann Latte Art in Herzform, Bl\u00e4tter und mittlerweile auch Bruno den Hund."',introName:'Der Barista'},
+    barista:{name:'Barista',desc:'Schnellsch\u00fcsse',intro:'"Tattoos bis zum Handgelenk, Bart wie aus dem Lookbook. War vorher bei einem Start-up, jetzt hier. Macht den besten Flat White im Kiez. Und er wei\u00df es."',introName:'Der Barista'},
     pourover:{name:'Pour Over',desc:'Pr\u00e4zisionsstrahl',intro:'"V60. Drei Minuten Meditation. Der Gast trommelt mit den Fingern. Du gießt Kreise. Er versteht es nicht. Er wird es nie verstehen. Aber er wird wiederkommen."',introName:'Die Pour-Over-Station'},
     croissant:{name:'Vitrine',desc:'Fl\u00e4chen-Slow',intro:'"Lemon Cake. Brownies. Carrot Cake. Alles hausgemacht. Die Vitrine ist das Bermudadreieck der Entscheidungsf\u00e4higkeit. Niemand geht ohne Nachtisch."',introName:'Die Kuchenvitrine'},
     cardreader:{name:'EC-Ger\u00e4t',desc:'Immobilisiert',intro:'"Kontaktlos. Geht nicht. Chip rein. PIN. Verbindung wird aufgebaut. Verbindung fehlgeschlagen. Nochmal. Bon? Der Moment, in dem Berlin stillsteht."',introName:'Das EC-Kartengerät'},
     callout:{name:'Durchsage',desc:'Kette 5, verlangsamt',intro:'"FLAT WHITE F\u00dcR... \u00c4H... JEMANDEN! Alle drehen sich um. Niemand meldet sich. Drei Leute stehen auf. Keiner davon hat bestellt. Berliner Standard."',introName:'Die Durchsage'},
     putzplan:{name:'Putzplan',desc:'% max HP',intro:'"Er h\u00e4ngt an der Wand wie die Zehn Gebote. Drei Standorte. Drei Putzpl\u00e4ne. Er sieht alles. Er vergisst nichts. Er ist gerechter als das Finanzamt."',introName:'Der Putzplan'},
-    robii:{name:'Robii',desc:'Bufft Nachbarn +30%',intro:'"Wenn Robii da ist, sitzt jeder Espresso. Die Milch sch\u00e4umt sich von allein. Die Schlange l\u00e4chelt. KRAFT steht nicht nur f\u00fcr Koffein — es steht daf\u00fcr, dass hier seit zehn Jahren Gesichter erkannt werden."',introName:'Robii'},
-    onlineshop:{name:'Online Shop',desc:'4\u00d7 vs Influencer',intro:'"kiezkaffeekraft.de — Guten-Morgen-Blend, Merch, Gutscheine. F\u00fcr alle drei Standorte. L\u00f6st Influencer in Daten auf. Ab 60 Euro versandkostenfrei."',introName:'Der Online Shop'},
+    robii:{name:'Schichtleitung',desc:'Bufft Nachbarn +30%',intro:'"Cap, Bart, Sneakers. Kennt jeden Stammgast beim Namen. Macht den Laden nicht, weil er muss, sondern weil er Bock hat. Wenn die Schichtleitung da ist, l\u00e4uft der Laden wie von selbst."',introName:'Die Schichtleitung'},
+    onlineshop:{name:'Der Siebtr\u00e4ger',desc:'4\u00d7 vs B\u00fcrokratie \u2014 Das Herzst\u00fcck',intro:'"93 Grad. 9 bar. 25 Sekunden. Guten-Morgen-Blend von Field Coffee. Brasilien trifft \u00c4thiopien. Das Herzst\u00fcck von KRAFT. Wer hier steht, hat alles unter Kontrolle."',introName:'Der Siebtr\u00e4ger'},
     sell:{name:'Abbauen',desc:'50% zur\u00fcck'},
   },
   enemies:{
-    regular:{name:'Normalo',intro:'"Cappuccino. Danke. Sch\u00f6nen Tag. Trinkgeld. Gibt es wirklich. Sch\u00fctzenswerte Art. Rote Liste."',introName:'Der Normalo'},
-    stammgast:{name:'Stammkundin',intro:'"Jeden Tag, 9:14 Uhr. Flat White, Hafermilch, das \u00fcbliche Pl\u00e4tzchen am Fenster. Sie kennt das Team besser als manche Familienmitglieder. L\u00e4sst sich nicht vertreiben."',introName:'Die Stammkundin'},
+    regular:{name:'Stammgast in spe',intro:'"Cappuccino. Bitte. Danke. Sch\u00f6nen Tag noch. Trinkgeld im Glas. Gibt es wirklich noch. Die Guten kommen immer wieder."',introName:'Der ganz normale Gast'},
+    stammgast:{name:'Stammkundin',intro:'"Jeden Tag, 9:14 Uhr. Flat White, Hafermilch, Fensterplatz. Sie geh\u00f6rt zum Inventar. Im besten Sinne. Ohne sie w\u00e4re der Laden nur ein Laden."',introName:'Die Stammkundin'},
     drehtuer:{name:'Dreht\u00fcr',intro:'"Bestellt. Geht. Kommt wieder. Zucker vergessen. Geht. Kommt wieder. Eigentlich doch Hafer statt Kuh. Du wirst ihn nicht los. Er kommt immer wieder."',introName:'Die Dreht\u00fcr'},
-    hafermilch:{name:'Extrawunsch',intro:'"Extra hei\u00df, aber nicht zu hei\u00df. Hafermilch, aber die von Oatly, nicht die andere. Schaum, aber wenig. Latte Art, aber kein Herz. Eigentlich ein v\u00f6llig anderes Getr\u00e4nk."',introName:'Der Extrawunsch'},
-    bargeld:{name:'Der F\u00fcnfziger',intro:'"Einen kleinen Espresso. Hier, f\u00fcnfzig Euro. Kleiner hab ich nicht. Ist doch nicht mein Problem. — Doch. Doch, ist es."',introName:'Der F\u00fcnfziger'},
-    influencer:{name:'Influencer',intro:'"K\u00f6nnt ihr den Flat White nochmal machen? Das Licht war schlecht. Und legt das Banana Bread weiter links. F\u00fcr die Story. Sie hat 340 Follower. 280 davon sind Bots."',introName:'Der Influencer'},
+    hafermilch:{name:'Sonderwunsch',intro:'"Extra hei\u00df, aber nicht zu hei\u00df. Hafermilch, die gute. Schaum, aber nicht zu viel. Er wei\u00df genau, was er will. Respekt, eigentlich."',introName:'Der Sonderwunsch'},
+    bargeld:{name:'Der Hunderter',intro:'"Einen kleinen Espresso. Hier, hundert Euro. Kleiner hab ich nicht. Ist doch nicht mein Problem. — Doch. Doch, ist es."',introName:'Der Hunderter'},
+    influencer:{name:'Content Creator',intro:'"K\u00f6nnt ihr den Flat White nochmal aufsch\u00e4umen? Das Licht war nicht ideal. Und das Banana Bread m\u00fcsste etwas weiter links. F\u00fcr die Story. Immerhin: Die Markierung kommt."',introName:'Der Content Creator'},
     vermieter:{name:'Vermieter',intro:'"Guten Tag. Mietanpassung. Nebenkostenabrechnung. Au\u00dfenbestuhlung Paragraf 7 Absatz 3. Die Miete in P-Berg steigt, der Espresso kostet noch 2,80. Irgendwas stimmt hier nicht."',introName:'DER VERMIETER'},
     hygiene:{name:'Hygienekontrolle',intro:'"Ihr K\u00fchlschrank zeigt 8,2 Grad. Erlaubt sind 7. Wo ist die HACCP-Dokumentation? Wann wurde der Lappen zuletzt gewechselt? Ist der Hund unter dem Tisch angemeldet?"',introName:'DIE HYGIENEKONTROLLE'},
     bezirksamt:{name:'Bezirksamt',intro:'"Ihr Antrag auf Au\u00dfengastronomie wurde abgelehnt. Es fehlt Anlage 3b. Die Frist ist abgelaufen. Die neue Frist f\u00fcr die Fristverl\u00e4ngerung ist auch abgelaufen. Willkommen in Berlin."',introName:'DAS BEZIRKSAMT'},
@@ -199,11 +208,11 @@ de:{
     secondop:{name:'\u00c4nderer',intro:'"Latte. Nee, Cappuccino. Warte — Flat White. Oder doch Filter? Egal, Chai. Nee, doch Kaffee. Seine Unentschlossenheit ist ansteckend. Alle in der N\u00e4he werden langsamer."',introName:'Der \u00c4nderer'},
     compliance:{name:'Finanzamt',intro:'"Kassennachschau. TSE-Modul korrekt? Bonpflicht eingehalten? Letzte Inventur? Personalakte vollst\u00e4ndig? Er muss nichts anfassen. Seine blo\u00dfe Anwesenheit l\u00e4hmt alles im Umkreis."',introName:'Das Finanzamt'},
     aihype:{name:'KI-Pitch',intro:'"Wir disrupen den Kaffee-Markt. Machine Learning optimiert die Br\u00fchzeit. Blockchain f\u00fcr die Bohnen-Lieferkette. Er regeneriert sich, weil man Bullshit nicht t\u00f6ten kann. Nur der Online Shop l\u00f6st ihn auf."',introName:'Der KI-Pitch'},
-    laptopper:{name:'Laptop-Besetzer',intro:'"Seit 8 Uhr hier. Ein Americano. Steckdose belegt. Zoomt mit Kopfh\u00f6rern. Strahlt eine Aura aus, die alle Trinkgelder im Umkreis verdampfen l\u00e4sst. 1,80 Euro Umsatz. Den ganzen Tag."',introName:'Der Laptop-Besetzer'},
-    lieferando:{name:'Lieferando-Fahrer',intro:'"Kommt rein, bestellt nichts, will drei Bestellungen abholen. Die gibt es nicht. Wird er erledigt, stehen zwei weitere Fahrer vor der T\u00fcr. Die Fahrr\u00e4der blockieren den Eingang."',introName:'Der Lieferando-Fahrer'},
+    laptopper:{name:'Stammplatz-Arbeiter',intro:'"Seit 8 Uhr hier. Ein Americano, ein Ladekabel, gro\u00dfe Pl\u00e4ne. Der Tisch am Fenster ist sein B\u00fcro. Man gew\u00f6hnt sich aneinander. Zumindest er an uns."',introName:'Der Stammplatz-Arbeiter'},
+    lieferando:{name:'Lieferdienst',intro:'"Helm auf, Rucksack an, drei Bestellungen gleichzeitig. Wird einer fertig, kommen zwei nach. Sie sind schnell, sie sind viele, und ihre Fahrr\u00e4der stehen immer im Weg."',introName:'Der Lieferdienst'},
     kuenstler:{name:'Prenzlauer K\u00fcnstler',intro:'"Immun gegen normale Bedienung. Nur Fl\u00e4chenschaden, Strahlung und Dauerberieselung wirken. Er trinkt Chai. Ironisch. Sein Hund hei\u00dft Kafka."',introName:'Der Prenzlauer K\u00fcnstler'},
   },
-  combos:{steam:'Latte-Art-Combo',chainspore:'Koffeinschock',thunderroot:'Kaffee-Koma',soulburn:'Bitterer Nachgeschmack',grandrounds:'Robiis Runde',digitalnurse:'Digital Barista'},
+  combos:{steam:'Latte-Art-Combo',chainspore:'Koffeinschock',thunderroot:'Kaffee-Koma',soulburn:'Bitterer Nachgeschmack',grandrounds:'Chef-Runde',digitalnurse:'Barista am Siebträger'},
   mutators:{
     caffeine_crash:{name:'\u2615 Koffeinentzug',desc:'G\u00e4ste 20% schneller',explain:'Alle sind ungeduldiger. Montagmorgen-Energie.'},
     budget_cuts:{name:'\ud83d\udcb8 Preisdruck',desc:'Trinkgeld -40%',explain:'Kartenzahlung. Niemand gibt Trinkgeld bei Kartenzahlung.'},
@@ -212,9 +221,9 @@ de:{
     night_shift:{name:'\ud83c\udf19 Sp\u00e4tschicht',desc:'Reichweite -25%',explain:'17:30 Uhr. Das Licht ist komisch. Du auch.'},
     armor_up:{name:'\ud83d\udee1\ufe0f Berliner Schnauze',desc:'+25% Geduld',explain:'Die G\u00e4ste sind Berliner. Die nehmen das nicht pers\u00f6nlich. Du schon.'},
     double_admit:{name:'\ud83d\udea8 S-Bahn-Versp\u00e4tung',desc:'+50% mehr G\u00e4ste',explain:'Die S1 hatte 20 Minuten Versp\u00e4tung. Alle kommen gleichzeitig.'},
-    power_outage:{name:'\u26a1 Stromausfall',desc:'Elektronik offline',flavor:'"Der Strom ist weg. Wieder. Die M\u00fchle schweigt. Der Siebtr\u00e4ger wird kalt. Nur der Pour Over funktioniert — wie immer."',explain:'Siebtr\u00e4ger, M\u00fchle, EC-Ger\u00e4t und Online Shop offline.'},
+    power_outage:{name:'\u26a1 Stromausfall',desc:'Elektronik offline',flavor:'"Der Strom ist weg. Wieder. Die M\u00fchle schweigt. Der Filterkaffee wird kalt. Nur der Pour Over funktioniert \u2014 wie immer."',explain:'Filterkaffee, M\u00fchle, EC-Ger\u00e4t und Siebtr\u00e4ger offline.'},
     supply_chain:{name:'\ud83d\udce6 Lieferant kommt nicht',desc:'Essen & Milch offline',flavor:'"Der Lieferant steckt auf der A100 fest. Die Hafermilch ist alle. Das Banana Bread existiert heute nur als Erinnerung."',explain:'Dampfd\u00fcse, Banana Bread und Vitrine nicht verf\u00fcgbar.'},
-    union_action:{name:'\u270a Team krank',desc:'Personal offline',flavor:'"Magen-Darm geht um. Robii ist beim Halbmarathon. Du und der Putzplan — allein gegen Berlin."',explain:'Barista, Durchsage und Robii offline.'},
+    union_action:{name:'\u270a Team krank',desc:'Personal offline',flavor:'"Magen-Darm geht um. Die Schichtleitung ist krank. Du und der Putzplan — allein gegen Berlin."',explain:'Barista, Durchsage und Schichtleitung offline.'},
     code_blue:{name:'\ud83d\udea8 VIP-Alarm',desc:'Zuf\u00e4lliger Boss',explain:'Irgendwer Wichtiges ist gerade reingekommen.'},
     double_armor_swarm:{name:'\ud83d\udc22 Kiez-H\u00e4rte',desc:'Dickfellig +30% mehr',explain:'Samstag. Flohmarkt Mauerpark. Alle kommen danach. Alle sind genervt.'},
     overtime:{name:'\u23f0 \u00dcberstunden',desc:'2\u00d7 Gast-HP',explain:'Alle G\u00e4ste haben doppelte Ausdauer. Berliner gehen erst, wenn sie wollen.'},
@@ -272,18 +281,18 @@ function pathPos(p){const i=Math.min(Math.floor(p),PATH.length-2),t=p-i;const[x1
 
 // ── TOWERS (language-neutral stats, text via T()) ──
 const TOWERS=[
-  {id:'espresso',emoji:'☕',cost:25,range:2.5,dmg:8,rate:45,color:'#6f4e37',projC:'#8b6914',projS:3,unlock:0},
-  {id:'steam',emoji:'🥛',cost:60,range:2.5,dmg:5,rate:55,color:'#c9b8a8',slow:.4,projC:'#e8ddd0',projS:4,unlock:0},
-  {id:'banana',emoji:'🍌',cost:55,range:2,dmg:18,rate:65,color:'#f0c030',splash:1.2,projC:'#f7d060',projS:5,unlock:0},
-  {id:'grinder',emoji:'💨',cost:75,range:2,dmg:12,rate:40,color:'#6a5040',burn:{dmg:3,dur:120},projC:'#8b7355',projS:4,unlock:0},
-  {id:'barista',emoji:'👩‍🍳',cost:40,range:2,dmg:10,rate:35,color:'#ff6b81',projC:'#ff6b81',projS:3,unlock:2},
+  {id:'espresso',emoji:'☕',cost:20,range:2.5,dmg:6,rate:45,color:'#8b7355',projC:'#a0845c',projS:3,unlock:0,projEmoji:'☕'},
+  {id:'steam',emoji:'💨',cost:55,range:2.5,dmg:5,rate:55,color:'#c9b8a8',slow:.4,projC:'#e8ddd0',projS:4,unlock:0,projEmoji:'🪷'},
+  {id:'banana',emoji:'🍞',cost:50,range:2,dmg:16,rate:65,color:'#f0c030',splash:1.2,projC:'#f7d060',projS:5,unlock:0,projEmoji:'🍌'},
+  {id:'grinder',emoji:'⚙️',cost:70,range:2,dmg:12,rate:40,color:'#6a5040',burn:{dmg:3,dur:120},projC:'#8b7355',projS:4,unlock:0},
+  {id:'barista',emoji:'🧔',cost:40,range:2,dmg:10,rate:35,color:'#ff6b81',projC:'#ff6b81',projS:3,unlock:2,projEmoji:'❤️'},
   {id:'pourover',emoji:'🫖',cost:85,range:3,dmg:28,rate:80,color:'#a29bfe',beam:true,projC:'#d2b4de',projS:2,unlock:3},
-  {id:'croissant',emoji:'🥐',cost:70,range:3,dmg:3,rate:50,color:'#deb887',slow:.35,splash:1.5,projC:'#f5deb3',projS:4,unlock:4},
-  {id:'cardreader',emoji:'📱',cost:70,range:1.5,dmg:2,rate:100,color:'#00b894',root:{dur:55},projC:'#55efc4',projS:4,unlock:6},
+  {id:'croissant',emoji:'🥐',cost:65,range:3,dmg:3,rate:50,color:'#deb887',slow:.35,splash:1.5,projC:'#f5deb3',projS:4,unlock:4,projEmoji:'🥐'},
+  {id:'cardreader',emoji:'💳',cost:70,range:1.5,dmg:2,rate:100,color:'#00b894',root:{dur:55},projC:'#55efc4',projS:4,unlock:6,projEmoji:'💳'},
   {id:'callout',emoji:'📢',cost:90,range:4,dmg:8,rate:60,color:'#fdcb6e',chain:5,slow:.25,projC:'#ffeaa7',projS:3,unlock:8},
-  {id:'putzplan',emoji:'🧹',cost:130,range:2.5,dmg:15,rate:60,color:'#6c5ce7',pctDmg:.03,projC:'#a29bfe',projS:4,unlock:10},
-  {id:'robii',emoji:'🏃',cost:160,range:3.5,dmg:35,rate:100,color:'#e8d5b7',aura:{range:1.5,dmgMult:1.3},beam:true,projC:'#e8d5b7',projS:3,unlock:13},
-  {id:'onlineshop',emoji:'💻',cost:200,range:3,dmg:10,rate:50,color:'#1a1a1a',projC:'#6f4e37',projS:4,unlock:15,beam:true,dotbase:true},
+  {id:'putzplan',emoji:'🧹',cost:130,range:2.5,dmg:15,rate:60,color:'#6c5ce7',pctDmg:.03,projC:'#a29bfe',projS:4,unlock:10,projEmoji:'✨'},
+  {id:'robii',emoji:'🤙',cost:160,range:3.5,dmg:35,rate:100,color:'#e8d5b7',aura:{range:1.5,dmgMult:1.3},beam:true,projC:'#e8d5b7',projS:3,unlock:13},
+  {id:'onlineshop',emoji:'⚡',cost:220,range:3,dmg:12,rate:50,color:'#1a1a1a',projC:'#6f4e37',projS:4,unlock:15,beam:true,dotbase:true},
 ];
 // Add getters
 TOWERS.forEach(t=>{Object.defineProperty(t,'name',{get(){return T(t,'name')||t.id}});Object.defineProperty(t,'desc',{get(){return T(t,'desc')||''}});});
@@ -302,8 +311,8 @@ const ETYPES=[
   {idx:1,emoji:'👵',hp:50,spd:.45,reward:5,color:'#dfe6e9',size:1,animType:'slide',tags:['customer']},
   {idx:2,emoji:'🚶‍♂️',hp:22,spd:1.4,reward:6,color:'#fd79a8',size:.95,animType:'scurry',tags:['customer'],resurge:true},
   {idx:3,emoji:'😩',hp:20,spd:1.8,reward:7,color:'#e17055',size:.85,animType:'scurry',tags:['customer']},
-  {idx:4,emoji:'😤',hp:25,spd:2.0,reward:3,color:'#00b894',size:.8,animType:'scurry',tags:['customer']},
-  {idx:5,emoji:'📱',hp:60,spd:1.0,reward:8,color:'#636e72',size:1.1,animType:'bob',tags:['admin','influencer']},
+  {idx:4,emoji:'💶',hp:25,spd:2.0,reward:3,color:'#00b894',size:.8,animType:'scurry',tags:['customer']},
+  {idx:5,emoji:'📸',hp:60,spd:1.0,reward:8,color:'#636e72',size:1.1,animType:'bob',tags:['admin','influencer']},
   // Bosses
   {idx:6,emoji:'👔',hp:280,spd:.65,reward:20,color:'#e74c3c',size:1.3,animType:'bob',boss:true,tags:['admin']},
   {idx:7,emoji:'🔍',hp:400,spd:1.1,reward:35,color:'#fdcb6e',size:1.3,animType:'scurry',boss:true,flying:true,tags:['admin']},
@@ -314,9 +323,9 @@ const ETYPES=[
   {idx:11,emoji:'🧑‍💼',hp:150,spd:.9,reward:15,color:'#fd79a8',size:1.15,animType:'shuffle',tags:['admin'],shielder:true},
   {idx:12,emoji:'🔁',hp:90,spd:1.1,reward:10,color:'#00cec9',size:1,animType:'scurry',tags:['admin','repetitive'],copier:true},
   // Very late-stage (shift 15+)
-  {idx:13,emoji:'🤷',hp:120,spd:.8,reward:12,color:'#e056a0',size:1.1,animType:'bob',tags:['customer'],rusher:true},
+  {idx:13,emoji:'🤷',hp:120,spd:.8,reward:12,color:'#e056a0',size:1.1,animType:'bob',tags:['customer'],rusher:true,slowImmune:true},
   {idx:14,emoji:'💼',hp:180,spd:.7,reward:18,color:'#2c3e50',size:1.2,animType:'shuffle',tags:['admin'],disabler:true},
-  {idx:15,emoji:'🤖',hp:100,spd:1.0,reward:14,color:'#00b4d8',size:1,animType:'pulse',tags:['admin'],regen:true,burnImmune:true},
+  {idx:15,emoji:'🤖',hp:100,spd:1.0,reward:14,color:'#00b4d8',size:1,animType:'pulse',tags:['admin'],regen:true,burnImmune:true,slowImmune:true},
   {idx:16,emoji:'👨‍💻',hp:200,spd:.35,reward:6,color:'#636e72',size:1.2,animType:'slide',tags:['customer'],goldDrain:true},
   {idx:17,emoji:'🛵',hp:80,spd:1.3,reward:10,color:'#e74c3c',size:1.1,animType:'scurry',tags:['customer'],spawner:true},
   {idx:18,emoji:'🧑‍🎨',hp:110,spd:.9,reward:13,color:'#8e44ad',size:1,animType:'pulse',tags:['customer'],splashOnly:true},
@@ -346,7 +355,7 @@ let introQueue=[],showingIntro=false,paused=false;
 let activeMutators=[],activeTowerEffects={},disabledTowers=new Set();
 let lastGoQuote='',manualPause=false;
 
-function init(){gold=100;lives=20;score=0;wave=0;enemies=[];towers=[];projectiles=[];particles=[];floatingTexts=[];spawnQueue=[];waveTimer=0;tick=0;seenEnemies=new Set();seenTowers=new Set();seenMutators=new Set();introQueue=[];showingIntro=false;paused=false;activeMutators=[];activeTowerEffects={rangeMult:1,rateMult:1};disabledTowers=new Set();manualPause=false;if(document.getElementById('pb'))document.getElementById('pb').textContent='⏸️';tutorialActive=false;tutorialHintTile=null;selectedForSell=null;generatePath();updateUI();}
+function init(){gold=150;lives=20;score=0;wave=0;enemies=[];towers=[];projectiles=[];particles=[];floatingTexts=[];spawnQueue=[];waveTimer=0;tick=0;seenEnemies=new Set();seenTowers=new Set();seenMutators=new Set();introQueue=[];showingIntro=false;paused=false;activeMutators=[];activeTowerEffects={rangeMult:1,rateMult:1};disabledTowers=new Set();manualPause=false;if(document.getElementById('pb'))document.getElementById('pb').textContent='⏸️';tutorialActive=false;tutorialHintTile=null;selectedForSell=null;generatePath();updateUI();}
 let tutorialActive=false,tutorialHintTile=null;
 
 function queueIntro(type,emoji,name,quote,stats){introQueue.push({type,emoji,name,quote,stats});if(!showingIntro)showNextIntro();}
@@ -382,11 +391,20 @@ document.getElementById('intro-card').addEventListener('touchend',e=>{e.preventD
 function genWave(w){
   const q=[];const isBoss=w%5===0&&w>0;
   if(isBoss){const bi=Math.min(Math.floor(w/5)-1,3);const boss=ETYPES[6+bi];const bc=Math.max(1,Math.floor(w/10));for(let i=0;i<bc;i++)q.push({type:boss,delay:i*60});const mc=Math.floor(w*1.2)+4;const mxR=Math.min(3+Math.floor(w/4),w>=15?19:w>=12?19:w>=10?19:6);const av=ETYPES.slice(0,mxR).filter(e=>!e.boss);for(let i=0;i<mc;i++)q.push({type:av[Math.floor(Math.random()*av.length)],delay:bc*60+i*12});}
-  else{const count=5+Math.floor(w*1.8)+Math.floor(w*w*.03);const mxR=Math.min(2+Math.floor(w/2),w>=15?19:w>=12?19:w>=10?19:6);const av=ETYPES.slice(0,mxR).filter(e=>!e.boss);for(let i=0;i<count;i++)q.push({type:av[Math.floor(Math.random()*av.length)],delay:i*15});}
-  const hpS=w<=10?1+(w-1)*.2:1+9*.2+Math.pow(w-10,1.3)*.15;
-  q.forEach(e=>{e.hpM=hpS;e.spdMult=1;e.rewardMult=1;e.armorAdd=0;});
+  else{
+    let count,mxR;
+    if(w<=3){count=3+w;mxR=Math.min(w,2);}
+    else if(w<=6){count=5+Math.floor(w*1.2);mxR=Math.min(2+Math.floor(w/2),6);}
+    else{count=5+Math.floor(w*1.8)+Math.floor(w*w*.03);mxR=Math.min(2+Math.floor(w/2),w>=15?19:w>=12?19:w>=10?19:6);}
+    const av=ETYPES.slice(0,mxR).filter(e=>!e.boss);for(let i=0;i<count;i++)q.push({type:av[Math.floor(Math.random()*av.length)],delay:i*(w<=3?25:w<=6?18:15)});
+  }
+  const hpS=w<=5?1:w<=10?1+(w-5)*.15:w<=20?1+5*.15+Math.pow(w-10,1.3)*.15:1+5*.15+Math.pow(10,1.3)*.15+Math.pow(w-20,1.6)*.2;
+  const earlyBonus=w<=5?1.5:w<=8?1.2:1;
+  const lateSpd=w>=20?1+((w-20)*.04):w>=15?1+((w-15)*.02):1;
+  const lateArmor=w>=25?.15+(w-25)*.02:w>=20?.05+(w-20)*.02:0;
+  q.forEach(e=>{e.hpM=hpS;e.spdMult=(w<=3?.8:1)*lateSpd;e.rewardMult=earlyBonus;e.armorAdd=Math.min(lateArmor,.5);});
   activeMutators=[];activeTowerEffects={rangeMult:1,rateMult:1};disabledTowers=new Set();
-  let nm=0;if(w>=25)nm=Math.min(1+Math.floor((w-25)/6),3);else if(w>=15)nm=Math.min(1+Math.floor((w-15)/7),2);else if(w>=8)nm=1;
+  let nm=0;if(w>=30)nm=Math.min(2+Math.floor((w-30)/5),4);else if(w>=25)nm=Math.min(1+Math.floor((w-25)/6),3);else if(w>=15)nm=Math.min(1+Math.floor((w-15)/7),2);else if(w>=8)nm=1;
   if(nm>0){let mt=w>=25?3:w>=15?2:1;const pool=MUTATORS.filter(m=>m.tier<=mt).slice();for(let i=0;i<nm&&pool.length;i++){const idx=Math.floor(Math.random()*pool.length);const mut=pool.splice(idx,1)[0];activeMutators.push(mut);mut.apply(q);if(mut.towerEffect){if(mut.towerEffect.rangeMult)activeTowerEffects.rangeMult*=mut.towerEffect.rangeMult;if(mut.towerEffect.rateMult)activeTowerEffects.rateMult*=mut.towerEffect.rateMult;}if(mut.disable)mut.disable.forEach(id=>disabledTowers.add(id));}}
   return q;
 }
@@ -396,7 +414,8 @@ let pendingSpawnQueue=[];
 function startWave(){
   wave++;
   // Upkeep calc
-  const up=towers.reduce((s,t)=>s+Math.floor(t.cost*.08),0);
+  const upRate=wave>=20?.12:wave>=15?.1:.08;
+  const up=towers.reduce((s,t)=>s+Math.floor(t.cost*upRate),0);
   if(up>0&&wave>1) gold=Math.max(0,gold-up);
 
   // Gen wave (sets mutators/disabled) — but don't start spawning yet
@@ -438,37 +457,31 @@ function showShiftCard(upkeep){
   const isBoss=wave%5===0&&wave>0;
   document.getElementById('sc-narrative').textContent=L('shift_flavor')(wave,isBoss,gold,towers);
 
-  // Upkeep — only show if there is one
+  // Status row — gold always, upkeep only if >0
+  document.getElementById('sc-gold').textContent=L('sc_gold')(gold);
   const upEl=document.getElementById('sc-upkeep');
   if(upkeep>0&&wave>1){upEl.textContent=L('sc_upkeep')(upkeep);upEl.style.display='';}
   else upEl.style.display='none';
 
-  document.getElementById('sc-gold').textContent=L('sc_gold')(gold);
-
-  // Mutators — only show section if there are any
+  // Mutators
   const mutBox=document.getElementById('sc-mutators');
   if(activeMutators.length>0){
     mutBox.style.display='flex';
     let html='';
     activeMutators.forEach(m=>{
       html+='<span class="mut-pill'+(m.disable?' disable':'')+'">'+M(m.id,'name')+': '+M(m.id,'desc')+'</span>';
-      // First-time explanation
       if(!seenMutators.has(m.id+'_explained')){
         seenMutators.add(m.id+'_explained');
         const expl=M(m.id,'explain')||'';
-        if(expl) html+='<div style="width:100%;font-size:10px;color:#6a5040;margin:2px 0 4px;font-style:italic">'+expl+'</div>';
+        if(expl) html+='<div style="width:100%;font-size:10px;color:#888;margin:2px 0 4px;font-style:italic">'+expl+'</div>';
       }
     });
     mutBox.innerHTML=html;
-  } else {
-    mutBox.style.display='none';
-  }
+  } else mutBox.style.display='none';
 
-  document.getElementById('sc-law').textContent=L('laws')[(wave-1)%L('laws').length]||'';
-
-  // Tutorial — only wave 1
+  // Tutorial
   const tut=document.getElementById('sc-tutorial');
-  if(wave===1){tut.style.display='block';tut.textContent=L('tutorial');}
+  if(wave<=3){tut.style.display='block';tut.textContent=wave===1?L('tutorial'):wave===2?L('tutorial2'):L('tutorial3');}
   else tut.style.display='none';
 
   sc.querySelector('.pbtn').textContent=L('sc_resume');
@@ -496,7 +509,7 @@ function showAnnounce(t){const el=document.getElementById('wa');el.textContent=t
 function showCombo(t){const el=document.getElementById('cf');el.textContent='⚡ '+t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1200);}
 function floatText(x,y,t,c){floatingTexts.push({x,y,text:t,color:c,life:40,maxLife:40});}
 
-function spawnEnemy(td,hm,sM,rM,aA){enemies.push({x:0,y:0,progress:0,hp:td.hp*hm,maxHp:td.hp*hm,spd:td.spd*(sM||1),baseSpd:td.spd*(sM||1),reward:Math.ceil((td.reward+Math.floor(wave/5))*(rM||1)),color:td.color,emoji:td.emoji,boss:td.boss||false,size:td.size||1,animType:td.animType||'bob',flying:td.flying||false,armor:Math.min((td.armor||0)+(aA||0),.6),healer:td.healer||false,tags:td.tags||[],splitter:td.splitter||false,shielder:td.shielder||false,copier:td.copier||false,resurge:td.resurge||false,hasResurged:false,rusher:td.rusher||false,disabler:td.disabler||false,regen:td.regen||false,burnImmune:td.burnImmune||false,goldDrain:td.goldDrain||false,spawner:td.spawner||false,splashOnly:td.splashOnly||false,disableCooldown:0,slowTimer:0,burnTimer:0,burnDmg:0,rootTimer:0,animPhase:Math.random()*Math.PI*2});}
+function spawnEnemy(td,hm,sM,rM,aA){enemies.push({x:0,y:0,progress:0,hp:td.hp*hm,maxHp:td.hp*hm,spd:td.spd*(sM||1),baseSpd:td.spd*(sM||1),reward:Math.ceil((td.reward+Math.floor(wave/5))*(rM||1)),color:td.color,emoji:td.emoji,boss:td.boss||false,size:td.size||1,animType:td.animType||'bob',flying:td.flying||false,armor:Math.min((td.armor||0)+(aA||0),.6),healer:td.healer||false,tags:td.tags||[],splitter:td.splitter||false,shielder:td.shielder||false,copier:td.copier||false,resurge:td.resurge||false,hasResurged:false,rusher:td.rusher||false,disabler:td.disabler||false,regen:td.regen||false,burnImmune:td.burnImmune||false,goldDrain:td.goldDrain||false,spawner:td.spawner||false,splashOnly:td.splashOnly||false,slowImmune:td.slowImmune||false,disableCooldown:0,slowTimer:0,burnTimer:0,burnDmg:0,rootTimer:0,animPhase:Math.random()*Math.PI*2});}
 
 function getAdj(c,r){const s=new Set();towers.forEach(t=>{if(t.sell)return;const dx=Math.abs(t.col-c),dy=Math.abs(t.row-r);if(dx<=1&&dy<=1&&!(dx===0&&dy===0))s.add(t.id);});return s;}
 function checkCombo(tw){const adj=getAdj(tw.col,tw.row);for(const c of COMBOS)if((tw.id===c.a&&adj.has(c.b))||(tw.id===c.b&&adj.has(c.a)))return c;return null;}
@@ -559,24 +572,24 @@ function fire(tw,tgt){
     if(isAdmin){spawnP(tgt.x,tgt.y,'#6f4e37',6);floatText(tgt.x,tgt.y-15,'BESTELLT!','#6f4e37');}
     dealDmg(tgt,dmg,tw,combo);
     // digitalnurse combo: dotbase+nurse adjacent = also slow admin targets
-    if(combo&&combo.effect==='digitalnurse'){enemies.forEach(o=>{if(o.tags&&o.tags.includes('admin')&&Math.sqrt((o.x-tgt.x)**2+(o.y-tgt.y)**2)<2.5*TILE){o.slowTimer=80;o.spd=o.baseSpd*.4;}});spawnP(tgt.x,tgt.y,'#ff6b81',5);}
+    if(combo&&combo.effect==='digitalnurse'){enemies.forEach(o=>{if(o.tags&&o.tags.includes('admin')&&!o.slowImmune&&o.slowTimer<=0&&Math.sqrt((o.x-tgt.x)**2+(o.y-tgt.y)**2)<2.5*TILE){o.slowTimer=80;o.spd=o.baseSpd*.4;}});spawnP(tgt.x,tgt.y,'#ff6b81',5);}
     return;
   }
   if(tw.beam){const bw=(tw.id==='robii'?3:2)+((tw.level||1)-1);const bc=(tw.level||1)>=3?'#ffd700':(tw.level||1)>=2?lightenColor(tw.projC):tw.projC;dealDmg(tgt,dmg,tw,combo);particles.push({x:tw.x,y:tw.y,x2:tgt.x,y2:tgt.y,life:10,maxLife:10,beam:true,color:bc,width:bw});}
   else if(tw.chain){let h=[tgt];dealDmg(tgt,dmg,tw,combo);let pv=tgt;const chainRange=(tw.id==='callout'?3.5:2.5)*TILE;for(let c=0;c<tw.chain;c++){let cl=null,cd=Infinity;enemies.forEach(e=>{if(h.includes(e)||e.hp<=0)return;const dx=e.x-pv.x,dy=e.y-pv.y,d=Math.sqrt(dx*dx+dy*dy);if(d<chainRange&&d<cd){cl=e;cd=d;}});if(cl){h.push(cl);dealDmg(cl,dmg*.6,tw,combo);particles.push({x:pv.x,y:pv.y,x2:cl.x,y2:cl.y,life:8,maxLife:8,beam:true,color:tw.id==='callout'?'#fdcb6e':'#ffeaa7',width:tw.id==='callout'?2:1.5});pv=cl;}}}
-  else{const lvlMult=tw.level||1;const pSize=tw.projS*(1+(lvlMult-1)*.4);const pColor=lvlMult>=3?'#ffd700':lvlMult>=2?lightenColor(tw.projC):tw.projC;projectiles.push({x:tw.x,y:tw.y,tx:tgt.x,ty:tgt.y,target:tgt,speed:5,damage:dmg,splash:tw.splash||0,slow:tw.slow||0,burn:tw.burn||null,root:tw.root||null,color:pColor,size:pSize,combo,pctDmg:tw.pctDmg||0,level:lvlMult});}
+  else{const lvlMult=tw.level||1;const pSize=tw.projS*(1+(lvlMult-1)*.4);const pColor=lvlMult>=3?'#ffd700':lvlMult>=2?lightenColor(tw.projC):tw.projC;projectiles.push({x:tw.x,y:tw.y,tx:tgt.x,ty:tgt.y,target:tgt,speed:5,damage:dmg,splash:tw.splash||0,slow:tw.slow||0,burn:tw.burn||null,root:tw.root||null,color:pColor,size:pSize,combo,pctDmg:tw.pctDmg||0,level:lvlMult,emoji:tw.projEmoji||null});}
 }
 
 function dealDmg(e,dmg,tw,combo){
   if(e.splashOnly&&tw&&!tw.splash&&!tw.beam&&!tw.burn&&!tw.pctDmg&&!combo){return;}
   const ad=dmg*(1-e.armor);if(tw&&tw.pctDmg)e.hp-=e.maxHp*tw.pctDmg;e.hp-=ad;
-  if(tw&&tw.slow&&e.slowTimer<=0){e.spd=e.baseSpd*(1-Math.min(tw.slow,.5));e.slowTimer=60;}
+  if(tw&&tw.slow&&e.slowTimer<=0&&!e.slowImmune){e.spd=e.baseSpd*(1-Math.min(tw.slow,.5));e.slowTimer=60;}
   if(tw&&tw.burn){e.burnDmg=tw.burn.dmg;e.burnTimer=tw.burn.dur;}
   if(tw&&tw.root&&e.rootTimer<=0){e.rootTimer=tw.root.dur;e.spd=0;}
   if(combo){switch(combo.effect){
-    case'steam':enemies.forEach(o=>{const dx=o.x-e.x,dy=o.y-e.y;if(Math.sqrt(dx*dx+dy*dy)<2*TILE){o.hp-=8;o.slowTimer=60;o.spd=o.baseSpd*.5;}});spawnP(e.x,e.y,'#b2bec3',12);break;
-    case'chainspore':enemies.forEach(o=>{if(Math.sqrt((o.x-e.x)**2+(o.y-e.y)**2)<2*TILE&&o!==e)o.hp-=dmg*.4;});spawnP(e.x,e.y,'#a29bfe',8);break;
-    case'thunderroot':enemies.forEach(o=>{if(Math.sqrt((o.x-e.x)**2+(o.y-e.y)**2)<2.5*TILE){o.rootTimer=50;o.spd=0;o.hp-=10;}});spawnP(e.x,e.y,'#ffeaa7',10);break;
+    case'steam':enemies.forEach(o=>{if(o===e)return;const dx=o.x-e.x,dy=o.y-e.y;if(Math.sqrt(dx*dx+dy*dy)<2*TILE){o.hp-=8;if(!o.slowImmune&&o.slowTimer<=0){o.slowTimer=60;o.spd=o.baseSpd*.5;}}});spawnP(e.x,e.y,'#b2bec3',12);break;
+    case'chainspore':enemies.forEach(o=>{if(o!==e&&Math.sqrt((o.x-e.x)**2+(o.y-e.y)**2)<2*TILE)o.hp-=dmg*.4;});spawnP(e.x,e.y,'#a29bfe',8);break;
+    case'thunderroot':enemies.forEach(o=>{if(o===e)return;if(Math.sqrt((o.x-e.x)**2+(o.y-e.y)**2)<2*TILE){if(!o.slowImmune&&o.rootTimer<=0){o.rootTimer=50;o.spd=0;}o.hp-=10;}});spawnP(e.x,e.y,'#ffeaa7',10);break;
     case'soulburn':e.burnDmg=e.maxHp*.01;e.burnTimer=150;break;}}
   if(e.hp<=0){
     // Resurge: comes back once after being cleared
@@ -593,7 +606,7 @@ function dealDmg(e,dmg,tw,combo){
     gold+=e.reward;score+=e.reward;spawnP(e.x,e.y,e.color,e.boss?15:8);floatText(e.x,e.y-10,'+'+e.reward,'#74b9ff');if(tw)tw.kills++;
     // Splitter: spawn 2 mini copies
     if(e.splitter&&!e.isSplit){for(let i=0;i<2;i++){enemies.push({...e,hp:e.maxHp*.3,maxHp:e.maxHp*.3,progress:e.progress-(.3+i*.4),size:e.size*.7,reward:Math.floor(e.reward*.3),splitter:false,isSplit:true,animPhase:Math.random()*Math.PI*2,spd:e.baseSpd*1.3,baseSpd:e.baseSpd*1.3});}spawnP(e.x,e.y,e.color,8);}
-    if(e.spawner&&!e.hasSpawned){e.hasSpawned=true;for(let i=0;i<2;i++){const st=ETYPES[Math.floor(Math.random()*3)];enemies.push({x:e.x,y:e.y,progress:Math.max(0,e.progress-.5-i*.3),hp:st.hp*2,maxHp:st.hp*2,spd:st.spd,baseSpd:st.spd,reward:st.reward,color:st.color,emoji:st.emoji,boss:false,size:st.size*.8,animType:st.animType,flying:false,armor:0,healer:false,tags:st.tags||[],splitter:false,shielder:false,copier:false,resurge:false,hasResurged:false,rusher:false,disabler:false,regen:false,burnImmune:false,goldDrain:false,spawner:false,splashOnly:false,disableCooldown:0,slowTimer:0,burnTimer:0,burnDmg:0,rootTimer:0,animPhase:Math.random()*Math.PI*2});}spawnP(e.x,e.y,'#e74c3c',10);}
+    if(e.spawner&&!e.hasSpawned){e.hasSpawned=true;for(let i=0;i<2;i++){const st=ETYPES[Math.floor(Math.random()*3)];enemies.push({x:e.x,y:e.y,progress:Math.max(0,e.progress-.5-i*.3),hp:st.hp*2,maxHp:st.hp*2,spd:st.spd,baseSpd:st.spd,reward:st.reward,color:st.color,emoji:st.emoji,boss:false,size:st.size*.8,animType:st.animType,flying:false,armor:0,healer:false,tags:st.tags||[],splitter:false,shielder:false,copier:false,resurge:false,hasResurged:false,rusher:false,disabler:false,regen:false,burnImmune:false,goldDrain:false,spawner:false,splashOnly:false,slowImmune:false,disableCooldown:0,slowTimer:0,burnTimer:0,burnDmg:0,rootTimer:0,animPhase:Math.random()*Math.PI*2});}spawnP(e.x,e.y,'#e74c3c',10);}
   }
 }
 function spawnP(x,y,c,n){for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,s=.5+Math.random()*2.5;particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:20+Math.random()*20,maxLife:40,color:c,size:1.5+Math.random()*3});}}
@@ -621,7 +634,12 @@ function update(){
   projectiles=projectiles.filter(p=>!p.dead);
   particles.forEach(p=>{if(!p.beam){p.x+=(p.vx||0)*sp;p.y+=(p.vy||0)*sp;}p.life-=sp;});particles=particles.filter(p=>p.life>0);
   floatingTexts.forEach(f=>{f.y-=.5*sp;f.life-=sp;});floatingTexts=floatingTexts.filter(f=>f.life>0);
-  if(lives<=0){lives=0;gameRunning=false;const qs=L('go_quotes');lastGoQuote=qs[Math.floor(Math.random()*qs.length)];document.getElementById('go-title').textContent=L('go_title');document.getElementById('go-desc').innerHTML=L('go_desc')(wave,score,lastGoQuote);document.getElementById('go-play').textContent=L('go_play');document.getElementById('go-share').textContent=L('share');document.getElementById('go').classList.remove('hid');}
+  if(lives<=0){lives=0;gameRunning=false;const qs=L('go_quotes');lastGoQuote=qs[Math.floor(Math.random()*qs.length)];document.getElementById('go-title').textContent=L('go_title');document.getElementById('go-desc').innerHTML=L('go_desc')(wave,score,lastGoQuote);document.getElementById('go-play').textContent=L('go_play');document.getElementById('go-share').textContent=L('share');
+    const rw=document.getElementById('go-rewards');let rwh='';
+    if(wave>=20){rwh+='<a href="mailto:jobs@kiezkaffeekraft.de?subject=Bewerbung%20%E2%9A%A1%20'+wave+'%20Schichten%20geschafft!" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(135deg,#FFD600,#e6b800);color:#1a1a1a;padding:8px 16px;border-radius:12px;font-family:Figtree,sans-serif;font-weight:700;font-size:13px;text-decoration:none;margin:4px">☕ Bei KRAFT bewerben</a>';}
+    if(wave>=30){rwh+='<div style="background:rgba(26,26,26,.06);padding:8px 14px;border-radius:10px;font-family:Figtree,sans-serif;font-size:12px;color:#1a1a1a;margin:6px auto;max-width:280px;line-height:1.5">🎉 <b>Zeig diesen Screen an der Theke</b> in einem der drei KRAFT-Standorte f\u00fcr einen <b>Gratis-Kaffee</b>!</div>';}
+    rw.innerHTML=rwh;
+    document.getElementById('go').classList.remove('hid');}
   updateUI();
 }
 
@@ -649,8 +667,8 @@ function draw(){
     }
     if(t.level&&t.level>1&&!off){X.fillStyle='#ffd700';for(let d=0;d<t.level-1;d++){X.beginPath();X.arc(t.x-3+d*6,t.y-12,2.5,0,Math.PI*2);X.fill();}}
     const w=Math.sin(tick*.03+t.col*2)*.4;X.globalAlpha=off?.3:1;X.font='19px serif';X.textAlign='center';X.textBaseline='middle';X.fillText(t.emoji,t.x,t.y+w);X.globalAlpha=1;if(off){X.strokeStyle='rgba(255,80,50,.4)';X.lineWidth=2;X.beginPath();X.moveTo(t.x-8,t.y-8);X.lineTo(t.x+8,t.y+8);X.moveTo(t.x+8,t.y-8);X.lineTo(t.x-8,t.y+8);X.stroke();}if(t.kills>=5&&!off){X.font='bold 7px Figtree,sans-serif';X.fillStyle='rgba(255,255,255,.35)';X.fillText('×'+t.kills,t.x,t.y+13);}});
-  enemies.forEach(e=>{const t=e.animPhase;let ox=0,oy=0,sc=1;switch(e.animType){case'shuffle':ox=Math.sin(t*1.5)*2;oy=Math.abs(Math.sin(t*3))*-1.5;break;case'bob':oy=Math.sin(t*1.5)*3;break;case'scurry':ox=Math.sin(t*4)*2;oy=Math.abs(Math.sin(t*4))*-2;break;case'slide':ox=Math.sin(t*.8)*1;break;case'flutter':oy=Math.sin(t*3)*4;sc=1+Math.sin(t*6)*.08;break;case'pulse':sc=1+Math.sin(t*1.2)*.12;break;}const dx2=e.x+ox,dy2=e.y+oy-2;X.fillStyle='rgba(0,0,0,.18)';X.beginPath();X.ellipse(e.x,e.y+10*e.size,8*e.size,3,0,0,Math.PI*2);X.fill();if(e.burnTimer>0){X.fillStyle=`rgba(225,112,85,${.12+Math.sin(tick*.2)*.06})`;X.beginPath();X.arc(dx2,dy2,12*e.size,0,Math.PI*2);X.fill();}if(e.rootTimer>0){X.fillStyle='rgba(0,184,148,.2)';X.beginPath();X.arc(dx2,dy2+4,10*e.size,0,Math.PI*2);X.fill();}if(e.slowTimer>0){X.fillStyle='rgba(116,185,255,.15)';X.beginPath();X.arc(dx2,dy2,12*e.size,0,Math.PI*2);X.fill();}if(e.healer&&tick%40<20){X.strokeStyle=`rgba(255,215,0,${.08+Math.sin(tick*.1)*.04})`;X.lineWidth=1;X.beginPath();X.arc(dx2,dy2,3*TILE*(tick%40)/40,0,Math.PI*2);X.stroke();}if(e.shielder){X.strokeStyle=`rgba(253,121,168,${.12+Math.sin(tick*.05)*.06})`;X.lineWidth=1.5;X.beginPath();X.arc(dx2,dy2,2*TILE,0,Math.PI*2);X.stroke();}if(e.copier&&!e.copied){X.fillStyle=`rgba(0,206,201,${.06+Math.sin(tick*.15)*.04})`;X.beginPath();X.arc(dx2,dy2,10*e.size,0,Math.PI*2);X.fill();}if(e.rusher){X.strokeStyle=`rgba(224,86,160,${.15+Math.sin(tick*.06)*.08})`;X.lineWidth=1;X.beginPath();X.arc(dx2,dy2,2*TILE,0,Math.PI*2);X.stroke();for(let ar=0;ar<3;ar++){const aa=tick*.04+ar*Math.PI*2/3;X.fillStyle='rgba(224,86,160,.2)';X.beginPath();X.arc(dx2+Math.cos(aa)*12,dy2+Math.sin(aa)*12,2,0,Math.PI*2);X.fill();}}if(e.disabler){X.fillStyle=`rgba(44,62,80,${.08+Math.sin(tick*.08)*.05})`;X.beginPath();X.arc(dx2,dy2,14*e.size,0,Math.PI*2);X.fill();if(tick%60<30){X.font='8px serif';X.textAlign='center';X.fillText('⚡',dx2+10,dy2-8);}}if(e.regen){const rp=Math.sin(tick*.1)*.06+.1;X.strokeStyle=`rgba(0,180,216,${rp})`;X.lineWidth=1.5;X.beginPath();X.arc(dx2,dy2,11*e.size,tick*.03,tick*.03+Math.PI*1.2);X.stroke();}if(e.burnImmune&&e.burnTimer<=0){X.font='7px serif';X.textAlign='center';X.fillText('🔥',dx2-9,dy2+10);X.strokeStyle='rgba(200,50,50,.4)';X.lineWidth=1.5;X.beginPath();X.moveTo(dx2-12,dy2+7);X.lineTo(dx2-6,dy2+13);X.stroke();}if(e.goldDrain){X.fillStyle=`rgba(255,215,0,${.08+Math.sin(tick*.06)*.05})`;X.beginPath();X.arc(dx2,dy2,3*TILE,0,Math.PI*2);X.fill();if(tick%50<25){X.font='7px serif';X.fillText('💰',dx2+12,dy2-10);}}if(e.spawner){X.strokeStyle=`rgba(231,76,60,${.15+Math.sin(tick*.1)*.08})`;X.lineWidth=1.5;X.beginPath();X.arc(dx2,dy2,12*e.size,0,Math.PI*2);X.stroke();}if(e.splashOnly){X.strokeStyle=`rgba(142,68,173,${.2+Math.sin(tick*.07)*.1})`;X.lineWidth=2;X.setLineDash([2,4]);X.beginPath();X.arc(dx2,dy2,11*e.size,0,Math.PI*2);X.stroke();X.setLineDash([]);}X.save();X.translate(dx2,dy2);X.scale(sc*e.size,sc*e.size);X.font=`${e.boss?24:17}px serif`;X.textAlign='center';X.textBaseline='middle';X.fillText(e.emoji,0,0);X.restore();const bw=e.boss?26:16;const hp=e.hp/e.maxHp;const by=dy2-(e.boss?17:12)*e.size;X.fillStyle='rgba(0,0,0,.35)';X.fillRect(dx2-bw/2,by,bw,3);X.fillStyle=hp>.5?'#00b894':hp>.25?'#fdcb6e':'#d63031';X.fillRect(dx2-bw/2,by,bw*Math.max(0,hp),3);if(e.boss){X.font='9px serif';X.textAlign='center';X.fillText('⚠️',dx2,by-5);}if(e.armor>0){X.font='7px serif';X.fillText('🛡️',dx2+bw/2+4,by+2);}});
-  projectiles.forEach(p=>{const lvl=p.level||1;X.fillStyle=p.color;X.shadowColor=p.color;X.shadowBlur=4+lvl*3;X.beginPath();X.arc(p.x,p.y,p.size,0,Math.PI*2);X.fill();if(lvl>=2){X.globalAlpha=.3;X.beginPath();X.arc(p.x,p.y,p.size*1.8,0,Math.PI*2);X.fill();X.globalAlpha=1;}X.shadowBlur=0;});
+  enemies.forEach(e=>{const t=e.animPhase;let ox=0,oy=0,sc=1;switch(e.animType){case'shuffle':ox=Math.sin(t*1.5)*2;oy=Math.abs(Math.sin(t*3))*-1.5;break;case'bob':oy=Math.sin(t*1.5)*3;break;case'scurry':ox=Math.sin(t*4)*2;oy=Math.abs(Math.sin(t*4))*-2;break;case'slide':ox=Math.sin(t*.8)*1;break;case'flutter':oy=Math.sin(t*3)*4;sc=1+Math.sin(t*6)*.08;break;case'pulse':sc=1+Math.sin(t*1.2)*.12;break;}const dx2=e.x+ox,dy2=e.y+oy-2;X.fillStyle='rgba(0,0,0,.18)';X.beginPath();X.ellipse(e.x,e.y+10*e.size,8*e.size,3,0,0,Math.PI*2);X.fill();if(e.burnTimer>0){X.fillStyle=`rgba(225,112,85,${.12+Math.sin(tick*.2)*.06})`;X.beginPath();X.arc(dx2,dy2,12*e.size,0,Math.PI*2);X.fill();}if(e.rootTimer>0){X.fillStyle='rgba(0,184,148,.2)';X.beginPath();X.arc(dx2,dy2+4,10*e.size,0,Math.PI*2);X.fill();}if(e.slowTimer>0){X.fillStyle='rgba(116,185,255,.15)';X.beginPath();X.arc(dx2,dy2,12*e.size,0,Math.PI*2);X.fill();}if(e.healer&&tick%40<20){X.strokeStyle=`rgba(255,215,0,${.08+Math.sin(tick*.1)*.04})`;X.lineWidth=1;X.beginPath();X.arc(dx2,dy2,3*TILE*(tick%40)/40,0,Math.PI*2);X.stroke();}if(e.shielder){X.strokeStyle=`rgba(253,121,168,${.12+Math.sin(tick*.05)*.06})`;X.lineWidth=1.5;X.beginPath();X.arc(dx2,dy2,2*TILE,0,Math.PI*2);X.stroke();}if(e.copier&&!e.copied){X.fillStyle=`rgba(0,206,201,${.06+Math.sin(tick*.15)*.04})`;X.beginPath();X.arc(dx2,dy2,10*e.size,0,Math.PI*2);X.fill();}if(e.rusher){X.strokeStyle=`rgba(224,86,160,${.15+Math.sin(tick*.06)*.08})`;X.lineWidth=1;X.beginPath();X.arc(dx2,dy2,2*TILE,0,Math.PI*2);X.stroke();for(let ar=0;ar<3;ar++){const aa=tick*.04+ar*Math.PI*2/3;X.fillStyle='rgba(224,86,160,.2)';X.beginPath();X.arc(dx2+Math.cos(aa)*12,dy2+Math.sin(aa)*12,2,0,Math.PI*2);X.fill();}}if(e.disabler){X.fillStyle=`rgba(44,62,80,${.08+Math.sin(tick*.08)*.05})`;X.beginPath();X.arc(dx2,dy2,14*e.size,0,Math.PI*2);X.fill();if(tick%60<30){X.font='8px serif';X.textAlign='center';X.fillText('⚡',dx2+10,dy2-8);}}if(e.regen){const rp=Math.sin(tick*.1)*.06+.1;X.strokeStyle=`rgba(0,180,216,${rp})`;X.lineWidth=1.5;X.beginPath();X.arc(dx2,dy2,11*e.size,tick*.03,tick*.03+Math.PI*1.2);X.stroke();}if(e.burnImmune&&e.burnTimer<=0){X.font='7px serif';X.textAlign='center';X.fillText('🔥',dx2-9,dy2+10);X.strokeStyle='rgba(200,50,50,.4)';X.lineWidth=1.5;X.beginPath();X.moveTo(dx2-12,dy2+7);X.lineTo(dx2-6,dy2+13);X.stroke();}if(e.goldDrain){X.fillStyle=`rgba(255,215,0,${.08+Math.sin(tick*.06)*.05})`;X.beginPath();X.arc(dx2,dy2,3*TILE,0,Math.PI*2);X.fill();if(tick%50<25){X.font='7px serif';X.fillText('💰',dx2+12,dy2-10);}}if(e.spawner){X.strokeStyle=`rgba(231,76,60,${.15+Math.sin(tick*.1)*.08})`;X.lineWidth=1.5;X.beginPath();X.arc(dx2,dy2,12*e.size,0,Math.PI*2);X.stroke();}if(e.slowImmune){X.font='7px serif';X.textAlign='center';X.fillText('❄️',dx2+11,dy2+11);X.strokeStyle='rgba(100,100,200,.4)';X.lineWidth=1.5;X.beginPath();X.moveTo(dx2+8,dy2+8);X.lineTo(dx2+14,dy2+14);X.stroke();}if(e.splashOnly){X.strokeStyle=`rgba(142,68,173,${.2+Math.sin(tick*.07)*.1})`;X.lineWidth=2;X.setLineDash([2,4]);X.beginPath();X.arc(dx2,dy2,11*e.size,0,Math.PI*2);X.stroke();X.setLineDash([]);}X.save();X.translate(dx2,dy2);X.scale(sc*e.size,sc*e.size);X.font=`${e.boss?24:17}px serif`;X.textAlign='center';X.textBaseline='middle';X.fillText(e.emoji,0,0);X.restore();const bw=e.boss?26:16;const hp=e.hp/e.maxHp;const by=dy2-(e.boss?17:12)*e.size;X.fillStyle='rgba(0,0,0,.35)';X.fillRect(dx2-bw/2,by,bw,3);X.fillStyle=hp>.5?'#00b894':hp>.25?'#fdcb6e':'#d63031';X.fillRect(dx2-bw/2,by,bw*Math.max(0,hp),3);if(e.boss){X.font='9px serif';X.textAlign='center';X.fillText('⚠️',dx2,by-5);}if(e.armor>0){X.font='7px serif';X.fillText('🛡️',dx2+bw/2+4,by+2);}});
+  projectiles.forEach(p=>{const lvl=p.level||1;if(p.emoji){const sz=7+lvl*2;X.font=sz+'px serif';X.textAlign='center';X.textBaseline='middle';X.fillText(p.emoji,p.x,p.y);if(lvl>=2){X.globalAlpha=.25;X.fillText(p.emoji,p.x+2,p.y-2);X.globalAlpha=1;}}else{X.fillStyle=p.color;X.shadowColor=p.color;X.shadowBlur=4+lvl*3;X.beginPath();X.arc(p.x,p.y,p.size,0,Math.PI*2);X.fill();if(lvl>=2){X.globalAlpha=.3;X.beginPath();X.arc(p.x,p.y,p.size*1.8,0,Math.PI*2);X.fill();X.globalAlpha=1;}X.shadowBlur=0;}});
   particles.forEach(p=>{const a=p.life/p.maxLife;if(p.beam){X.strokeStyle=p.color+Math.floor(a*180).toString(16).padStart(2,'0');X.lineWidth=p.width||2;X.beginPath();X.moveTo(p.x,p.y);X.lineTo(p.x2,p.y2);X.stroke();}else{X.globalAlpha=a;X.fillStyle=p.color;X.beginPath();X.arc(p.x,p.y,p.size*a,0,Math.PI*2);X.fill();X.globalAlpha=1;}});
   floatingTexts.forEach(f=>{const a=f.life/f.maxLife;X.globalAlpha=a;X.fillStyle=f.color;X.font='bold 10px Figtree,sans-serif';X.textAlign='center';X.textBaseline='middle';X.fillText(f.text,f.x,f.y);X.globalAlpha=1;});
   // Law at bottom
@@ -780,9 +798,20 @@ function generateScorecard(){
   c.font='14px Figtree, sans-serif';c.fillStyle='#8a9aac';
   c.fillText(L('sc_cta'),cx,H-50);
 
+  // Milestone badges
+  if(wave>=30){
+    c.fillStyle='#FFD600';c.fillRect(cx-140,H-95,280,32);
+    c.fillStyle='#1a1a1a';c.font='bold 13px Figtree, sans-serif';
+    c.fillText('\u2615 GRATIS-KAFFEE VERDIENT \u2014 Zeig mich an der Theke!',cx,H-76);
+  } else if(wave>=20){
+    c.fillStyle='rgba(26,26,26,0.08)';c.fillRect(cx-120,H-95,240,28);
+    c.fillStyle='#1a1a1a';c.font='12px Figtree, sans-serif';
+    c.fillText('\u26a1 '+wave+' Schichten \u2014 Du hast das Zeug zum Barista!',cx,H-78);
+  }
+
   // Decorative emojis scattered
   c.globalAlpha=0.15;c.font='30px serif';
-  const emojis=['☕','🥛','🍌','💨','👩‍🍳','🫖','📱','📢','🧹','🏃','🥐','💻','🧑'];
+  const emojis=['☕','💨','🍞','⚙️','🧔','🫖','💳','📢','🧹','🤙','🥐','⚡'];
   emojis.forEach((em,i)=>{
     const ex=60+((i*97)%11)/11*(W-120);
     const ey=100+((i*173)%7)/7*(H-200);
