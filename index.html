@@ -132,37 +132,51 @@ let lang='de';
 
 const TX={
 de:{
-  title:'⚡ KRAFT\nDEINE ERSTE SCHICHT',
+  title:'⚡ KRAFT\nRUN THE KRAFT',
   desc:'<em>Montag, 8:29 Uhr. Breite Straße, Pankow.</em> Die Schlange geht bis zum Bürgersteig. Die Hafermilch reicht vielleicht noch bis elf. Jemand buchstabiert dir seinen Namen für den Becher. Du hast keine Becher. Das ist kein Starbucks.<br><br>Du bist Barista bei KRAFT. Erste Woche. Seit 2021 wird in Pankow der Kiez mit Koffein versorgt — der Bungalow mit Terrasse, ein Banana Bread, null Kompromisse.<br><br>Sie kommen. Die <em>Sonderwunsch-Fraktion</em>. Die Vermieter. Das Bezirksamt. Und irgendjemand will wissen, ob der Chai auch mit Kokosmilch geht.<br><br>Deine Waffen: Filterkaffee, Banana Bread und das KRAFT-Team. Platziere Ausstattung. Verteidige die Theke.',
   laws_title:'DIE GESETZE DES KIEZ-CAFÉS:',
   laws:["I. Hafermilch ist kein Lifestyle. Hafermilch ist Infrastruktur.","II. Der Laptop-Gast bestellt um 9 einen Americano und geht um 17 Uhr. Er hat 1,80 Euro Umsatz gemacht.","III. Das WLAN-Passwort steht an der Wand. In Großbuchstaben. Seit drei Jahren. Trotzdem fragt jeder.","IV. Es gibt kein glutenfreies Banana Bread. Es wird nie ein glutenfreies Banana Bread geben. Beerdige den Traum.","V. Wer mit einem Hunderter einen Espresso zahlt, hat die Kontrolle über sein Leben verloren.","VI. Zwischen Flat White und Cappuccino liegt eine Glaubensfrage, kein Rezeptunterschied.","VII. Der Hund unter dem Tisch heißt entweder Bruno, Balu oder Karl. Ausnahmslos.","VIII. Die Schlange wird nie kürzer. Sie wächst nach. Wie Unkraut. Wie Miete.","IX. Das Trinkgeld-Glas ist das ehrlichste Stimmungsbarometer im Kiez.","X. Wer den Putzplan ignoriert, wird vom Putzplan gefunden.","XI. Jeder dritte Gast fragt, ob ihr auch warmes Essen habt. Nein. Banana Bread. Warm.","XII. Die Geheimzutat im Banana Bread ist Liebe. Und dass wir es dir nicht sagen.","XIII. Am Ende jeder Schicht gilt: Wenn das Banana Bread warm war, war der Tag gut."],
   play:'⚡ Schicht antreten', shift:'Schicht', go_title:'😵 SCHICHT GELAUFEN',
   go_desc:(w,s,q)=>{
     let txt='Du hast '+w+' Schichten durchgehalten.<br>Punkte: '+s+'<br><br><em>'+q+'</em>';
-    if(w>=30) txt+='<br><br>🎉 <b>30+ Schichten!</b> Zeig diesen Screen an der Theke bei KRAFT für einen Gratis-Kaffee!';
-    else if(w>=20) txt+='<br><br>💪 <b>20+ Schichten!</b> Du hast das Zeug zum Barista.';
     return txt;
   },
   go_play:'⚡ Nochmal', dismiss:'tippen zum Fortfahren',
   share:'📸 Score teilen',
-  sc_survived:'Überlebt', sc_shifts:'Schichten', sc_score:'Punkte', sc_top:'MVP', sc_quote:'Kiez-Weisheit', sc_cta:'Schaffst du mehr?', sc_title:'KRAFT: DEINE ERSTE SCHICHT',
+  sc_survived:'Überlebt', sc_shifts:'Schichten', sc_score:'Punkte', sc_top:'MVP', sc_quote:'Kiez-Weisheit', sc_cta:'Schaffst du mehr?', sc_title:'RUN THE KRAFT',
   go_quotes:['"Die Schlange wird nie kürzer. Sie wächst nach. Wie Unkraut. Wie Miete."','"Es gibt kein glutenfreies Banana Bread. Beerdige den Traum."','"Hafermilch ist kein Lifestyle. Hafermilch ist Infrastruktur."','"Wenn das Banana Bread warm war, war der Tag gut."','"KRAFT steht nicht nur für Koffein. Es steht dafür, dass wir seit zehn Jahren Namen lernen."','"Zwischen Flat White und Cappuccino liegt eine Glaubensfrage."'],
   boss_wave:w=>'\u26a0\ufe0f BOSS: Schicht '+w, norm_wave:w=>'\u26a1 Schicht '+w,
   shift_flavor:(w,isBoss,gold,towers)=>{
-    if(w===1) return 'Erste Schicht. Der Siebtr\u00e4ger ist warm. Die Hafermilch ist voll. Genie\u00df es.';
-    if(w===2) return 'Zweite Schicht. Du erinnerst dich an keinen einzigen Namen. Aber an jede Bestellung.';
-    if(w===3) return 'Dritte Schicht. Der Hund unter Tisch 3 hei\u00dft Bruno. Nat\u00fcrlich.';
-    if(w===5&&isBoss) return 'Der Vermieter kommt. Er riecht Nebenkostenabrechnung wie andere Leute Kaffee.';
-    if(w===10&&isBoss) return 'Das Bezirksamt ist da. Dein Antrag auf Au\u00dfengastronomie fehlt. Der von 2019.';
-    if(w===15&&isBoss) return 'F\u00fcnfzehn Schichten. Die Stammkundin gr\u00fc\u00dft dich mit Vornamen. Der Vermieter auch.';
-    if(w===20&&isBoss) return 'Zwanzig Schichten. Du bist KRAFT. KRAFT bist du. Pankow geh\u00f6rt dir.';
-    if(isBoss) return ['Irgendjemand Wichtiges kommt rein.','Die Google-Bewertungen werden gelesen. Von jemandem mit Macht.','Der Franchise-Typ hat einen Termin. Den du nicht kennst.','Drau\u00dfen parkt ein SUV. Das ist nie ein gutes Zeichen.'][w%4];
-    if(w>=20) return ['Du tr\u00e4umst in Latte Art.','Pankow geh\u00f6rt dir. Zumindest bis zur Mieterh\u00f6hung.','Der Putzplan hat dich geformt. Du bist jetzt ein besserer Mensch.','Drei Standorte. Ein Traum. Null Kompromisse.','Drei Standorte. Ein Traum. Null Kompromisse.'][w%5];
-    if(w>=15) return ['Die Hafermilch geht immer als erstes leer. Immer.','Jemand fragt nach dem WLAN-Passwort. Es steht an der Wand. Seit drei Jahren.','Der Pour Over braucht drei Minuten. Der Gast hat keine.','Der Siebtr\u00e4ger l\u00e4uft. Du auch. Irgendwie.'][w%4];
-    if(w>=10) return ['Die Schlange reicht bis zur Straße. Wie jeden Montag. Wie jeden Montag.','Ein Laptop-Gast hat seit 9 Uhr einen Americano bestellt. Es ist 16 Uhr.','Das Banana Bread ist warm. Der Tag kann nicht schlecht werden.','Jemand will wissen, ob der Chai auch mit Kokosmilch geht.'][w%4];
-    if(gold<40) return 'Die Kasse ist d\u00fcnn. Hoffentlich zahlt der N\u00e4chste nicht mit Hunderter.';
-    if(towers.length>=8) return 'Die Theke steht. Mal sehen, ob sie h\u00e4lt.';
-    return ['Noch eine Schicht, noch ein Flat White.','Der Siebtr\u00e4ger dampft. Der Kiez wacht auf.','Hafermilch, Hafermilch, Hafermilch.','Jemand bestellt einen Cortado. Du weisst, was er meint. Er nicht.','Die Vitrine ist voll. Die Seele auch.'][w%5];
+    if(w===1) return 'Dein erster Morgen. Die Maschine dampft, die Schlange wartet. Du sp\u00fcrst den Blick der Stammkundin. Sie testet dich.';
+    if(w===2) return 'Zweite Schicht. Du hast dir drei Bestellungen gemerkt. Gestern waren es null. Fortschritt.';
+    if(w===3) return 'Du kennst jetzt den Hund. Er hei\u00dft Bruno. Er kriegt immer Wasser. Sein Mensch kriegt immer Hafermilch.';
+    if(w===4) return 'Jemand sagt: Wie immer, bitte. Du wei\u00dft, was er meint. Du geh\u00f6rst langsam dazu.';
+    if(w===5&&isBoss) return 'Der Vermieter steht in der T\u00fcr. Die Stammkundin verdreht die Augen. Du machst ihm einen Kaffee. Er wird trotzdem nerven.';
+    if(w===5) return 'F\u00fcnfte Schicht. Der erste Flat White ohne nachzudenken. Deine H\u00e4nde wissen, was sie tun.';
+    if(w===6) return 'Ein Kind zeigt auf die Vitrine und sagt: Alles. Die Mutter sagt: Eins. Du gibst heimlich zwei.';
+    if(w===7) return 'Der Stammplatz-Arbeiter nickt dir zu. Zum ersten Mal. Ihr seid jetzt B\u00fcrogenossen.';
+    if(w===8) return 'Die Schichtleitung sagt: L\u00e4uft. Kein Lob im ganzen Kiez wiegt schwerer.';
+    if(w===9) return 'Neun Schichten. Du riechst nach Kaffee. Auch nach dem Duschen. Es st\u00f6rt dich nicht mehr.';
+    if(w===10&&isBoss) return 'Das Bezirksamt schickt jemanden. Du l\u00e4chelst. Du hast den Ordner schon bereit.';
+    if(w===10) return 'Die Stammkundin bestellt heute was anderes. Sie sagt: \u00dcberrasch mich. Du \u00fcberraschst sie.';
+    if(w===11) return 'Ein Stammgast bringt Blumen mit. F\u00fcr den Laden. Nicht f\u00fcr dich. Aber irgendwie doch.';
+    if(w===12) return 'Du hast heute drei Leuten das richtige Getr\u00e4nk gebracht, bevor sie bestellt haben.';
+    if(w===13) return 'Jemand fotografiert deine Latte Art und postet sie. Ohne Filter. Das ist das h\u00f6chste Kompliment.';
+    if(w===14) return 'Vierzehn Schichten. Du hast jetzt einen Stammplatz auf der anderen Seite der Theke.';
+    if(w===15&&isBoss) return 'Die Stammkundin begr\u00fc\u00dft dich mit Vornamen. Der Vermieter auch. Einer davon macht dir Freude.';
+    if(w===15) return 'Du hast angefangen, den Putzplan freiwillig zu aktualisieren. Was ist passiert?';
+    if(w===16) return 'Ein Gast sagt: Ihr macht hier was Besonderes. Du sagst: Wir machen Kaffee. Aber du meinst mehr.';
+    if(w===17) return 'Die Hafermilch wird knapp. Du rationierst. Niemand merkt es. Krisenmanagement.';
+    if(w===18) return 'Pankow ohne KRAFT? Undenkbar. Sagt eine Nachbarin. Du tust so, als w\u00e4re es nichts.';
+    if(w===19) return 'Neunzehn Schichten. Du bist nicht mehr der Neue. Du bist der, der den Laden am Laufen h\u00e4lt.';
+    if(w===20&&isBoss) return 'Zwanzig Schichten. Die Breite Stra\u00dfe geh\u00f6rt dir. Zumindest von 8 bis Feierabend.';
+    if(w===25&&isBoss) return 'F\u00fcnfundzwanzig. Du k\u00f6nntest den Laden mit geschlossenen Augen f\u00fchren. Fast.';
+    if(w===30&&isBoss) return 'Drei\u00dfig Schichten. Die Legende sagt: Wer so weit kommt, trinkt bei KRAFT umsonst.';
+    if(isBoss) return ['Jemand Wichtiges kommt. Du machst den besten Kaffee deines Lebens. Wieder mal.','Die Google-Bewertung wird geschrieben. Du sp\u00fcrst es.','KRAFT hat einen Plan. Der Franchise-Typ nicht.','Drau\u00dfen parkt ein SUV. Du machst trotzdem guten Kaffee.'][w%4];
+    if(w>=20) return ['Du tr\u00e4umst in Latte Art. Die Herzen werden immer sch\u00f6ner.','Ein Kind malt dich an die Wand. Mit Kaffeetasse. Du h\u00e4ngst jetzt im Kiez.','Die Terrasse ist voll. Die Sonne scheint. Der Bungalow summt.','Du kennst 47 Stammg\u00e4ste beim Namen. Nummer 48 kommt gerade rein.','Drei Standorte. Und du h\u00e4ltst diesen hier zusammen.'][w%5];
+    if(gold<40) return 'Die Kasse ist d\u00fcnn. Aber das Banana Bread ist warm. Das z\u00e4hlt.';
+    if(towers.length>=8) return 'Die Theke ist voll ausgestattet. Jetzt zeig, was du kannst.';
+    return ['Noch ein Flat White. Noch ein L\u00e4cheln. Noch ein guter Morgen.','Die Schlange ist lang. Aber du bist schneller geworden.','Hafermilch, Hafermilch, Hafermilch. Der Soundtrack deines Lebens.','Jemand bestellt einen Cortado. Du wei\u00dft genau, was er meint.','Die Vitrine ist voll. Der Kiez wacht auf. Los geht\u2019s.'][w%5];
   },
   upkeep:n=>'-'+n+'\ud83d\udcb0 Miete & Milch',
   admitted:'DURCH',
@@ -414,7 +428,7 @@ let pendingSpawnQueue=[];
 function startWave(){
   wave++;
   // Upkeep calc
-  const upRate=wave>=20?.12:wave>=15?.1:.08;
+  const upRate=wave>=30?.08:wave>=20?.06:wave>=10?.05:.04;
   const up=towers.reduce((s,t)=>s+Math.floor(t.cost*upRate),0);
   if(up>0&&wave>1) gold=Math.max(0,gold-up);
 
@@ -539,7 +553,7 @@ function showTowerPanel(tw){
 }
 function closeTowerPanel(){document.getElementById('tower-panel').style.display='none';document.getElementById('tp-backdrop').style.display='none';selectedForSell=null;updateUI();}
 function doUpgrade(){if(!selectedForSell)return;const tw=towers.find(t=>t.col===selectedForSell.col&&t.row===selectedForSell.row);if(!tw)return;const upgCost=Math.floor(tw.baseCost*.6);if(tw.level<3&&gold>=upgCost){gold-=upgCost;tw.level++;tw.dmg=Math.round(tw.baseDmg*(1+.35*(tw.level-1)));tw.range=+(tw.baseRange*(1+.15*(tw.level-1))).toFixed(2);tw.cost+=upgCost;spawnP(tw.x,tw.y,'#ffd700',12);floatText(tw.x,tw.y-10,L('upgrade_text'),'#ffd700');}closeTowerPanel();}
-function doSell(){if(!selectedForSell)return;const tw=towers.find(t=>t.col===selectedForSell.col&&t.row===selectedForSell.row);if(!tw)return;const sv=Math.floor(tw.cost/2);gold+=sv;towers=towers.filter(t=>t!==tw);spawnP(tw.x,tw.y,'#74b9ff',8);floatText(tw.x,tw.y,'+'+sv+'\ud83d\udcb0','#2ecc71');closeTowerPanel();}
+function doSell(){if(!selectedForSell)return;const tw=towers.find(t=>t.col===selectedForSell.col&&t.row===selectedForSell.row);if(!tw)return;const sv=Math.floor(tw.cost/2);gold+=sv;towers=towers.filter(t=>t!==tw);spawnP(tw.x,tw.y,'#74b9ff',8);floatText(tw.x,tw.y,'+'+sv+'\ud83d\udcb0','#2ecc71');checkGodMode();closeTowerPanel();}
 
 function placeTower(col,row){
   const existing=towers.find(t=>t.col===col&&t.row===row);
@@ -549,7 +563,7 @@ function placeTower(col,row){
   if(def.unlock>wave||disabledTowers.has(def.id)||pathSet.has(col+','+row)||gold<def.cost)return;
   gold-=def.cost;const tw={col,row,x:(col+.5)*TILE,y:(row+.5)*TILE,...def,cooldown:0,angle:0,kills:0,level:1,baseCost:def.cost,baseDmg:def.dmg,baseRange:def.range};towers.push(tw);spawnP(tw.x,tw.y,def.color,10);
   if(tutorialActive){tutorialActive=false;tutorialHintTile=null;try{localStorage.setItem('kraft_cafe_played','1');}catch(e){}}
-  const combo=checkCombo(tw);if(combo){const cn=TX[lang].combos[combo.effect]||combo.effect;showCombo(cn);}updateUI();
+  const combo=checkCombo(tw);if(combo){const cn=TX[lang].combos[combo.effect]||combo.effect;showCombo(cn);}checkGodMode();updateUI();
 }
 function lightenColor(hex){try{const r=Math.min(255,parseInt(hex.slice(1,3),16)+40);const g=Math.min(255,parseInt(hex.slice(3,5),16)+40);const b=Math.min(255,parseInt(hex.slice(5,7),16)+40);return '#'+[r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('');}catch(e){return hex;}}
 
@@ -627,17 +641,21 @@ function update(){
     if(e.disabler){e.disableCooldown-=sp;if(e.disableCooldown<=0){e.disableCooldown=120;let nearest=null,nd=Infinity;towers.forEach(t=>{if(t.sell||disabledTowers.has(t.id))return;const d=Math.sqrt((t.x-e.x)**2+(t.y-e.y)**2);if(d<3*TILE&&d<nd){nearest=t;nd=d;}});if(nearest){nearest.cooldown+=80;spawnP(nearest.x,nearest.y,'#2c3e50',5);floatText(nearest.x,nearest.y-10,'⚡JAM','#2c3e50');}}}
     // Regen: heals self
     if(e.regen&&tick%20<sp){e.hp=Math.min(e.maxHp,e.hp+e.maxHp*.005*sp);}
-    if(e.rootTimer>0){e.rootTimer-=sp;if(e.rootTimer<=0){e.spd=e.baseSpd;if(e.slowTimer>0)e.spd=e.baseSpd*.6;}}else e.progress+=(e.spd*.04)*sp;const pos=pathPos(e.progress);e.x=pos.x;e.y=pos.y;if(e.slowTimer>0){e.slowTimer-=sp;if(e.slowTimer<=0)e.spd=e.baseSpd;}if(e.burnTimer>0&&!e.burnImmune){e.burnTimer-=sp;e.hp-=e.burnDmg*.02*sp;if(e.burnTimer<=0)e.burnDmg=0;}if(e.burnImmune){e.burnTimer=0;e.burnDmg=0;}if(e.healer&&tick%60<sp){enemies.forEach(o=>{if(o!==e&&o.hp>0&&Math.sqrt((o.x-e.x)**2+(o.y-e.y)**2)<3*TILE)o.hp=Math.min(o.maxHp,o.hp+o.maxHp*.01);});}if(e.progress>=PATH.length-1){lives-=e.boss?5:1;e.hp=0;spawnP(e.x,e.y,'#d63031',10);floatText(e.x,e.y,L('admitted'),'#d63031');}});
+    if(e.rootTimer>0){e.rootTimer-=sp;if(e.rootTimer<=0){e.spd=e.baseSpd;if(e.slowTimer>0)e.spd=e.baseSpd*.6;}}else e.progress+=(e.spd*.04)*sp;const pos=pathPos(e.progress);e.x=pos.x;e.y=pos.y;if(e.slowTimer>0){e.slowTimer-=sp;if(e.slowTimer<=0)e.spd=e.baseSpd;}if(e.burnTimer>0&&!e.burnImmune){e.burnTimer-=sp;e.hp-=e.burnDmg*.02*sp;if(e.burnTimer<=0)e.burnDmg=0;}if(e.burnImmune){e.burnTimer=0;e.burnDmg=0;}if(e.healer&&tick%60<sp){enemies.forEach(o=>{if(o!==e&&o.hp>0&&Math.sqrt((o.x-e.x)**2+(o.y-e.y)**2)<3*TILE)o.hp=Math.min(o.maxHp,o.hp+o.maxHp*.01);});}if(e.progress>=PATH.length-1){lives-=e.boss?5:1;if(godMode)lives=999;e.hp=0;spawnP(e.x,e.y,'#d63031',10);floatText(e.x,e.y,L('admitted'),'#d63031');}});
   enemies=enemies.filter(e=>e.hp>0);
   towers.forEach(t=>{if(t.sell||disabledTowers.has(t.id))return;t.cooldown-=sp;if(t.cooldown<=0){const rng=t.range*TILE*activeTowerEffects.rangeMult;let cl=null,cp=-1;enemies.forEach(e=>{const dx=e.x-t.x,dy=e.y-t.y;if(Math.sqrt(dx*dx+dy*dy)<=rng&&e.progress>cp){cl=e;cp=e.progress;}});if(cl){t.angle=Math.atan2(cl.y-t.y,cl.x-t.x);fire(t,cl);t.cooldown=Math.max(t.cooldown,t.rate*activeTowerEffects.rateMult);}}});
   projectiles.forEach(p=>{if(p.target&&p.target.hp>0){p.tx=p.target.x;p.ty=p.target.y;}const dx=p.tx-p.x,dy=p.ty-p.y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<p.speed*sp*2){if(p.splash>0){const sr=p.splash*TILE;enemies.forEach(e=>{if(Math.sqrt((e.x-p.tx)**2+(e.y-p.ty)**2)<=sr)dealDmg(e,p.damage,p,p.combo);});spawnP(p.tx,p.ty,p.color,6);}else{if(p.target&&p.target.hp>0)dealDmg(p.target,p.damage,p,p.combo);}p.dead=true;}else{p.x+=(dx/dist)*p.speed*sp*2;p.y+=(dy/dist)*p.speed*sp*2;}});
   projectiles=projectiles.filter(p=>!p.dead);
   particles.forEach(p=>{if(!p.beam){p.x+=(p.vx||0)*sp;p.y+=(p.vy||0)*sp;}p.life-=sp;});particles=particles.filter(p=>p.life>0);
   floatingTexts.forEach(f=>{f.y-=.5*sp;f.life-=sp;});floatingTexts=floatingTexts.filter(f=>f.life>0);
-  if(lives<=0){lives=0;gameRunning=false;const qs=L('go_quotes');lastGoQuote=qs[Math.floor(Math.random()*qs.length)];document.getElementById('go-title').textContent=L('go_title');document.getElementById('go-desc').innerHTML=L('go_desc')(wave,score,lastGoQuote);document.getElementById('go-play').textContent=L('go_play');document.getElementById('go-share').textContent=L('share');
+  if(lives<=0){lives=0;gameRunning=false;const qs=L('go_quotes');lastGoQuote=qs[Math.floor(Math.random()*qs.length)];
+    const goTitle=document.getElementById('go-title');
+    if(wave>=20){goTitle.textContent='\u2615 GRATIS-KAFFEE!';goTitle.style.fontSize='28px';}
+    else{goTitle.textContent=L('go_title');goTitle.style.fontSize='';}
+    document.getElementById('go-desc').innerHTML=L('go_desc')(wave,score,lastGoQuote);document.getElementById('go-play').textContent=L('go_play');document.getElementById('go-share').textContent=L('share');
     const rw=document.getElementById('go-rewards');let rwh='';
-    if(wave>=20){rwh+='<a href="mailto:jobs@kiezkaffeekraft.de?subject=Bewerbung%20%E2%9A%A1%20'+wave+'%20Schichten%20geschafft!" target="_blank" rel="noopener" style="display:inline-block;background:linear-gradient(135deg,#FFD600,#e6b800);color:#1a1a1a;padding:8px 16px;border-radius:12px;font-family:Figtree,sans-serif;font-weight:700;font-size:13px;text-decoration:none;margin:4px">☕ Bei KRAFT bewerben</a>';}
-    if(wave>=30){rwh+='<div style="background:rgba(26,26,26,.06);padding:8px 14px;border-radius:10px;font-family:Figtree,sans-serif;font-size:12px;color:#1a1a1a;margin:6px auto;max-width:280px;line-height:1.5">🎉 <b>Zeig diesen Screen an der Theke</b> in einem der drei KRAFT-Standorte f\u00fcr einen <b>Gratis-Kaffee</b>!</div>';}
+    if(wave>=20){rwh+='<div style="background:linear-gradient(135deg,#FFD600,#e6b800);padding:14px 18px;border-radius:14px;font-family:Figtree,sans-serif;font-size:15px;font-weight:700;color:#1a1a1a;margin:8px auto;max-width:300px;line-height:1.5;text-align:center">\u2615 Zeig diesen Screen an der Theke bei KRAFT f\u00fcr einen <b>Gratis-Kaffee</b>!</div>';}
+    if(wave>=5){rwh+='<a href="https://www.kiezkaffeekraft.de/blogs/news/barista-werden-kompletter-leitfaden" target="_blank" rel="noopener" style="display:inline-block;background:#1a1a1a;color:#FFD600;padding:8px 16px;border-radius:12px;font-family:Figtree,sans-serif;font-weight:700;font-size:13px;text-decoration:none;margin:4px">\u2615 Bei KRAFT bewerben</a>';}
     rw.innerHTML=rwh;
     document.getElementById('go').classList.remove('hid');}
   updateUI();
@@ -714,6 +732,17 @@ C.addEventListener('touchmove',e=>{e.preventDefault();if(!tsp)return;const t=e.t
 C.addEventListener('touchend',e=>{e.preventDefault();if(!gameRunning||tm||!tsp||paused){hoveredTile=null;tsp=null;return;}const{col,row,ok}=s2g(tsp.x,tsp.y);if(ok)placeTower(col,row);setTimeout(()=>{hoveredTile=null;},200);tsp=null;},{passive:false});
 document.getElementById('sb').addEventListener('click',e=>{e.stopPropagation();speedMult=speedMult===1?2:speedMult===2?3:1;document.getElementById('sb').textContent='⏩'+speedMult+'x';});
 document.getElementById('pb').addEventListener('click',e=>{e.stopPropagation();manualPause=!manualPause;paused=manualPause||showingIntro;document.getElementById('pb').textContent=manualPause?'▶️':'⏸️';});
+let godMode=false;
+function checkGodMode(){
+  // Secret: place 3 towers in top-left row: (0,0), (1,0), (2,0)
+  const t00=towers.find(t=>t.col===0&&t.row===0);
+  const t10=towers.find(t=>t.col===1&&t.row===0);
+  const t20=towers.find(t=>t.col===2&&t.row===0);
+  const wasGod=godMode;
+  godMode=!!(t00&&t10&&t20);
+  if(godMode&&!wasGod){lives=999;gold+=500;floatText(1.5*TILE,.5*TILE,'GOD MODE','#FFD600');spawnP(1.5*TILE,.5*TILE,'#FFD600',15);}
+  if(!godMode&&wasGod){lives=20;floatText(1.5*TILE,.5*TILE,'NORMAL','#aaa');}
+}
 document.addEventListener('keydown',e=>{const n=parseInt(e.key);if(n>=1&&n<=TOWERS.length){const def=TOWERS[n-1];if(def&&wave>=def.unlock){selectedTower=selectedTower===def.id?null:def.id;updateUI();}}if(e.key==='Escape'){selectedTower=null;updateUI();}});
 
 function generateScorecard(){
@@ -799,11 +828,11 @@ function generateScorecard(){
   c.fillText(L('sc_cta'),cx,H-50);
 
   // Milestone badges
-  if(wave>=30){
+  if(wave>=20){
     c.fillStyle='#FFD600';c.fillRect(cx-140,H-95,280,32);
     c.fillStyle='#1a1a1a';c.font='bold 13px Figtree, sans-serif';
     c.fillText('\u2615 GRATIS-KAFFEE VERDIENT \u2014 Zeig mich an der Theke!',cx,H-76);
-  } else if(wave>=20){
+  } else if(wave>=5){
     c.fillStyle='rgba(26,26,26,0.08)';c.fillRect(cx-120,H-95,240,28);
     c.fillStyle='#1a1a1a';c.font='12px Figtree, sans-serif';
     c.fillText('\u26a1 '+wave+' Schichten \u2014 Du hast das Zeug zum Barista!',cx,H-78);
