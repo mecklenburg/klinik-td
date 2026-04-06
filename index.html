@@ -3,80 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#2D6A6A">
+<meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Klinik TD">
-<meta name="description" content="Hospital Tower Defense – Defend the corridor from gomers, paperwork, and administration!">
+<meta name="apple-mobile-web-app-title" content="KRAFT TD">
+<meta name="description" content="Kiez Kaffee Kraft Tower Defense – Defend the counter!">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>🏥 Klinik unter Belagerung / House of God TD</title>
+<title>☕ KRAFT: Theke unter Beschuss</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Figtree:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Figtree:wght@400;600;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{background:#e8ece9;font-family:'Figtree',sans-serif;overflow:hidden;height:100%;height:100dvh;width:100%;display:flex;flex-direction:column;align-items:center;user-select:none;-webkit-user-select:none;touch-action:manipulation;-webkit-touch-callout:none}
-#hud{display:flex;align-items:center;justify-content:center;width:100%;padding:5px 6px;color:#3a4a5c;z-index:10;gap:5px;flex-shrink:0;flex-wrap:wrap}
+html,body{background:#faf6f0;font-family:'Figtree',sans-serif;overflow:hidden;height:100%;height:100dvh;width:100%;display:flex;flex-direction:column;align-items:center;user-select:none;-webkit-user-select:none;touch-action:manipulation;-webkit-touch-callout:none}
+#hud{display:flex;align-items:center;justify-content:center;width:100%;padding:5px 6px;color:#1a1a1a;font-weight:600;z-index:10;gap:5px;flex-shrink:0;flex-wrap:wrap}
 .st{display:flex;align-items:center;gap:3px;font-size:12px;font-weight:600;background:rgba(0,0,0,0.06);padding:2px 8px;border-radius:14px;white-space:nowrap}
 .st .ic{font-size:13px}
 #gc{position:relative;flex:1 1 auto;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden}
 canvas{display:block;border-radius:6px}
-#tp{display:flex;gap:3px;padding:4px 6px;width:100%;justify-content:center;flex-shrink:0;flex-wrap:wrap;max-width:420px;margin:0 auto}
-.tb{display:flex;flex-direction:column;align-items:center;background:rgba(0,0,0,0.04);border:2px solid rgba(0,0,0,0.08);border-radius:10px;padding:3px 5px;color:#3a4a5c;cursor:pointer;transition:all .15s;font-family:'Figtree',sans-serif;min-width:44px;width:calc(16.6% - 3px);flex-shrink:0;-webkit-tap-highlight-color:transparent;position:relative}
+#tp{display:flex;gap:4px;padding:5px 6px;width:100%;justify-content:center;flex-shrink:0;flex-wrap:wrap;max-width:440px;margin:0 auto}
+.tb{display:flex;flex-direction:column;align-items:center;background:rgba(0,0,0,0.04);border:2px solid rgba(0,0,0,0.08);border-radius:10px;padding:3px 5px;color:#1a1a1a;cursor:pointer;transition:all .15s;font-family:'Figtree',sans-serif;min-width:48px;width:calc(16.6% - 4px);flex-shrink:0;-webkit-tap-highlight-color:transparent;position:relative}
 .tb:active{transform:scale(.93)}
-.tb.sel{background:rgba(45,106,106,0.15);border-color:#2D6A6A;box-shadow:0 0 8px rgba(45,106,106,0.2)}
+.tb.sel{background:rgba(58,34,24,0.15);border-color:#1a1a1a;box-shadow:0 0 8px rgba(58,34,24,0.2)}
 .tb.dis{opacity:.3;pointer-events:none}
 .tb.locked{opacity:.18;pointer-events:none}
 .tb.offlined{opacity:.35;pointer-events:none;border-color:rgba(200,80,50,.3);background:rgba(200,80,50,.06)}
-.tb .em{font-size:20px;line-height:1}
-.tb .nm{font-size:8px;font-weight:600;margin-top:1px;white-space:nowrap}
+.tb .em{font-size:22px;line-height:1}
+.tb .nm{font-size:7px;font-weight:600;margin-top:1px;white-space:nowrap}
 .tb .ct{font-size:8px;opacity:.6}
-.tb .lk{position:absolute;top:-2px;right:-2px;font-size:9px;background:#c8cdd2;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center}
-#ib{display:none;width:100%;text-align:center;padding:1px 8px 4px;color:#5a6a7c;font-size:10px;opacity:.7;flex-shrink:0;font-style:italic}
-#wa{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);font-family:'Figtree',sans-serif;font-size:24px;font-weight:700;color:#2a3a4a;text-shadow:0 0 20px rgba(45,106,106,.4),0 1px 0 #fff;pointer-events:none;opacity:0;transition:opacity .4s;z-index:20;white-space:nowrap;letter-spacing:.5px}
+.tb .lk{position:absolute;top:-2px;right:-2px;font-size:9px;background:#d4c4b0;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center}
+#ib{display:none!important;width:100%;text-align:center;padding:1px 8px 4px;color:#6a5040;font-size:10px;opacity:.7;flex-shrink:0;font-style:italic}
+#wa{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);font-family:'Figtree',sans-serif;font-size:24px;font-weight:700;color:#1a1a1a;text-shadow:0 0 20px rgba(58,34,24,.4),0 1px 0 #fff;pointer-events:none;opacity:0;transition:opacity .4s;z-index:20;white-space:nowrap;letter-spacing:.5px}
 #wa.show{opacity:1}
-#intro-card{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);width:85%;max-width:340px;display:flex;flex-direction:column;align-items:center;background:#fff;z-index:70;color:#3a4a5c;padding:22px 18px 16px;text-align:center;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.18),0 0 0 1px rgba(0,0,0,.05);border-left:5px solid #2D6A6A}
+#intro-card{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);width:85%;max-width:340px;display:flex;flex-direction:column;align-items:center;background:#fff;z-index:70;color:#1a1a1a;padding:22px 18px 16px;text-align:center;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.18),0 0 0 1px rgba(0,0,0,.05);border-left:5px solid #1a1a1a}
 #intro-card.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
 #intro-card.threat{border-left-color:#c0392b}
 #intro-card .ic-emoji{font-size:48px;margin-bottom:6px;filter:drop-shadow(0 0 8px rgba(0,0,0,.08))}
 #intro-card .ic-type{font-family:'Figtree',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;padding:2px 10px;border-radius:8px;display:inline-block}
-#intro-card .ic-type.equip-type{color:#2D6A6A;background:rgba(45,106,106,.1)}
+#intro-card .ic-type.equip-type{color:#1a1a1a;background:rgba(58,34,24,.1)}
 #intro-card .ic-type.threat-type{color:#c0392b;background:rgba(192,57,43,.1)}
 #intro-card .ic-type.crisis-type{color:#b06000;background:rgba(200,120,30,.12)}
-#intro-card .ic-name{font-family:'Figtree',sans-serif;font-size:22px;font-weight:700;color:#2a3a4a;margin-bottom:5px}
-#intro-card .ic-quote{font-family:'Special Elite',monospace;font-size:12px;color:#6a5a48;line-height:1.5;max-width:290px;margin-bottom:5px;font-style:italic}
-#intro-card .ic-stats{font-size:10px;opacity:.5;margin-bottom:10px;color:#5a6a7c}
-#intro-card .ic-dismiss{font-size:10px;opacity:.3;animation:pulse 2s infinite;color:#5a6a7c}
+#intro-card .ic-name{font-family:'Figtree',sans-serif;font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:5px}
+#intro-card .ic-quote{font-family:'Playfair Display',serif;font-size:12px;color:#6a5040;line-height:1.5;max-width:290px;margin-bottom:5px;font-style:italic}
+#intro-card .ic-stats{font-size:10px;opacity:.5;margin-bottom:10px;color:#6a5040}
+#intro-card .ic-dismiss{font-size:10px;opacity:.3;animation:pulse 2s infinite;color:#6a5040}
 @keyframes pulse{0%,100%{opacity:.35}50%{opacity:.6}}
 #mutator-bar{position:absolute;top:4px;left:4px;right:40px;z-index:12;display:none;flex-wrap:wrap;gap:3px;padding:0}
 .mut-pill{display:inline-block;font-family:'Figtree',sans-serif;font-size:10px;font-weight:600;letter-spacing:.3px;color:#a03030;background:rgba(200,50,50,.1);padding:2px 7px;border-radius:10px;border:1px solid rgba(200,50,50,.2);white-space:nowrap;line-height:1.4}
 .mut-pill.disable{color:#b06000;background:rgba(200,120,30,.1);border-color:rgba(200,120,30,.2)}
-.ov{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(232,236,233,.97);z-index:50;color:#3a4a5c;padding:16px;text-align:center;overflow-y:auto}
+.ov{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(245,237,228,.97);z-index:50;color:#1a1a1a;padding:16px;text-align:center;overflow-y:auto}
 .ov.hid{display:none}
 .hid{display:none!important}
 body:has(.ov:not(.hid)) #hud,body:has(.ov:not(.hid)) #tp,body:has(.ov:not(.hid)) #ib{visibility:hidden;height:0;padding:0;overflow:hidden;flex:0}
-.bt{font-family:'Figtree',sans-serif;font-size:26px;font-weight:700;text-shadow:none;line-height:1.3;letter-spacing:.5px;color:#2a3a4a}
-.st2{font-size:12px;opacity:.7;margin:6px 0 10px;font-family:'Figtree',sans-serif;max-width:320px;line-height:1.5;color:#4a5a6c}
+.bt{font-family:'Figtree',sans-serif;font-size:26px;font-weight:700;text-shadow:none;line-height:1.3;letter-spacing:.5px;color:#1a1a1a}
+.st2{font-size:12px;opacity:.7;margin:6px 0 10px;font-family:'Figtree',sans-serif;max-width:320px;line-height:1.5;color:#6a5040}
 .st2 em{color:#b03030;font-style:normal}
-.laws-box{font-family:'Special Elite',monospace;font-size:9px;color:#6a5a48;line-height:1.7;max-width:310px;text-align:left;margin:8px auto 14px;padding:10px;background:rgba(0,0,0,.03);border-radius:8px;border:1px solid rgba(0,0,0,.06);max-height:200px;overflow-y:auto}
+.laws-box{font-family:'Playfair Display',serif;font-size:9px;color:#6a5040;line-height:1.7;max-width:310px;text-align:left;margin:8px auto 14px;padding:10px;background:rgba(0,0,0,.03);border-radius:8px;border:1px solid rgba(0,0,0,.06);max-height:200px;overflow-y:auto}
 .laws-box span{color:#8a5a30}
-.pbtn{font-family:'Figtree',sans-serif;font-size:15px;font-weight:700;padding:9px 28px;border-radius:25px;border:none;background:linear-gradient(135deg,#2D6A6A,#1a4a4a);color:#fff;cursor:pointer;box-shadow:0 3px 15px rgba(45,106,106,.25);-webkit-tap-highlight-color:transparent;margin:4px}
+.pbtn{font-family:'Figtree',sans-serif;font-size:15px;font-weight:700;padding:9px 28px;border-radius:25px;border:none;background:linear-gradient(135deg,#1a1a1a,#333);color:#fff;cursor:pointer;box-shadow:0 3px 15px rgba(58,34,24,.25);-webkit-tap-highlight-color:transparent;margin:4px}
 .pbtn:active{transform:scale(.96)}
-.pbtn.lang{font-size:13px;padding:7px 20px;background:rgba(0,0,0,.05);color:#3a4a5c;box-shadow:none;border:1px solid rgba(0,0,0,.12)}
-.pbtn.lang:hover,.pbtn.lang.active{background:rgba(45,106,106,.15);border-color:#2D6A6A;color:#2D6A6A}
+.pbtn.lang{font-size:13px;padding:7px 20px;background:rgba(0,0,0,.05);color:#1a1a1a;box-shadow:none;border:1px solid rgba(0,0,0,.12)}
+.pbtn.lang:hover,.pbtn.lang.active{background:rgba(255,214,0,.15);border-color:#1a1a1a;color:#1a1a1a}
 .lang-row{display:flex;gap:8px;margin-bottom:12px}
-#sb{position:absolute;top:5px;right:5px;z-index:15;background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.1);border-radius:7px;color:#3a4a5c;font-family:'Figtree',sans-serif;font-size:11px;font-weight:600;padding:4px 9px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#sb{position:absolute;top:5px;right:5px;z-index:15;background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.1);border-radius:7px;color:#1a1a1a;font-family:'Figtree',sans-serif;font-size:11px;font-weight:600;padding:4px 9px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 #cf{position:absolute;top:55%;left:50%;transform:translate(-50%,-50%);pointer-events:none;opacity:0;transition:opacity .3s;z-index:18;font-size:16px;font-family:'Figtree',sans-serif;font-weight:700;color:#b08a00;text-shadow:0 0 10px rgba(180,140,0,.3)}
 #cf.show{opacity:1}
-#law{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-family:'Special Elite',monospace;font-size:9px;color:rgba(60,70,80,.18);pointer-events:none;z-index:5;white-space:nowrap;letter-spacing:.5px;max-width:95%;overflow:hidden;text-overflow:ellipsis}
+#law{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-family:'Playfair Display',serif;font-size:9px;color:rgba(60,70,80,.18);pointer-events:none;z-index:5;white-space:nowrap;letter-spacing:.5px;max-width:95%;overflow:hidden;text-overflow:ellipsis}
 </style>
 </head>
 <body>
 <div id="hud">
-  <div class="st"><span class="ic">💰</span><span id="gd">80</span></div>
-  <div class="st"><span class="ic">📟</span><span id="wd-label">Shift</span> <span id="wd">0</span></div>
-  <div class="st"><span class="ic">❤️</span><span id="ld">20</span></div>
-  <div class="st"><span class="ic">📋</span><span id="sd">0</span></div>
+  <div class="st"><span class="ic">💰</span><span id="gd" style="font-size:13px">100</span></div>
+  <div class="st"><span class="ic">⚡</span><span id="wd-label">Schicht</span> <span id="wd" style="font-size:13px">0</span></div>
+  <div class="st"><span class="ic">❤️</span><span id="ld" style="font-size:13px">20</span></div>
+  <div class="st"><span class="ic">⭐</span><span id="sd" style="font-size:13px">0</span></div>
 </div>
 <div id="gc">
   <canvas id="cv"></canvas>
@@ -84,6 +84,9 @@ body:has(.ov:not(.hid)) #hud,body:has(.ov:not(.hid)) #tp,body:has(.ov:not(.hid))
   <div id="cf"></div>
   <div id="mutator-bar"></div>
   <button id="sb">⏩1x</button>
+  <button id="pb" style="position:absolute;top:5px;right:55px;z-index:15;background:rgba(58,34,24,.08);border:1px solid rgba(26,26,26,.12);border-radius:7px;color:#1a1a1a;font-family:'Figtree',sans-serif;font-size:11px;font-weight:600;padding:4px 9px;cursor:pointer;-webkit-tap-highlight-color:transparent">⏸️</button>
+  <div id="tp-backdrop" onclick="closeTowerPanel()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.2);z-index:24"></div>
+  <div id="tower-panel" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:25;background:#fff;border-top:1px solid rgba(0,0,0,.08);border-radius:16px 16px 0 0;padding:12px 16px 16px;font-family:Figtree,sans-serif;box-shadow:0 -4px 30px rgba(0,0,0,.1);max-width:400px;margin:0 auto"><div style="width:36px;height:4px;background:rgba(0,0,0,.12);border-radius:2px;margin:0 auto 10px"></div><div id="tp-header" style="font-size:18px;font-weight:700;color:#1a1a1a;margin-bottom:2px"></div><div id="tp-desc" style="font-size:11px;color:#888;margin-bottom:8px"></div><div id="tp-stats" style="display:flex;gap:12px;justify-content:center;margin-bottom:10px;font-size:12px;color:#555"></div><div id="tp-buttons" style="display:flex;gap:8px;justify-content:center"></div></div>
   <div id="law"></div>
   <div id="intro-card">
     <div class="ic-emoji" id="ic-emoji"></div>
@@ -93,30 +96,27 @@ body:has(.ov:not(.hid)) #hud,body:has(.ov:not(.hid)) #tp,body:has(.ov:not(.hid))
     <div class="ic-stats" id="ic-stats"></div>
     <div class="ic-dismiss" id="ic-dismiss">tap anywhere to continue</div>
   </div>
-  <div id="shift-card" class="hid" style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:55;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(220,226,222,.96);padding:16px;text-align:center">
-    <div style="background:#2D6A6A;color:#fff;padding:6px 24px;border-radius:10px;font-family:'Figtree',sans-serif;font-weight:700;font-size:18px;margin-bottom:10px" id="sc-title"></div>
+  <div id="shift-card" class="hid" style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:55;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(240,232,222,.96);padding:16px;text-align:center">
+    <div style="background:#1a1a1a;color:#FFD600;padding:6px 24px;border-radius:10px;font-family:'Figtree',sans-serif;font-weight:700;font-size:18px;margin-bottom:10px" id="sc-title"></div>
+    <div id="sc-narrative" style="font-family:'Playfair Display',serif;font-size:12px;color:#6a6a6a;max-width:300px;margin:0 auto 10px;line-height:1.5;font-style:italic"></div>
     <div id="sc-upkeep" style="font-size:14px;color:#b03030;margin:4px 0;font-weight:600;font-family:'Figtree',sans-serif"></div>
-    <div id="sc-gold" style="font-size:13px;color:#3a4a5c;opacity:.7;margin-bottom:8px;font-family:'Figtree',sans-serif"></div>
+    <div id="sc-gold" style="font-size:13px;color:#1a1a1a;opacity:.7;margin-bottom:8px;font-family:'Figtree',sans-serif"></div>
     <div id="sc-mutators" style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin:4px 0 10px"></div>
-    <div id="sc-law" style="font-family:'Special Elite',monospace;font-size:11px;color:#6a5a48;max-width:300px;margin:0 auto 8px;font-style:italic"></div>
-    <div id="sc-tutorial" style="font-size:11px;color:#2D6A6A;max-width:300px;margin:0 auto 12px;background:rgba(45,106,106,.08);padding:6px 10px;border-radius:8px;display:none"></div>
+    <div id="sc-law" style="font-family:'Playfair Display',serif;font-size:11px;color:#6a5040;max-width:300px;margin:0 auto 8px;font-style:italic"></div>
+    <div id="sc-tutorial" style="font-size:11px;color:#1a1a1a;max-width:300px;margin:0 auto 12px;background:rgba(58,34,24,.08);padding:6px 10px;border-radius:8px;display:none"></div>
     <button class="pbtn" onclick="dismissShiftCard()" style="font-size:16px;padding:10px 32px">▶️</button>
   </div>
   <div class="ov" id="ss" style="position:fixed;z-index:100">
-    <div class="bt" id="ss-title">🏥</div>
+    <div class="bt" id="ss-title">☕</div>
     <div class="st2" id="ss-desc"></div>
-    <div class="laws-box" id="ss-laws"></div>
-    <div class="lang-row">
-      <button class="pbtn lang" onclick="setLang('en')">🇺🇸 English</button>
-      <button class="pbtn lang active" onclick="setLang('de')">🇩🇪 Deutsch</button>
-    </div>
-    <button class="pbtn" id="ss-play" onclick="startGame()">🩺</button>
+    <button class="pbtn" id="ss-play" onclick="startGame()">☕</button>
   </div>
   <div class="ov hid" id="go" style="position:fixed;z-index:100">>
-    <div class="bt" id="go-title">💀</div>
+    <div class="bt" id="go-title">😵</div>
     <div class="st2" id="go-desc"></div>
     <button class="pbtn" id="go-share" onclick="generateScorecard()" style="background:linear-gradient(135deg,#e17055,#c0392b);margin-bottom:4px">📸</button>
-    <button class="pbtn" id="go-play" onclick="startGame()">📟</button>
+    <a href="https://www.kiezkaffeekraft.de/collections/all" target="_blank" rel="noopener" class="pbtn" style="background:#1a1a1a;color:#FFD600;margin-bottom:4px;text-decoration:none;display:inline-block">⚡ KRAFT Shop</a>
+    <button class="pbtn" id="go-play" onclick="startGame()">☕</button>
   </div>
 </div>
 <div id="tp"></div>
@@ -129,174 +129,116 @@ body:has(.ov:not(.hid)) #hud,body:has(.ov:not(.hid)) #tp,body:has(.ov:not(.hid))
 let lang='de';
 
 const TX={
-en:{
-  title:'🏥 HOUSE OF GOD\nTOWER DEFENSE',
-  desc:'<em>July 1st.</em> The worst day in American medicine. Every teaching hospital fills with new interns who don\'t know what they\'re doing.<br><br>You are one of them.<br><br>They\'re coming — the <em>gomers</em>, the LOLs, the bounce-backs, the suits. Your only weapons: the hospital\'s equipment, turned against the endless tide.<br><br>Place equipment along the corridor. Combine adjacent equipment for synergies. New equipment unlocks as you survive.',
-  laws_title:'THE LAWS OF THE HOUSE OF GOD:',
-  laws:["I. Gomers don't leave.","II. Gomers go to ground.","III. At a cardiac arrest, the first procedure is to take your own pulse.","IV. The patient is the one with the disease.","V. Placement comes first.","VI. There is no body cavity that cannot be reached with a #14 needle and a good strong arm.","VII. Age + BUN = Lasix dose.","VIII. They can always hurt you more.","IX. The only good admission is a cancelled admission.","X. If you don't take a temperature, you can't find a fever.","XI. Show me a BMS who only triples my work and I will kiss his feet.","XII. If the radiology resident and the BMS both see a lesion on the chest X-ray, there can be no lesion there.","XIII. The delivery of good medical care is to do as much nothing as possible."],
-  play:'🩺 Begin Internship', shift:'Shift', go_title:'🚨 SHIFT OVER',
-  go_desc:(w,s,q)=>`You survived ${w} shifts.<br>Score: ${s}<br><br><em>${q}</em>`,
-  go_play:'📟 New Rotation', dismiss:'tap anywhere to continue',
-  share:'📸 Share Score', sc_title:'HOUSE OF GOD TOWER DEFENSE', sc_survived:'Survived', sc_shifts:'shifts', sc_score:'Score', sc_top:'Top Tower', sc_quote:'Words of wisdom', sc_cta:'Can you survive longer?',
-  go_quotes:['"They can always hurt you more."','"The patient is the one with the disease."','"Gomers don\'t leave. Neither will this shift."','"The delivery of good medical care is to do as much nothing as possible."','"At a cardiac arrest, the first procedure is to take your own pulse. You forgot."'],
-  boss_wave:w=>`⚠️ BOSS: Shift ${w}`, norm_wave:w=>`📟 Shift ${w}`,
-  upkeep:n=>'-'+n+'💰 upkeep', admitted:'ADMITTED',
-  sell_confirm:(name,val)=>'🗑️ Tap again to sell '+name+' (+'+val+'💰)',
-  sell_label:'SELL?',
-  resurge_text:'BACK AGAIN!',
-  sc_shift:w=>'Shift '+w, sc_upkeep:n=>'⚠️ Maintenance: -'+n+'💰', sc_gold:n=>'Budget: '+n+'💰', sc_resume:'▶️ Start Shift', sc_no_mut:'No modifiers this shift.',
-  tutorial:'💡 Select equipment below, then tap an empty room to place it. Tap a placed tower to sell it.',
-  tower_tip:(t)=>t.emoji+' '+t.name+': '+t.desc+' · DMG '+t.dmg+' · RNG '+t.range+' · 💰'+t.cost,
-  new_equip:'NEW EQUIPMENT', new_threat:'INCOMING', boss_incoming:'BOSS INCOMING', crisis:'⚠️ CRISIS',
-  er:'ER',ward:'WARD',
-  // Tower names/intros
-  towers:{
-    iv:{name:'IV Pole',desc:'Saline shots',intro:'"Start every patient with a line. Even the ones who don\'t need one. Especially the ones who don\'t need one."',introName:'The IV Pole'},
-    monitor:{name:'Monitor',desc:'Rapid beeps — annoys everyone',intro:'"The monitor beeps. It always beeps. Nobody knows why. Nobody ever will."',introName:'The Cardiac Monitor'},
-    defib:{name:'Defib',desc:'Area shock — clear!',intro:'"CLEAR! ...Everyone stepped back except the intern holding the bed rail."',introName:'The Defibrillator'},
-    ice:{name:'Ice Bath',desc:'Slows 40% — consumable',intro:'"Therapeutic hypothermia. Or as the nurses call it: Tuesday. Warning: subject to supply shortages."',introName:'The Ice Bath'},
-    xray:{name:'X-Ray',desc:'Piercing radiation beam',intro:'"If the radiology resident and the BMS both see a lesion on the chest X-ray, there can be no lesion there."',introName:'The Portable X-Ray'},
-    laxative:{name:'Laxative',desc:'Toxic DOT — the nuclear option',intro:'"GoLYTELY they called it. There was nothing lightly about it. A weapon of mass destruction in a plastic jug."',introName:'Industrial Laxative'},
-    restraint:{name:'Restraints',desc:'Immobilize 1.5s',intro:'"Soft restraints, they call them. There is nothing soft about a man who cannot move his arms."',introName:'The Restraints'},
-    overhead:{name:'Overhead Page',desc:'Wide disruption — chains 5, slows',intro:'"PAGING DR. BLUE, ROOM 314." The noise reaches everywhere. Everyone stops. Nobody named Blue has ever worked here.',introName:'The Overhead Page'},
-    mri:{name:'MRI',desc:'% max HP damage',intro:'"The MRI suite: a $3 million machine that takes 45 minutes to tell you what you already knew."',introName:'The MRI Machine'},
-    attending:{name:'Attending',desc:'Buffs adjacent +30%',intro:'"The Attending arrives. The Attending pronounces. The Attending leaves. The intern does the work."',introName:'The Attending Physician'},
-    nurse:{name:'Nurse',desc:'Reliable rapid shots',intro:'"The nurse has been here longer than the walls. She knows which drawer has the good tape. She does not need a doctor to tell her what to do."',introName:'The Ward Nurse'},
-    dotbase:{name:'dotbase',desc:'4× vs admin & docs, AoE dissolve',intro:'"Structured data. FHIR-native. The paperwork doesn\'t stand a chance. Every form, every duplicate, every DRG query — vaporized into clean, structured data."',introName:'dotbase'},
-    sell:{name:'Sell',desc:'Sell equip (50%)'},
-  },
-  enemies:{
-    gomer:{name:'GOMER',intro:'"GOMER: Get Out of My Emergency Room. They don\'t leave. That\'s Law number one."',introName:'The GOMER'},
-    lol:{name:'LOL in NAD',intro:'"Little Old Lady in No Apparent Distress. She\'s been this way for decades. She\'ll outlive you, your children, and this hospital."',introName:'LOL in NAD'},
-    bounce:{name:'Bounce-back',intro:'"Discharged at 4 AM. Back in the ER by 7. You clear them — they come right back, faster than before. The chart note just says: see previous."',introName:'The Bounce-Back'},
-    flyer:{name:'3 AM Complainer',intro:'"Has had the same symptoms for three weeks. Chose 3 AM on a Tuesday to demand immediate attention. Fast. Annoying. Fragile — but there are so many of them."',introName:'The 3 AM Complainer'},
-    seeker:{name:'Drug Seeker',intro:'"My pain is fifteen out of ten, doc. I\'m allergic to everything except Dilaudid. Tylenol gives me a rash. Ibuprofen gives me a different rash."',introName:'The Drug Seeker'},
-    paper:{name:'Paperwork',intro:'"Consent forms. Discharge summaries. Insurance pre-auths. Progress notes. The actual medicine was the easy part."',introName:'The Paperwork'},
-    admin:{name:'Administration',intro:'"We need to discuss your throughput metrics. Your average door-to-disposition time is concerning. Also, your parking pass has been revoked."',introName:'HOSPITAL ADMINISTRATION'},
-    lawsuit:{name:'Malpractice Suit',intro:'"30% armored. It moves slowly. It is very patient. It has all the time in the world. You do not."',introName:'THE MALPRACTICE SUIT'},
-    jcaho:{name:'JCAHO Inspector',intro:'"The Joint Commission is here. Unannounced. Your hand sanitizer dispensers are 2 inches too high. Your fire exits are labeled in the wrong font."',introName:'THE JCAHO INSPECTOR'},
-    fatman:{name:'The Fat Man',intro:'"The Fat Man. The legend. He heals those around him because he has seen it all. BUFF them and TURF them."',introName:'THE FAT MAN'},
-    kpi:{name:'KPI Report',intro:'"It splits in two when cleared. You fix one metric, two more go red. The dashboard is never green."',introName:'The KPI Report'},
-    consultant:{name:'Consultant',intro:'"The management consultant. Shields everyone nearby with an impenetrable aura of jargon. No treatment gets through."',introName:'The Management Consultant'},
-    duplicate:{name:'Duplicate Form',intro:'"The same form. Again. It photocopies itself at half health. You will fill it out in triplicate or not at all."',introName:'The Duplicate Form'},
-    secondop:{name:'Second Opinion',intro:'"The patient who demands a second opinion. And a third. Speeds up everyone around them — because nothing moves the queue like a complaint to the Chefarzt."',introName:'The Second Opinion'},
-    compliance:{name:'Compliance Officer',intro:'"Jams your nearest equipment every few seconds. They don\'t need to touch anything. Their mere presence makes everything slower and more complicated."',introName:'The Compliance Officer'},
-    aihype:{name:'AI Hype Slide',intro:'"A pitch deck that regenerates itself. Immune to laxatives. Only structured data from dotbase can cut through the buzzwords."',introName:'The AI Hype Slide'},
-  },
-  combos:{steam:'Cold Purge',chainspore:'Charged Scan',thunderroot:'Code Tackle',soulburn:'Contrast Reaction',grandrounds:'Grand Rounds',digitalnurse:'Digital Nursing'},
-  mutators:{
-    caffeine_crash:{name:'☕ Caffeine Crash',desc:'Incoming 20% faster',explain:'All cases move faster this shift. Place slowing towers strategically.'},
-    budget_cuts:{name:'💸 Budget Cuts',desc:'Rewards -40%',explain:'You earn less per case cleared. Spend wisely.'},
-    burnout:{name:'🔥 Burnout',desc:'Fire rate -20%',explain:'All your equipment fires slower this shift.'},
-    hypochondriacs:{name:'🤒 Hypochondriacs',desc:'+12 fast weak cases',explain:'A swarm of fast, weak cases joins the wave.'},
-    night_shift:{name:'🌙 Night Shift',desc:'Range -25%',explain:'Visibility reduced. All equipment has shorter range.'},
-    armor_up:{name:'🛡️ Armor Plating',desc:'All cases +25% armor',explain:'Cases take less damage. Focus fire or use % damage.'},
-    double_admit:{name:'🚨 Double Admit',desc:'+50% more cases',explain:'50% more cases arrive. Prepare extra defenses.'},
-    power_outage:{name:'⚡ Power Outage',desc:'Electronics offline',flavor:'"The backup generator failed. The MRI is a very expensive coat rack."',explain:'Electronic equipment is disabled this shift. Only non-electronic towers work.'},
-    supply_chain:{name:'📦 Supply Shortage',desc:'Consumables offline',flavor:'"Backorder. Backorder. The pharmacy has nothing."',explain:'IV, Ice Bath and Laxative are unavailable this shift.'},
-    union_action:{name:'✊ Union Action',desc:'Staff offline',flavor:'"The nurses are on strike. The attendings are in a meeting about the strike. You are alone."',explain:'All staff towers (Nurse, Restraints, Overhead, Attending) are offline.'},
-    code_blue:{name:'🚨 Code Blue',desc:'Boss mid-wave',explain:'A random boss arrives mid-wave. Stay alert.'},
-    double_armor_swarm:{name:'🐢 Armored Swarm',desc:'Armored +30% more',explain:'More cases arrive, and they all have extra armor.'},
-    overtime:{name:'⏰ Mandatory Overtime',desc:'2× case HP',explain:'All cases have double health. This will be a long shift.'},
-  },
-},
 de:{
-  title:'🏥 KLINIK UNTER\nBELAGERUNG',
-  desc:'<em>1. Oktober.</em> Neues Quartal. Neue PJler, die nicht wissen wo der Kaffeeautomat steht. Die Stationen sind voll, die Kassen leer, und der MDK hat sich angekündigt.<br><br>Du bist Assistenzarzt. Erstes Jahr.<br><br>Sie kommen den Flur entlang — die <em>Dauerpatienten</em>, die Drehtürfälle, der Papierkram, die Verwaltung. Deine einzige Waffe: die Ausstattung der Klinik, zweckentfremdet gegen die endlose Flut.<br><br>Platziere Ausstattung entlang des Flurs. Kombiniere benachbarte Platzierungen für Synergien. Neue Ausstattung wird mit jeder überstandenen Schicht freigeschaltet.',
-  laws_title:'DIE GESETZE DER UNIKLINIK:',
-  laws:["I. Dauerpatienten gehen nicht. Sie kommen wieder.","II. Jede Entlassung erzeugt eine Wiederaufnahme.","III. Bei einer Reanimation: erst den eigenen Puls fühlen.","IV. Der Patient hat die Krankheit, nicht du. (Meistens.)","V. Verlegung geht vor Behandlung.","VI. Es gibt keine Körperhöhle, die nicht mit einer Braunüle und etwas Entschlossenheit erreicht werden kann.","VII. Alter + Kreatinin = Furosemid-Dosis.","VIII. Die Verwaltung kann dir immer noch mehr aufbürden.","IX. Die einzig gute Aufnahme ist eine abgelehnte Aufnahme.","X. Wer kein Fieber misst, findet auch keins.","XI. Zeig mir einen PJler, der meine Arbeit nur verdreifacht, und ich küsse ihm die Füße.","XII. Sehen Radiologe und PJler beide etwas auf dem Röntgenbild, kann da nichts sein.","XIII. Die beste Medizin ist, so wenig wie möglich zu tun."],
-  play:'🩺 Dienst antreten', shift:'Schicht', go_title:'🚨 SCHICHT VORBEI',
-  go_desc:(w,s,q)=>`Du hast ${w} Schichten überlebt.<br>Punkte: ${s}<br><br><em>${q}</em>`,
-  go_play:'📟 Neue Rotation', dismiss:'tippen zum Fortfahren',
-  share:'📸 Score teilen', sc_title:'KLINIK UNTER BELAGERUNG', sc_survived:'Überlebt', sc_shifts:'Schichten', sc_score:'Punkte', sc_top:'Beste Ausstattung', sc_quote:'Weisheit der Station', sc_cta:'Schaffst du mehr?',
-  go_quotes:['"Die Verwaltung kann dir immer noch mehr aufbürden."','"Der Patient hat die Krankheit, nicht du. Meistens."','"Dauerpatienten gehen nie. Du jetzt schon."','"Die beste Medizin ist, so wenig wie möglich zu tun. Du warst zu gründlich."','"Bei einer Reanimation: erst den eigenen Puls fühlen. Hast du vergessen."'],
-  boss_wave:w=>`⚠️ BOSS: Schicht ${w}`, norm_wave:w=>`📟 Schicht ${w}`,
-  upkeep:n=>'-'+n+'💰 Wartung', admitted:'AUFGENOMMEN',
-  sell_confirm:(name,val)=>'🗑️ Nochmal tippen: '+name+' verkaufen (+'+val+'💰)',
-  sell_label:'VERKAUF?',
-  resurge_text:'SCHON WIEDER!',
-  sc_shift:w=>'Schicht '+w, sc_upkeep:n=>'⚠️ Wartung: -'+n+'💰', sc_gold:n=>'Budget: '+n+'💰', sc_resume:'▶️ Schicht starten', sc_no_mut:'Keine Modifikatoren diese Schicht.',
-  tutorial:'💡 Wähle unten Ausstattung aus, dann tippe auf ein leeres Zimmer zum Platzieren. Tippe auf Platziertes zum Verkaufen.',
-  tower_tip:(t)=>t.emoji+' '+(T(t,'name')||t.id)+': '+(T(t,'desc')||'')+' · DMG '+t.dmg+' · RNG '+t.range+' · 💰'+t.cost,
-  new_equip:'NEUE AUSSTATTUNG', new_threat:'NEUER FALL', boss_incoming:'BOSS KOMMT', crisis:'⚠️ KRISE',
-  er:'ZNA',ward:'STATION',
+  title:'⚡ KRAFT: THEKE\nUNTER BESCHUSS',
+  desc:'<em>Montag, 8:29 Uhr. Schivelbeiner Straße.</em> Die Schlange geht bis zum Bürgersteig. Die Hafermilch reicht vielleicht noch bis elf. Jemand buchstabiert dir seinen Namen für den Becher. Du hast keine Becher. Das ist kein Starbucks.<br><br>Du bist Barista bei KRAFT. Erste Woche. Seit 2014 wird hier der Kiez mit Koffein versorgt — drei Standorte, ein Banana Bread, null Kompromisse.<br><br>Sie kommen. Die <em>Extrawunsch-Fraktion</em>. Die Vermieter. Das Bezirksamt. Und irgendjemand will wissen, ob der Chai auch mit Kokosmilch geht.<br><br>Deine Waffen: Siebträger, Banana Bread und das KRAFT-Team. Platziere Ausstattung. Verteidige die Theke.',
+  laws_title:'DIE GESETZE DES KIEZ-CAFÉS:',
+  laws:["I. Hafermilch ist kein Lifestyle. Hafermilch ist Infrastruktur.","II. Der Laptop-Gast bestellt um 9 einen Americano und geht um 17 Uhr. Er hat 1,80 Euro Umsatz gemacht.","III. Das WLAN-Passwort steht an der Wand. In Großbuchstaben. Seit drei Jahren. Trotzdem fragt jeder.","IV. Es gibt kein glutenfreies Banana Bread. Es wird nie ein glutenfreies Banana Bread geben. Beerdige den Traum.","V. Wer mit einem Fünfziger einen Espresso zahlt, hat die Kontrolle über sein Leben verloren.","VI. Zwischen Flat White und Cappuccino liegt eine Glaubensfrage, kein Rezeptunterschied.","VII. Der Hund unter dem Tisch heißt entweder Bruno, Balu oder Karl. Ausnahmslos.","VIII. Die Schlange wird nie kürzer. Sie wächst nach. Wie Unkraut. Wie Miete.","IX. Das Trinkgeld-Glas ist das ehrlichste Stimmungsbarometer im Kiez.","X. Wer den Putzplan ignoriert, wird vom Putzplan gefunden.","XI. Jeder dritte Gast fragt, ob ihr auch warmes Essen habt. Nein. Banana Bread. Warm.","XII. Die Geheimzutat im Banana Bread ist Liebe. Und dass wir es dir nicht sagen.","XIII. Am Ende jeder Schicht gilt: Wenn das Banana Bread warm war, war der Tag gut."],
+  play:'⚡ Schicht antreten', shift:'Schicht', go_title:'😵 SCHICHT GELAUFEN',
+  go_desc:(w,s,q)=>'Du hast '+w+' Schichten durchgehalten.<br>Punkte: '+s+'<br><br><em>'+q+'</em>',
+  go_play:'⚡ Nochmal', dismiss:'tippen zum Fortfahren',
+  share:'📸 Score teilen', sc_title:'KRAFT: THEKE UNTER BESCHUSS',
+  sc_survived:'Überlebt', sc_shifts:'Schichten', sc_score:'Punkte', sc_top:'MVP', sc_quote:'Kiez-Weisheit', sc_cta:'Schaffst du mehr?',
+  go_quotes:['"Die Schlange wird nie kürzer. Sie wächst nach. Wie Unkraut. Wie Miete."','"Es gibt kein glutenfreies Banana Bread. Beerdige den Traum."','"Hafermilch ist kein Lifestyle. Hafermilch ist Infrastruktur."','"Wenn das Banana Bread warm war, war der Tag gut."','"KRAFT steht nicht nur für Koffein. Es steht dafür, dass wir seit zehn Jahren Namen lernen."','"Zwischen Flat White und Cappuccino liegt eine Glaubensfrage."'],
+  boss_wave:w=>'\u26a0\ufe0f BOSS: Schicht '+w, norm_wave:w=>'\u26a1 Schicht '+w,
+  shift_flavor:(w,isBoss,gold,towers)=>{
+    if(w===1) return 'Erste Schicht. Der Siebtr\u00e4ger ist warm. Die Hafermilch ist voll. Genie\u00df es.';
+    if(w===2) return 'Zweite Schicht. Du erinnerst dich an keinen einzigen Namen. Aber an jede Bestellung.';
+    if(w===3) return 'Dritte Schicht. Der Hund unter Tisch 3 hei\u00dft Bruno. Nat\u00fcrlich.';
+    if(w===5&&isBoss) return 'Der Vermieter kommt. Er riecht Nebenkostenabrechnung wie andere Leute Kaffee.';
+    if(w===10&&isBoss) return 'Das Bezirksamt ist da. Dein Antrag auf Au\u00dfengastronomie fehlt. Der von 2019.';
+    if(w===15&&isBoss) return 'F\u00fcnfzehn Schichten. Die Stammkundin gr\u00fc\u00dft dich mit Vornamen. Der Vermieter auch.';
+    if(w===20&&isBoss) return 'Zwanzig Schichten. Du bist KRAFT. KRAFT bist du. Die Schivelbeiner geh\u00f6rt dir.';
+    if(isBoss) return ['Irgendjemand Wichtiges kommt rein.','Die Google-Bewertungen werden gelesen. Von jemandem mit Macht.','Der Franchise-Typ hat einen Termin. Den du nicht kennst.','Drau\u00dfen parkt ein SUV. Das ist nie ein gutes Zeichen.'][w%4];
+    if(w>=20) return ['Du tr\u00e4umst in Latte Art.','Die Schivelbeiner geh\u00f6rt dir. Zumindest bis zur Mieterh\u00f6hung.','Der Putzplan hat dich geformt. Du bist jetzt ein besserer Mensch.','Robii w\u00e4re stolz.','Drei Standorte. Ein Traum. Null Kompromisse.'][w%5];
+    if(w>=15) return ['Die Hafermilch geht immer als erstes leer. Immer.','Jemand fragt nach dem WLAN-Passwort. Es steht an der Wand. Seit drei Jahren.','Der Pour Over braucht drei Minuten. Der Gast hat keine.','Du verstehst jetzt, warum Robii laufen geht.'][w%4];
+    if(w>=10) return ['Die Schlange reicht bis zur Schivelbeiner. Wie jeden Montag.','Ein Laptop-Gast hat seit 9 Uhr einen Americano bestellt. Es ist 16 Uhr.','Das Banana Bread ist warm. Der Tag kann nicht schlecht werden.','Jemand will wissen, ob der Chai auch mit Kokosmilch geht.'][w%4];
+    if(gold<40) return 'Die Kasse ist d\u00fcnn. Hoffentlich zahlt der N\u00e4chste nicht mit F\u00fcnfziger.';
+    if(towers.length>=8) return 'Die Theke steht. Mal sehen, ob sie h\u00e4lt.';
+    return ['Noch eine Schicht, noch ein Flat White.','Der Siebtr\u00e4ger dampft. Der Kiez wacht auf.','Hafermilch, Hafermilch, Hafermilch.','Jemand bestellt einen Cortado. Du weisst, was er meint. Er nicht.','Die Vitrine ist voll. Die Seele auch.'][w%5];
+  },
+  upkeep:n=>'-'+n+'\ud83d\udcb0 Miete & Milch',
+  admitted:'DURCH',
+  sell_confirm:(name,val)=>'\ud83d\uddd1\ufe0f Nochmal: '+name+' abbauen (+'+val+'\ud83d\udcb0)',
+  sell_label:'WEG?',
+  resurge_text:'KOMMT WIEDER!',
+  sc_shift:w=>'Schicht '+w, sc_upkeep:n=>'\u26a0\ufe0f Fixkosten: -'+n+'\ud83d\udcb0', sc_gold:n=>'Kasse: '+n+'\ud83d\udcb0', sc_resume:'\u25b6\ufe0f Ran da',
+  tutorial:'\ud83d\udca1 W\u00e4hle unten Ausstattung, tippe auf ein freies Feld. Tippe auf Platziertes zum Abbauen.',
+  tower_tip:t=>t.emoji+' '+t.name+': '+t.desc+' \u00b7 DMG '+t.dmg+' \u00b7 RNG '+t.range+' \u00b7 \ud83d\udcb0'+t.cost,
+  new_equip:'NEUE AUSSTATTUNG', new_threat:'NEUER GAST', boss_incoming:'OH NEIN', crisis:'\u26a0\ufe0f KRISE',
+  er:'T\u00dcR', ward:'THEKE',
   towers:{
-    iv:{name:'Infusionsständer',desc:'Kochsalz-Schüsse',intro:'"Erstmal einen Zugang legen. Ob der Patient einen braucht, ist eine andere Frage."',introName:'Der Infusionsständer'},
-    monitor:{name:'Monitor',desc:'Piept ununterbrochen',intro:'"Der Monitor piept. Er piept immer. Niemand weiß warum. Der Alarm wird ignoriert. Wie immer."',introName:'Der Überwachungsmonitor'},
-    defib:{name:'Defi',desc:'Flächenschock — Weg da!',intro:'"ALLE ZURÜCK! ...Alle traten zurück, außer dem PJler, der die Bettkante festhielt."',introName:'Der Defibrillator'},
-    ice:{name:'Eisbad',desc:'Verlangsamt 40% — Verbrauchsmaterial',intro:'"Therapeutische Hypothermie. Die Pflege nennt es: Dienstag. Achtung: bei Lieferengpässen nicht verfügbar."',introName:'Das Eisbad'},
-    xray:{name:'Röntgen',desc:'Durchdringender Strahl',intro:'"Sehen Radiologe und PJler beide etwas auf dem Bild, kann da nichts sein." — Gesetz XII',introName:'Das mobile Röntgen'},
-    laxative:{name:'Abführmittel',desc:'Toxischer DOT — die Nuklearoption',intro:'"Macrogol, Klistier, Einlauf. Im Flur riecht es nach Kapitulation. Die Massenvernichtungswaffe der Inneren."',introName:'Das Abführmittel'},
-    restraint:{name:'Fixierung',desc:'Immobilisiert 1,5s',intro:'"Weiche Fixierung, heißt es offiziell. Es gibt nichts Weiches daran, wenn ein Mensch seine Arme nicht bewegen kann."',introName:'Die Fixierung'},
-    overhead:{name:'Durchsage',desc:'Breite Störung — Kette 5, verlangsamt',intro:'"DR. MÜLLER BITTE AUF STATION 3." Der Lärm erreicht alle. Alle bleiben stehen. Ein Dr. Müller hat hier nie gearbeitet.',introName:'Die Lautsprecherdurchsage'},
-    mri:{name:'MRT',desc:'% max HP Schaden',intro:'"Das MRT: ein 3-Millionen-Euro-Gerät, das 45 Minuten braucht um dir zu sagen, was du schon wusstest."',introName:'Das MRT'},
-    attending:{name:'Chefarzt',desc:'Bufft Nachbarn +30%',intro:'"Der Chefarzt erscheint. Der Chefarzt begutachtet. Der Chefarzt geht. Der Assistenzarzt macht die Arbeit."',introName:'Der Chefarzt'},
-    nurse:{name:'Schwester',desc:'Zuverlässige Schnellschüsse',intro:'"Die Stationsschwester ist länger hier als die Wände. Sie weiß, in welcher Schublade das gute Pflaster liegt. Sie braucht keinen Arzt, um zu wissen was zu tun ist."',introName:'Die Stationsschwester'},
-    dotbase:{name:'dotbase',desc:'4× vs Verwaltung & Doku, Flächen-Auflösung',intro:'"Strukturierte Daten. FHIR-nativ. Der Papierkram hat keine Chance. Jedes Formular, jedes Duplikat, jede DRG-Anfrage — aufgelöst in saubere, strukturierte Daten."',introName:'dotbase'},
-    sell:{name:'Verkauf',desc:'Verkaufen (50%)'},
+    espresso:{name:'Siebtr\u00e4ger',desc:'Guten-Morgen-Salven',intro:'"93 Grad. 9 bar. 25 Sekunden. Guten-Morgen-Blend von Field Coffee. Wer l\u00e4nger br\u00fcht, hat die Kontrolle verloren. Wer k\u00fcrzer br\u00fcht, hatte sie nie."',introName:'Der Siebtr\u00e4ger'},
+    steam:{name:'Dampfd\u00fcse',desc:'Verlangsamt 40%',intro:'"Hafermilch sch\u00e4umen ist Meditation. F\u00fcr dich. F\u00fcr die Schlange ist es die H\u00f6lle. 65 Grad. Nicht 70. Wer 70 will, kriegt Brei. Und Verachtung."',introName:'Die Dampfd\u00fcse'},
+    banana:{name:'Banana Bread',desc:'Fl\u00e4chenschaden',intro:'"Vegan. Frisch. Warm. Nie glutenfrei. Wenn jemand fragt, sag: Nein. Wenn er nochmal fragt, sag: Immer noch nein. Die Geheimzutat ist Konsequenz."',introName:'Das Banana Bread'},
+    grinder:{name:'M\u00fchle',desc:'Mahlgut-DOT',intro:'"JB Kaffee, M\u00fcnchen. Single Origin, frisch gemahlen. Der Staub legt sich auf Laptops, Kinderwagen und Lebensentscheidungen. Gleichm\u00e4\u00dfig."',introName:'Die M\u00fchle'},
+    barista:{name:'Barista',desc:'Schnellsch\u00fcsse',intro:'"Studiert Regie an der UdK. Kellnert seit vier Jahren. Kann Latte Art in Herzform, Bl\u00e4tter und mittlerweile auch Bruno den Hund."',introName:'Der Barista'},
+    pourover:{name:'Pour Over',desc:'Pr\u00e4zisionsstrahl',intro:'"V60. Drei Minuten Meditation. Der Gast trommelt mit den Fingern. Du gießt Kreise. Er versteht es nicht. Er wird es nie verstehen. Aber er wird wiederkommen."',introName:'Die Pour-Over-Station'},
+    croissant:{name:'Vitrine',desc:'Fl\u00e4chen-Slow',intro:'"Lemon Cake. Brownies. Carrot Cake. Alles hausgemacht. Die Vitrine ist das Bermudadreieck der Entscheidungsf\u00e4higkeit. Niemand geht ohne Nachtisch."',introName:'Die Kuchenvitrine'},
+    cardreader:{name:'EC-Ger\u00e4t',desc:'Immobilisiert',intro:'"Kontaktlos. Geht nicht. Chip rein. PIN. Verbindung wird aufgebaut. Verbindung fehlgeschlagen. Nochmal. Bon? Der Moment, in dem Berlin stillsteht."',introName:'Das EC-Kartengerät'},
+    callout:{name:'Durchsage',desc:'Kette 5, verlangsamt',intro:'"FLAT WHITE F\u00dcR... \u00c4H... JEMANDEN! Alle drehen sich um. Niemand meldet sich. Drei Leute stehen auf. Keiner davon hat bestellt. Berliner Standard."',introName:'Die Durchsage'},
+    putzplan:{name:'Putzplan',desc:'% max HP',intro:'"Er h\u00e4ngt an der Wand wie die Zehn Gebote. Drei Standorte. Drei Putzpl\u00e4ne. Er sieht alles. Er vergisst nichts. Er ist gerechter als das Finanzamt."',introName:'Der Putzplan'},
+    robii:{name:'Robii',desc:'Bufft Nachbarn +30%',intro:'"Wenn Robii da ist, sitzt jeder Espresso. Die Milch sch\u00e4umt sich von allein. Die Schlange l\u00e4chelt. KRAFT steht nicht nur f\u00fcr Koffein — es steht daf\u00fcr, dass hier seit zehn Jahren Gesichter erkannt werden."',introName:'Robii'},
+    onlineshop:{name:'Online Shop',desc:'4\u00d7 vs Influencer',intro:'"kiezkaffeekraft.de — Guten-Morgen-Blend, Merch, Gutscheine. F\u00fcr alle drei Standorte. L\u00f6st Influencer in Daten auf. Ab 60 Euro versandkostenfrei."',introName:'Der Online Shop'},
+    sell:{name:'Abbauen',desc:'50% zur\u00fcck'},
   },
   enemies:{
-    gomer:{name:'Dauerpatient',intro:'"Der Dauerpatient. Er geht nicht. Das ist Gesetz Nummer eins. Er war schon hier, bevor du angefangen hast."',introName:'Der Dauerpatient'},
-    lol:{name:'Alte Dame o.B.',intro:'"Alte Dame ohne Befund. Ihr geht es gut. Ihr ging es schon immer gut. Sie wird uns alle überleben — und unsere Kinder auch."',introName:'Die Alte Dame ohne Befund'},
-    bounce:{name:'Drehtürfall',intro:'"Entlassen um 4 Uhr morgens. Um 7 wieder in der ZNA. Du wirst ihn los — er kommt direkt wieder, schneller als vorher. Im Arztbrief steht nur: siehe Vorakte."',introName:'Der Drehtürfall'},
-    flyer:{name:'3-Uhr-Nachts-Patient',intro:'"Hat die Beschwerden seit drei Wochen. Kommt um 3 Uhr nachts und verlangt sofortige Behandlung. Schnell. Nervig. Zerbrechlich — aber es sind so viele."',introName:'Der 3-Uhr-Nachts-Patient'},
-    seeker:{name:'Rezeptjäger',intro:'"Mein Schmerz ist fünfzehn von zehn, Herr Doktor. Gegen Ibuprofen bin ich allergisch. Gegen Paracetamol auch. Nur Tilidin hilft. Nein, Tropfen, keine Tabletten."',introName:'Der Rezeptjäger'},
-    paper:{name:'Papierkram',intro:'"Aufnahmeformulare. DRG-Kodierung. MDK-Anfragen. Arztbriefe. Die eigentliche Medizin war der leichte Teil."',introName:'Der Papierkram'},
-    admin:{name:'Verwaltung',intro:'"Wir müssen über Ihre Fallzahlen reden. Die durchschnittliche Verweildauer ist nicht akzeptabel. Ach, und Ihr Parkausweis wurde eingezogen."',introName:'DIE VERWALTUNG'},
-    lawsuit:{name:'MDK-Prüfung',intro:'"30% gepanzert. Sie bewegt sich langsam. Sie ist sehr geduldig. Sie hat alle Zeit der Welt. Du nicht."',introName:'DIE MDK-PRÜFUNG'},
-    jcaho:{name:'Hygiene-Audit',intro:'"Die Hygiene-Kommission ist da. Unangekündigt. Ihre Desinfektionsspender hängen 2 cm zu hoch. Ihre Fluchtwege sind falsch beschildert. Viel Glück."',introName:'DAS HYGIENE-AUDIT'},
-    fatman:{name:'Privatpatient',intro:'"Der Privatpatient. Freund des Chefarztes. Einzelzimmer, Chefarztbehandlung, und er heilt alle in seiner Nähe — weil für ihn immer jemand springt."',introName:'DER PRIVATPATIENT'},
-    kpi:{name:'KPI-Bericht',intro:'"Wird er erledigt, teilt er sich in zwei. Du reparierst eine Kennzahl, zwei weitere werden rot. Das Dashboard ist nie grün."',introName:'Der KPI-Bericht'},
-    consultant:{name:'Berater',intro:'"Der Unternehmensberater. Schirmt alle in seiner Nähe mit einer undurchdringlichen Aura aus Buzzwords ab. Keine Behandlung kommt durch."',introName:'Der Unternehmensberater'},
-    duplicate:{name:'Duplikat-Formular',intro:'"Dasselbe Formular. Schon wieder. Bei halber Gesundheit kopiert es sich selbst. Dreifache Ausfertigung, oder gar nicht."',introName:'Das Duplikat-Formular'},
-    secondop:{name:'Zweitmeinung',intro:'"Der Patient, der eine Zweitmeinung will. Und eine Dritte. Beschleunigt alle in der Nähe — denn nichts bewegt die Warteschlange wie eine Beschwerde beim Chefarzt."',introName:'Die Zweitmeinung'},
-    compliance:{name:'Compliance-Beauftragter',intro:'"Blockiert regelmäßig die nächste Ausstattung. Muss nichts anfassen. Die bloße Anwesenheit macht alles langsamer und komplizierter."',introName:'Der Compliance-Beauftragte'},
-    aihype:{name:'KI-Hype-Folie',intro:'"Eine Pitch-Folie, die sich selbst regeneriert. Immun gegen Abführmittel. Nur strukturierte Daten von dotbase durchdringen den Buzzword-Nebel."',introName:'Die KI-Hype-Folie'},
+    regular:{name:'Normalo',intro:'"Cappuccino. Danke. Sch\u00f6nen Tag. Trinkgeld. Gibt es wirklich. Sch\u00fctzenswerte Art. Rote Liste."',introName:'Der Normalo'},
+    stammgast:{name:'Stammkundin',intro:'"Jeden Tag, 9:14 Uhr. Flat White, Hafermilch, das \u00fcbliche Pl\u00e4tzchen am Fenster. Sie kennt das Team besser als manche Familienmitglieder. L\u00e4sst sich nicht vertreiben."',introName:'Die Stammkundin'},
+    drehtuer:{name:'Dreht\u00fcr',intro:'"Bestellt. Geht. Kommt wieder. Zucker vergessen. Geht. Kommt wieder. Eigentlich doch Hafer statt Kuh. Du wirst ihn nicht los. Er kommt immer wieder."',introName:'Die Dreht\u00fcr'},
+    hafermilch:{name:'Extrawunsch',intro:'"Extra hei\u00df, aber nicht zu hei\u00df. Hafermilch, aber die von Oatly, nicht die andere. Schaum, aber wenig. Latte Art, aber kein Herz. Eigentlich ein v\u00f6llig anderes Getr\u00e4nk."',introName:'Der Extrawunsch'},
+    bargeld:{name:'Der F\u00fcnfziger',intro:'"Einen kleinen Espresso. Hier, f\u00fcnfzig Euro. Kleiner hab ich nicht. Ist doch nicht mein Problem. — Doch. Doch, ist es."',introName:'Der F\u00fcnfziger'},
+    influencer:{name:'Influencer',intro:'"K\u00f6nnt ihr den Flat White nochmal machen? Das Licht war schlecht. Und legt das Banana Bread weiter links. F\u00fcr die Story. Sie hat 340 Follower. 280 davon sind Bots."',introName:'Der Influencer'},
+    vermieter:{name:'Vermieter',intro:'"Guten Tag. Mietanpassung. Nebenkostenabrechnung. Au\u00dfenbestuhlung Paragraf 7 Absatz 3. Die Miete in P-Berg steigt, der Espresso kostet noch 2,80. Irgendwas stimmt hier nicht."',introName:'DER VERMIETER'},
+    hygiene:{name:'Hygienekontrolle',intro:'"Ihr K\u00fchlschrank zeigt 8,2 Grad. Erlaubt sind 7. Wo ist die HACCP-Dokumentation? Wann wurde der Lappen zuletzt gewechselt? Ist der Hund unter dem Tisch angemeldet?"',introName:'DIE HYGIENEKONTROLLE'},
+    bezirksamt:{name:'Bezirksamt',intro:'"Ihr Antrag auf Au\u00dfengastronomie wurde abgelehnt. Es fehlt Anlage 3b. Die Frist ist abgelaufen. Die neue Frist f\u00fcr die Fristverl\u00e4ngerung ist auch abgelaufen. Willkommen in Berlin."',introName:'DAS BEZIRKSAMT'},
+    gentrifizierer:{name:'Gentrifizierer',intro:'"Sch\u00f6ner Laden. Aber habt ihr schon mal \u00fcber Membership nachgedacht? Avocado-Toast? Wine Bar ab 18 Uhr? Er heilt alle um sich herum. Weil alles teurer wird, wo er hingeht."',introName:'DER GENTRIFIZIERER'},
+    kpibericht:{name:'Google-Bewertung',intro:'"\u2b50 — WLAN ging nicht. Banana Bread nicht glutenfrei. Hund durfte nicht aufs Sofa. Beim Zerst\u00f6ren spaltet sie sich in zwei Ein-Stern-Bewertungen. Denn eine reicht nie."',introName:'Die Google-Bewertung'},
+    berater:{name:'Franchise-Typ',intro:'"Skalierung! F\u00fcnf Standorte! Unit Economics! Exit in drei Jahren! Er redet in Buzzwords. Die Aura ist so dicht, dass kein ehrliches Wort durchdringt. KRAFT hat einen 30-Jahres-Plan. Er nicht."',introName:'Der Franchise-Typ'},
+    duplikat:{name:'Doppelbestellung',intro:'"Einmal das Gleiche nochmal. Und f\u00fcr meine Freundin auch. Ach, die kommt gleich. Oder auch nicht. Kopiert sich bei halber Geduld selbst. Wie Touristen vor dem Mauerpark."',introName:'Die Doppelbestellung'},
+    secondop:{name:'\u00c4nderer',intro:'"Latte. Nee, Cappuccino. Warte — Flat White. Oder doch Filter? Egal, Chai. Nee, doch Kaffee. Seine Unentschlossenheit ist ansteckend. Alle in der N\u00e4he werden langsamer."',introName:'Der \u00c4nderer'},
+    compliance:{name:'Finanzamt',intro:'"Kassennachschau. TSE-Modul korrekt? Bonpflicht eingehalten? Letzte Inventur? Personalakte vollst\u00e4ndig? Er muss nichts anfassen. Seine blo\u00dfe Anwesenheit l\u00e4hmt alles im Umkreis."',introName:'Das Finanzamt'},
+    aihype:{name:'KI-Pitch',intro:'"Wir disrupen den Kaffee-Markt. Machine Learning optimiert die Br\u00fchzeit. Blockchain f\u00fcr die Bohnen-Lieferkette. Er regeneriert sich, weil man Bullshit nicht t\u00f6ten kann. Nur der Online Shop l\u00f6st ihn auf."',introName:'Der KI-Pitch'},
+    laptopper:{name:'Laptop-Besetzer',intro:'"Seit 8 Uhr hier. Ein Americano. Steckdose belegt. Zoomt mit Kopfh\u00f6rern. Strahlt eine Aura aus, die alle Trinkgelder im Umkreis verdampfen l\u00e4sst. 1,80 Euro Umsatz. Den ganzen Tag."',introName:'Der Laptop-Besetzer'},
+    lieferando:{name:'Lieferando-Fahrer',intro:'"Kommt rein, bestellt nichts, will drei Bestellungen abholen. Die gibt es nicht. Wird er erledigt, stehen zwei weitere Fahrer vor der T\u00fcr. Die Fahrr\u00e4der blockieren den Eingang."',introName:'Der Lieferando-Fahrer'},
+    kuenstler:{name:'Prenzlauer K\u00fcnstler',intro:'"Immun gegen normale Bedienung. Nur Fl\u00e4chenschaden, Strahlung und Dauerberieselung wirken. Er trinkt Chai. Ironisch. Sein Hund hei\u00dft Kafka."',introName:'Der Prenzlauer K\u00fcnstler'},
   },
-  combos:{steam:'Kalte Spülung',chainspore:'Geladener Scan',thunderroot:'Code-Angriff',soulburn:'Kontrastreaktion',grandrounds:'Chefarztvisite',digitalnurse:'Digitale Pflege'},
+  combos:{steam:'Latte-Art-Combo',chainspore:'Koffeinschock',thunderroot:'Kaffee-Koma',soulburn:'Bitterer Nachgeschmack',grandrounds:'Robiis Runde',digitalnurse:'Digital Barista'},
   mutators:{
-    caffeine_crash:{name:'☕ Koffeinentzug',desc:'Fälle 20% schneller',explain:'Alle Fälle bewegen sich schneller. Verlangsamende Ausstattung hilft.'},
-    budget_cuts:{name:'💸 Sparmaßnahmen',desc:'Belohnung -40%',explain:'Du verdienst weniger pro erledigtem Fall. Spare weise.'},
-    burnout:{name:'🔥 Burnout',desc:'Feuerrate -20%',explain:'Alle Ausstattung feuert langsamer diese Schicht.'},
-    hypochondriacs:{name:'🤒 Hypochonder',desc:'+12 schnelle Harmlose',explain:'Ein Schwarm schneller, harmloser Fälle kommt zusätzlich.'},
-    night_shift:{name:'🌙 Nachtdienst',desc:'Reichweite -25%',explain:'Sichtbarkeit eingeschränkt. Alles hat weniger Reichweite.'},
-    armor_up:{name:'🛡️ Gepanzert',desc:'+25% Rüstung',explain:'Fälle nehmen weniger Schaden. Fokussiere oder nutze %-Schaden.'},
-    double_admit:{name:'🚨 Doppelaufnahme',desc:'+50% mehr Fälle',explain:'50% mehr Fälle kommen an. Bereite extra Verteidigung vor.'},
-    power_outage:{name:'⚡ Stromausfall',desc:'Elektronik offline',flavor:'"Das Notstromaggregat ist ausgefallen. Wieder. Das MRT ist ein sehr teurer Garderobenständer."',explain:'Elektronische Ausstattung ist diese Schicht deaktiviert.'},
-    supply_chain:{name:'📦 Lieferengpass',desc:'Verbrauchsmaterial offline',flavor:'"Nachbestellung. Nachbestellung. Nachbestellung. Die Apotheke hat nichts mehr."',explain:'Infusion, Eisbad und Abführmittel sind nicht verfügbar.'},
-    union_action:{name:'✊ Streiktag',desc:'Personal offline',flavor:'"Die Pflege streikt. Die Chefärzte haben eine Sitzung über den Streik. Du bist allein."',explain:'Schwester, Fixierung, Durchsage und Chefarzt sind offline.'},
-    code_blue:{name:'🚨 Reanimation',desc:'Zufälliger Boss',explain:'Ein zufälliger Boss erscheint mitten in der Welle.'},
-    double_armor_swarm:{name:'🐢 Gepanzerter Ansturm',desc:'Rüstung +30% mehr',explain:'Mehr Fälle kommen, alle mit extra Rüstung.'},
-    overtime:{name:'⏰ Pflichtüberstunden',desc:'2× Fall-HP',explain:'Alle Fälle haben doppelte Gesundheit. Lange Schicht.'},
+    caffeine_crash:{name:'\u2615 Koffeinentzug',desc:'G\u00e4ste 20% schneller',explain:'Alle sind ungeduldiger. Montagmorgen-Energie.'},
+    budget_cuts:{name:'\ud83d\udcb8 Preisdruck',desc:'Trinkgeld -40%',explain:'Kartenzahlung. Niemand gibt Trinkgeld bei Kartenzahlung.'},
+    burnout:{name:'\ud83d\udd25 Burnout',desc:'Feuerrate -20%',explain:'Dritte Doppelschicht diese Woche. Alles geht langsamer.'},
+    hypochondriacs:{name:'\ud83e\udd27 Allergie-Welle',desc:'+12 schnelle Harmlose',explain:'Pl\u00f6tzlich ist ganz Prenzlauer Berg laktoseintolerant.'},
+    night_shift:{name:'\ud83c\udf19 Sp\u00e4tschicht',desc:'Reichweite -25%',explain:'17:30 Uhr. Das Licht ist komisch. Du auch.'},
+    armor_up:{name:'\ud83d\udee1\ufe0f Berliner Schnauze',desc:'+25% Geduld',explain:'Die G\u00e4ste sind Berliner. Die nehmen das nicht pers\u00f6nlich. Du schon.'},
+    double_admit:{name:'\ud83d\udea8 S-Bahn-Versp\u00e4tung',desc:'+50% mehr G\u00e4ste',explain:'Die S1 hatte 20 Minuten Versp\u00e4tung. Alle kommen gleichzeitig.'},
+    power_outage:{name:'\u26a1 Stromausfall',desc:'Elektronik offline',flavor:'"Der Strom ist weg. Wieder. Die M\u00fchle schweigt. Der Siebtr\u00e4ger wird kalt. Nur der Pour Over funktioniert — wie immer."',explain:'Siebtr\u00e4ger, M\u00fchle, EC-Ger\u00e4t und Online Shop offline.'},
+    supply_chain:{name:'\ud83d\udce6 Lieferant kommt nicht',desc:'Essen & Milch offline',flavor:'"Der Lieferant steckt auf der A100 fest. Die Hafermilch ist alle. Das Banana Bread existiert heute nur als Erinnerung."',explain:'Dampfd\u00fcse, Banana Bread und Vitrine nicht verf\u00fcgbar.'},
+    union_action:{name:'\u270a Team krank',desc:'Personal offline',flavor:'"Magen-Darm geht um. Robii ist beim Halbmarathon. Du und der Putzplan — allein gegen Berlin."',explain:'Barista, Durchsage und Robii offline.'},
+    code_blue:{name:'\ud83d\udea8 VIP-Alarm',desc:'Zuf\u00e4lliger Boss',explain:'Irgendwer Wichtiges ist gerade reingekommen.'},
+    double_armor_swarm:{name:'\ud83d\udc22 Kiez-H\u00e4rte',desc:'Dickfellig +30% mehr',explain:'Samstag. Flohmarkt Mauerpark. Alle kommen danach. Alle sind genervt.'},
+    overtime:{name:'\u23f0 \u00dcberstunden',desc:'2\u00d7 Gast-HP',explain:'Alle G\u00e4ste haben doppelte Ausdauer. Berliner gehen erst, wenn sie wollen.'},
   },
 },
 };
-
 function L(key){return TX[lang][key];}
 function T(tower,prop){const tid=tower.id;const lt=TX[lang].towers[tid];return lt?lt[prop]||'':'';}
-function E(idx,prop){const keys=['gomer','lol','bounce','flyer','seeker','paper','admin','lawsuit','jcaho','fatman','kpi','consultant','duplicate','secondop','compliance','aihype'];const le=TX[lang].enemies[keys[idx]];return le?le[prop]||'':'';}
+function E(idx,prop){const keys=['regular','stammgast','drehtuer','hafermilch','bargeld','influencer','vermieter','hygiene','bezirksamt','gentrifizierer','kpibericht','berater','duplikat','secondop','compliance','aihype','laptopper','lieferando','kuenstler'];const le=TX[lang].enemies[keys[idx]];return le?le[prop]||'':'';}
 function M(mutId,prop){const lm=TX[lang].mutators[mutId];return lm?lm[prop]||'':'';}
 function comboName(effect){return TX[lang].combos[effect]||effect;}
-function setLang(l){
-  lang=l;
-  document.querySelectorAll('.lang').forEach(b=>b.classList.remove('active'));
-  document.querySelector(`.lang[onclick="setLang('${l}')"]`).classList.add('active');
-  renderStartScreen();
-}
 
 function renderStartScreen(){
   document.getElementById('ss-title').innerHTML=L('title').replace('\n','<br>');
   document.getElementById('ss-desc').innerHTML=L('desc');
-  const lawsHtml='<span>'+L('laws_title')+'</span><br>'+L('laws').join('<br>');
-  document.getElementById('ss-laws').innerHTML=lawsHtml;
   document.getElementById('ss-play').textContent=L('play');
   document.getElementById('ic-dismiss').textContent=L('dismiss');
   document.getElementById('wd-label').textContent=L('shift');
 }
 
+
 // ══════════════════════════════════════════
 const C=document.getElementById('cv'),X=C.getContext('2d');
-const COLS=12,ROWS=18,TILE=36,IW=COLS*TILE,IH=ROWS*TILE;
+const COLS=10,ROWS=16,TILE=36,IW=COLS*TILE,IH=ROWS*TILE;
 C.width=IW;C.height=IH;
 let dScale=1;
 function resize(){const gc=document.getElementById('gc');dScale=Math.min((gc.clientWidth-4)/IW,(gc.clientHeight-4)/IH,2);C.style.width=Math.floor(IW*dScale)+'px';C.style.height=Math.floor(IH*dScale)+'px';}
@@ -306,35 +248,23 @@ let PATH=[],pathSet=new Set();
 
 function generatePath(){
   PATH=[];pathSet=new Set();
-  // Randomized S-curve with jittered turn points
-  // Enter from left at row 1-3
-  const r1=1+Math.floor(Math.random()*2); // entry row
-  const t1x=7+Math.floor(Math.random()*3); // first turn x (7-9)
-  const t1y=5+Math.floor(Math.random()*2); // first turn y (5-6)
-  const t2x=1+Math.floor(Math.random()*2); // second turn x (1-2)
-  const t2y=9+Math.floor(Math.random()*2); // second turn y (9-10)
-  const t3x=9+Math.floor(Math.random()*2); // third turn x (9-10)
-  const t3y=t2y; // same row
-  const t4y=13+Math.floor(Math.random()*2); // fourth turn y (13-14)
-  const exitX=3+Math.floor(Math.random()*3); // exit column (3-5)
-
-  // Segment 1: enter left → right at r1
+  const r1=1+Math.floor(Math.random()*2);
+  const t1x=Math.min(COLS-2,5+Math.floor(Math.random()*2));
+  const t1y=Math.min(ROWS-4,4+Math.floor(Math.random()*2));
+  const t2x=1+Math.floor(Math.random()*2);
+  const t2y=Math.min(ROWS-4,t1y+2+Math.floor(Math.random()*2));
+  const t3x=Math.min(COLS-2,6+Math.floor(Math.random()*2));
+  const t4y=Math.min(ROWS-3,t2y+3+Math.floor(Math.random()*2));
+  const exitX=Math.max(1,Math.min(COLS-2,2+Math.floor(Math.random()*3)));
   for(let x=0;x<=t1x;x++) PATH.push([x,r1]);
-  // Segment 2: down to t1y
   for(let y=r1+1;y<=t1y;y++) PATH.push([t1x,y]);
-  // Segment 3: left to t2x
   for(let x=t1x-1;x>=t2x;x--) PATH.push([x,t1y]);
-  // Segment 4: down to t2y
   for(let y=t1y+1;y<=t2y;y++) PATH.push([t2x,y]);
-  // Segment 5: right to t3x
   for(let x=t2x+1;x<=t3x;x++) PATH.push([x,t2y]);
-  // Segment 6: down to t4y
   for(let y=t2y+1;y<=t4y;y++) PATH.push([t3x,y]);
-  // Segment 7: left to exitX
   for(let x=t3x-1;x>=exitX;x--) PATH.push([x,t4y]);
-  // Segment 8: down to exit (row 17)
-  for(let y=t4y+1;y<=17;y++) PATH.push([exitX,y]);
-
+  for(let y=t4y+1;y<=ROWS-1;y++) PATH.push([exitX,y]);
+  PATH=PATH.map(([x,y])=>[Math.max(0,Math.min(COLS-1,x)),Math.max(0,Math.min(ROWS-1,y))]);
   pathSet.clear();
   PATH.forEach(([x,y])=>pathSet.add(x+','+y));
 }
@@ -342,51 +272,54 @@ function pathPos(p){const i=Math.min(Math.floor(p),PATH.length-2),t=p-i;const[x1
 
 // ── TOWERS (language-neutral stats, text via T()) ──
 const TOWERS=[
-  {id:'iv',emoji:'💉',cost:25,range:2.5,dmg:8,rate:45,color:'#4aadcc',projC:'#7ec8e3',projS:3,unlock:0},
-  {id:'monitor',emoji:'📟',cost:35,range:2.5,dmg:4,rate:15,color:'#2ecc71',projC:'#55efc4',projS:2,unlock:0},
-  {id:'defib',emoji:'⚡',cost:55,range:2,dmg:18,rate:65,color:'#e74c3c',splash:1.2,projC:'#ff6b6b',projS:5,unlock:0},
-  {id:'ice',emoji:'🧊',cost:60,range:2.5,dmg:5,rate:55,color:'#74b9ff',slow:.4,projC:'#a8d8ea',projS:4,unlock:0},
-  {id:'nurse',emoji:'👩‍⚕️',cost:40,range:2,dmg:10,rate:35,color:'#ff6b81',projC:'#ff6b81',projS:3,unlock:2},
-  {id:'xray',emoji:'☢️',cost:85,range:3,dmg:28,rate:80,color:'#a29bfe',beam:true,projC:'#d2b4de',projS:2,unlock:3},
-  {id:'laxative',emoji:'💊',cost:75,range:2,dmg:12,rate:40,color:'#e17055',burn:{dmg:3,dur:120},projC:'#fab1a0',projS:4,unlock:4},
-  {id:'restraint',emoji:'🪢',cost:70,range:1.5,dmg:2,rate:100,color:'#00b894',root:{dur:55},projC:'#55efc4',projS:4,unlock:6},
-  {id:'overhead',emoji:'📢',cost:90,range:4,dmg:8,rate:60,color:'#fdcb6e',chain:5,slow:.25,projC:'#ffeaa7',projS:3,unlock:8},
-  {id:'mri',emoji:'🧲',cost:130,range:2.5,dmg:15,rate:60,color:'#6c5ce7',pctDmg:.03,projC:'#a29bfe',projS:4,unlock:10},
-  {id:'attending',emoji:'👨‍⚕️',cost:160,range:3.5,dmg:35,rate:100,color:'#dfe6e9',aura:{range:1.5,dmgMult:1.3},beam:true,projC:'#dfe6e9',projS:3,unlock:13},
-  {id:'dotbase',emoji:'💻',cost:200,range:3,dmg:10,rate:50,color:'#2D6A6A',projC:'#5ce0d0',projS:4,unlock:15,beam:true,dotbase:true},
+  {id:'espresso',emoji:'☕',cost:25,range:2.5,dmg:8,rate:45,color:'#6f4e37',projC:'#8b6914',projS:3,unlock:0},
+  {id:'steam',emoji:'🥛',cost:60,range:2.5,dmg:5,rate:55,color:'#c9b8a8',slow:.4,projC:'#e8ddd0',projS:4,unlock:0},
+  {id:'banana',emoji:'🍌',cost:55,range:2,dmg:18,rate:65,color:'#f0c030',splash:1.2,projC:'#f7d060',projS:5,unlock:0},
+  {id:'grinder',emoji:'💨',cost:75,range:2,dmg:12,rate:40,color:'#6a5040',burn:{dmg:3,dur:120},projC:'#8b7355',projS:4,unlock:0},
+  {id:'barista',emoji:'👩‍🍳',cost:40,range:2,dmg:10,rate:35,color:'#ff6b81',projC:'#ff6b81',projS:3,unlock:2},
+  {id:'pourover',emoji:'🫖',cost:85,range:3,dmg:28,rate:80,color:'#a29bfe',beam:true,projC:'#d2b4de',projS:2,unlock:3},
+  {id:'croissant',emoji:'🥐',cost:70,range:3,dmg:3,rate:50,color:'#deb887',slow:.35,splash:1.5,projC:'#f5deb3',projS:4,unlock:4},
+  {id:'cardreader',emoji:'📱',cost:70,range:1.5,dmg:2,rate:100,color:'#00b894',root:{dur:55},projC:'#55efc4',projS:4,unlock:6},
+  {id:'callout',emoji:'📢',cost:90,range:4,dmg:8,rate:60,color:'#fdcb6e',chain:5,slow:.25,projC:'#ffeaa7',projS:3,unlock:8},
+  {id:'putzplan',emoji:'🧹',cost:130,range:2.5,dmg:15,rate:60,color:'#6c5ce7',pctDmg:.03,projC:'#a29bfe',projS:4,unlock:10},
+  {id:'robii',emoji:'🏃',cost:160,range:3.5,dmg:35,rate:100,color:'#e8d5b7',aura:{range:1.5,dmgMult:1.3},beam:true,projC:'#e8d5b7',projS:3,unlock:13},
+  {id:'onlineshop',emoji:'💻',cost:200,range:3,dmg:10,rate:50,color:'#1a1a1a',projC:'#6f4e37',projS:4,unlock:15,beam:true,dotbase:true},
 ];
 // Add getters
 TOWERS.forEach(t=>{Object.defineProperty(t,'name',{get(){return T(t,'name')||t.id}});Object.defineProperty(t,'desc',{get(){return T(t,'desc')||''}});});
 
 const COMBOS=[
-  {a:'ice',b:'laxative',effect:'steam'},
-  {a:'defib',b:'xray',effect:'chainspore'},
-  {a:'restraint',b:'overhead',effect:'thunderroot'},
-  {a:'laxative',b:'mri',effect:'soulburn'},
-  {a:'iv',b:'attending',effect:'grandrounds'},
-  {a:'nurse',b:'dotbase',effect:'digitalnurse'},
+  {a:'steam',b:'grinder',effect:'steam'},
+  {a:'banana',b:'pourover',effect:'chainspore'},
+  {a:'cardreader',b:'callout',effect:'thunderroot'},
+  {a:'grinder',b:'putzplan',effect:'soulburn'},
+  {a:'espresso',b:'robii',effect:'grandrounds'},
+  {a:'barista',b:'onlineshop',effect:'digitalnurse'},
 ];
 
 const ETYPES=[
-  {idx:0,emoji:'🧓',hp:35,spd:.55,reward:4,color:'#b2bec3',size:1,animType:'shuffle',tags:['patient']},
-  {idx:1,emoji:'👵',hp:50,spd:.45,reward:5,color:'#dfe6e9',size:1,animType:'slide',tags:['patient']},
-  {idx:2,emoji:'🚶‍♂️',hp:22,spd:1.4,reward:6,color:'#fd79a8',size:.95,animType:'scurry',tags:['patient'],resurge:true},
-  {idx:3,emoji:'😩',hp:20,spd:1.8,reward:7,color:'#e17055',size:.85,animType:'scurry',tags:['patient']},
-  {idx:4,emoji:'😤',hp:25,spd:2.0,reward:3,color:'#00b894',size:.8,animType:'scurry',tags:['patient']},
-  {idx:5,emoji:'📄',hp:60,spd:1.0,reward:8,color:'#636e72',size:1.1,animType:'bob',tags:['admin','document']},
+  {idx:0,emoji:'🧑',hp:35,spd:.55,reward:4,color:'#b2bec3',size:1,animType:'shuffle',tags:['customer']},
+  {idx:1,emoji:'👵',hp:50,spd:.45,reward:5,color:'#dfe6e9',size:1,animType:'slide',tags:['customer']},
+  {idx:2,emoji:'🚶‍♂️',hp:22,spd:1.4,reward:6,color:'#fd79a8',size:.95,animType:'scurry',tags:['customer'],resurge:true},
+  {idx:3,emoji:'😩',hp:20,spd:1.8,reward:7,color:'#e17055',size:.85,animType:'scurry',tags:['customer']},
+  {idx:4,emoji:'😤',hp:25,spd:2.0,reward:3,color:'#00b894',size:.8,animType:'scurry',tags:['customer']},
+  {idx:5,emoji:'📱',hp:60,spd:1.0,reward:8,color:'#636e72',size:1.1,animType:'bob',tags:['admin','influencer']},
   // Bosses
   {idx:6,emoji:'👔',hp:280,spd:.65,reward:20,color:'#e74c3c',size:1.3,animType:'bob',boss:true,tags:['admin']},
-  {idx:7,emoji:'⚖️',hp:500,spd:.5,reward:30,color:'#6c5ce7',size:1.5,animType:'pulse',boss:true,armor:.3,tags:['admin']},
-  {idx:8,emoji:'🔍',hp:400,spd:1.1,reward:35,color:'#fdcb6e',size:1.3,animType:'scurry',boss:true,flying:true,tags:['admin']},
-  {idx:9,emoji:'🎩',hp:650,spd:.35,reward:50,color:'#ffd700',size:1.7,animType:'pulse',boss:true,healer:true,tags:['patient']},
+  {idx:7,emoji:'🔍',hp:400,spd:1.1,reward:35,color:'#fdcb6e',size:1.3,animType:'scurry',boss:true,flying:true,tags:['admin']},
+  {idx:8,emoji:'🏛️',hp:500,spd:.5,reward:30,color:'#6c5ce7',size:1.5,animType:'pulse',boss:true,armor:.3,tags:['admin']},
+  {idx:9,emoji:'🎩',hp:650,spd:.35,reward:50,color:'#ffd700',size:1.7,animType:'pulse',boss:true,healer:true,tags:['admin']},
   // Late-stage (shift 12+)
-  {idx:10,emoji:'📊',hp:70,spd:1.3,reward:9,color:'#a29bfe',size:1,animType:'bob',tags:['admin','document'],splitter:true},
+  {idx:10,emoji:'⭐',hp:70,spd:1.3,reward:9,color:'#a29bfe',size:1,animType:'bob',tags:['admin'],splitter:true},
   {idx:11,emoji:'🧑‍💼',hp:150,spd:.9,reward:15,color:'#fd79a8',size:1.15,animType:'shuffle',tags:['admin'],shielder:true},
-  {idx:12,emoji:'📋',hp:90,spd:1.1,reward:10,color:'#00cec9',size:1,animType:'scurry',tags:['admin','document','repetitive'],copier:true},
+  {idx:12,emoji:'🔁',hp:90,spd:1.1,reward:10,color:'#00cec9',size:1,animType:'scurry',tags:['admin','repetitive'],copier:true},
   // Very late-stage (shift 15+)
-  {idx:13,emoji:'🧑‍⚕️',hp:120,spd:.8,reward:12,color:'#e056a0',size:1.1,animType:'bob',tags:['patient'],rusher:true},
+  {idx:13,emoji:'🤷',hp:120,spd:.8,reward:12,color:'#e056a0',size:1.1,animType:'bob',tags:['customer'],rusher:true},
   {idx:14,emoji:'💼',hp:180,spd:.7,reward:18,color:'#2c3e50',size:1.2,animType:'shuffle',tags:['admin'],disabler:true},
-  {idx:15,emoji:'🤖',hp:100,spd:1.0,reward:14,color:'#00b4d8',size:1,animType:'pulse',tags:['admin','document'],regen:true,burnImmune:true},
+  {idx:15,emoji:'🤖',hp:100,spd:1.0,reward:14,color:'#00b4d8',size:1,animType:'pulse',tags:['admin'],regen:true,burnImmune:true},
+  {idx:16,emoji:'👨‍💻',hp:200,spd:.35,reward:6,color:'#636e72',size:1.2,animType:'slide',tags:['customer'],goldDrain:true},
+  {idx:17,emoji:'🛵',hp:80,spd:1.3,reward:10,color:'#e74c3c',size:1.1,animType:'scurry',tags:['customer'],spawner:true},
+  {idx:18,emoji:'🧑‍🎨',hp:110,spd:.9,reward:13,color:'#8e44ad',size:1,animType:'pulse',tags:['customer'],splashOnly:true},
 ];
 
 const MUTATORS=[
@@ -397,9 +330,9 @@ const MUTATORS=[
   {id:'night_shift',tier:2,apply:()=>{},towerEffect:{rangeMult:.75}},
   {id:'armor_up',tier:2,apply:q=>{q.forEach(e=>{e.armorAdd=(e.armorAdd||0)+.25});}},
   {id:'double_admit',tier:2,apply:q=>{const ex=[];q.forEach((e,i)=>{if(i%2===0)ex.push({...e,delay:e.delay+8});});q.push(...ex);}},
-  {id:'power_outage',tier:2,disable:['monitor','defib','xray','mri','dotbase'],apply:()=>{}},
-  {id:'supply_chain',tier:2,disable:['iv','laxative','ice'],apply:()=>{}},
-  {id:'union_action',tier:2,disable:['nurse','restraint','overhead','attending'],apply:()=>{}},
+  {id:'power_outage',tier:2,disable:['espresso','grinder','cardreader','onlineshop'],apply:()=>{}},
+  {id:'supply_chain',tier:2,disable:['steam','banana','croissant'],apply:()=>{}},
+  {id:'union_action',tier:2,disable:['barista','callout','robii'],apply:()=>{}},
   {id:'code_blue',tier:3,apply:q=>{q.push({type:ETYPES[6+Math.floor(Math.random()*4)],delay:Math.floor(q.length*8),hpM:1});}},
   {id:'double_armor_swarm',tier:3,apply:q=>{q.forEach(e=>{e.armorAdd=(e.armorAdd||0)+.15});const ex=[];q.forEach((e,i)=>{if(i%3===0)ex.push({...e,delay:e.delay+10});});q.push(...ex);}},
   {id:'overtime',tier:3,apply:q=>{q.forEach(e=>{e.hpM*=2});}},
@@ -411,9 +344,10 @@ let selectedTower=null,gameRunning=false,waveTimer=0,spawnQueue=[],speedMult=1,l
 let seenEnemies=new Set(),seenTowers=new Set(),seenMutators=new Set();
 let introQueue=[],showingIntro=false,paused=false;
 let activeMutators=[],activeTowerEffects={},disabledTowers=new Set();
-let lastGoQuote='';
+let lastGoQuote='',manualPause=false;
 
-function init(){gold=80;lives=20;score=0;wave=0;enemies=[];towers=[];projectiles=[];particles=[];floatingTexts=[];spawnQueue=[];waveTimer=0;tick=0;seenEnemies=new Set();seenTowers=new Set();seenMutators=new Set();introQueue=[];showingIntro=false;paused=false;activeMutators=[];activeTowerEffects={rangeMult:1,rateMult:1};disabledTowers=new Set();generatePath();updateUI();}
+function init(){gold=100;lives=20;score=0;wave=0;enemies=[];towers=[];projectiles=[];particles=[];floatingTexts=[];spawnQueue=[];waveTimer=0;tick=0;seenEnemies=new Set();seenTowers=new Set();seenMutators=new Set();introQueue=[];showingIntro=false;paused=false;activeMutators=[];activeTowerEffects={rangeMult:1,rateMult:1};disabledTowers=new Set();manualPause=false;if(document.getElementById('pb'))document.getElementById('pb').textContent='⏸️';tutorialActive=false;tutorialHintTile=null;selectedForSell=null;generatePath();updateUI();}
+let tutorialActive=false,tutorialHintTile=null;
 
 function queueIntro(type,emoji,name,quote,stats){introQueue.push({type,emoji,name,quote,stats});if(!showingIntro)showNextIntro();}
 function showNextIntro(){
@@ -437,7 +371,7 @@ function showNextIntro(){
   const isCrisis=item.type===L('crisis');
   card.classList.remove('threat');
   typeEl.className='ic-type';
-  if(isEquip){typeEl.classList.add('equip-type');card.style.borderLeftColor='#2D6A6A';}
+  if(isEquip){typeEl.classList.add('equip-type');card.style.borderLeftColor='#1a1a1a';}
   else if(isCrisis){typeEl.classList.add('crisis-type');card.style.borderLeftColor='#d4820a';card.classList.add('threat');}
   else{typeEl.classList.add('threat-type');card.style.borderLeftColor='#c0392b';card.classList.add('threat');}
   card.classList.add('show');
@@ -447,8 +381,8 @@ document.getElementById('intro-card').addEventListener('touchend',e=>{e.preventD
 
 function genWave(w){
   const q=[];const isBoss=w%5===0&&w>0;
-  if(isBoss){const bi=Math.min(Math.floor(w/5)-1,3);const boss=ETYPES[6+bi];const bc=Math.max(1,Math.floor(w/10));for(let i=0;i<bc;i++)q.push({type:boss,delay:i*60});const mc=Math.floor(w*1.2)+4;const mxR=Math.min(3+Math.floor(w/4),w>=15?16:w>=12?13:6);const av=ETYPES.slice(0,mxR).filter(e=>!e.boss);for(let i=0;i<mc;i++)q.push({type:av[Math.floor(Math.random()*av.length)],delay:bc*60+i*12});}
-  else{const count=5+Math.floor(w*1.8)+Math.floor(w*w*.03);const mxR=Math.min(2+Math.floor(w/2),w>=15?16:w>=12?13:6);const av=ETYPES.slice(0,mxR).filter(e=>!e.boss);for(let i=0;i<count;i++)q.push({type:av[Math.floor(Math.random()*av.length)],delay:i*15});}
+  if(isBoss){const bi=Math.min(Math.floor(w/5)-1,3);const boss=ETYPES[6+bi];const bc=Math.max(1,Math.floor(w/10));for(let i=0;i<bc;i++)q.push({type:boss,delay:i*60});const mc=Math.floor(w*1.2)+4;const mxR=Math.min(3+Math.floor(w/4),w>=15?19:w>=12?19:w>=10?19:6);const av=ETYPES.slice(0,mxR).filter(e=>!e.boss);for(let i=0;i<mc;i++)q.push({type:av[Math.floor(Math.random()*av.length)],delay:bc*60+i*12});}
+  else{const count=5+Math.floor(w*1.8)+Math.floor(w*w*.03);const mxR=Math.min(2+Math.floor(w/2),w>=15?19:w>=12?19:w>=10?19:6);const av=ETYPES.slice(0,mxR).filter(e=>!e.boss);for(let i=0;i<count;i++)q.push({type:av[Math.floor(Math.random()*av.length)],delay:i*15});}
   const hpS=w<=10?1+(w-1)*.2:1+9*.2+Math.pow(w-10,1.3)*.15;
   q.forEach(e=>{e.hpM=hpS;e.spdMult=1;e.rewardMult=1;e.armorAdd=0;});
   activeMutators=[];activeTowerEffects={rangeMult:1,rateMult:1};disabledTowers=new Set();
@@ -499,7 +433,10 @@ function queueShiftCard(upkeep){
 
 function showShiftCard(upkeep){
   const sc=document.getElementById('shift-card');
-  document.getElementById('sc-title').textContent='📟 '+L('sc_shift')(wave);
+  document.getElementById('sc-title').textContent='\u26a1 '+L('sc_shift')(wave);
+  
+  const isBoss=wave%5===0&&wave>0;
+  document.getElementById('sc-narrative').textContent=L('shift_flavor')(wave,isBoss,gold,towers);
 
   // Upkeep — only show if there is one
   const upEl=document.getElementById('sc-upkeep');
@@ -519,7 +456,7 @@ function showShiftCard(upkeep){
       if(!seenMutators.has(m.id+'_explained')){
         seenMutators.add(m.id+'_explained');
         const expl=M(m.id,'explain')||'';
-        if(expl) html+='<div style="width:100%;font-size:10px;color:#5a6a7c;margin:2px 0 4px;font-style:italic">'+expl+'</div>';
+        if(expl) html+='<div style="width:100%;font-size:10px;color:#6a5040;margin:2px 0 4px;font-style:italic">'+expl+'</div>';
       }
     });
     mutBox.innerHTML=html;
@@ -540,19 +477,26 @@ function showShiftCard(upkeep){
 
 function dismissShiftCard(){
   document.getElementById('shift-card').classList.add('hid');
-  // NOW actually start the wave
   spawnQueue=pendingSpawnQueue;pendingSpawnQueue=[];
-  waveTimer=0;
-  paused=false;
-  showingIntro=false;
+  waveTimer=0;paused=manualPause;showingIntro=false;
   showAnnounce(wave%5===0?L('boss_wave')(wave):L('norm_wave')(wave));
+  if(wave===1&&!localStorage.getItem('kraft_cafe_played')){
+    selectedTower=TOWERS[0].id;tutorialHintTile=null;
+    for(let i=2;i<Math.min(PATH.length,15);i++){
+      const[px,py]=PATH[i];
+      const candidates=[[px-1,py],[px+1,py],[px,py-1],[px,py+1]];
+      for(const[cx,cy] of candidates){
+        if(cx>=0&&cx<COLS&&cy>=0&&cy<ROWS&&!pathSet.has(cx+','+cy)&&!towers.find(t=>t.col===cx&&t.row===cy)){
+          tutorialHintTile=[cx,cy];break;}}
+      if(tutorialHintTile)break;}
+    tutorialActive=true;updateUI();}
 }
 
 function showAnnounce(t){const el=document.getElementById('wa');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2000);}
 function showCombo(t){const el=document.getElementById('cf');el.textContent='⚡ '+t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1200);}
 function floatText(x,y,t,c){floatingTexts.push({x,y,text:t,color:c,life:40,maxLife:40});}
 
-function spawnEnemy(td,hm,sM,rM,aA){enemies.push({x:0,y:0,progress:0,hp:td.hp*hm,maxHp:td.hp*hm,spd:td.spd*(sM||1),baseSpd:td.spd*(sM||1),reward:Math.ceil((td.reward+Math.floor(wave/5))*(rM||1)),color:td.color,emoji:td.emoji,boss:td.boss||false,size:td.size||1,animType:td.animType||'bob',flying:td.flying||false,armor:Math.min((td.armor||0)+(aA||0),.6),healer:td.healer||false,tags:td.tags||[],splitter:td.splitter||false,shielder:td.shielder||false,copier:td.copier||false,resurge:td.resurge||false,hasResurged:false,rusher:td.rusher||false,disabler:td.disabler||false,regen:td.regen||false,burnImmune:td.burnImmune||false,disableCooldown:0,slowTimer:0,burnTimer:0,burnDmg:0,rootTimer:0,animPhase:Math.random()*Math.PI*2});}
+function spawnEnemy(td,hm,sM,rM,aA){enemies.push({x:0,y:0,progress:0,hp:td.hp*hm,maxHp:td.hp*hm,spd:td.spd*(sM||1),baseSpd:td.spd*(sM||1),reward:Math.ceil((td.reward+Math.floor(wave/5))*(rM||1)),color:td.color,emoji:td.emoji,boss:td.boss||false,size:td.size||1,animType:td.animType||'bob',flying:td.flying||false,armor:Math.min((td.armor||0)+(aA||0),.6),healer:td.healer||false,tags:td.tags||[],splitter:td.splitter||false,shielder:td.shielder||false,copier:td.copier||false,resurge:td.resurge||false,hasResurged:false,rusher:td.rusher||false,disabler:td.disabler||false,regen:td.regen||false,burnImmune:td.burnImmune||false,goldDrain:td.goldDrain||false,spawner:td.spawner||false,splashOnly:td.splashOnly||false,disableCooldown:0,slowTimer:0,burnTimer:0,burnDmg:0,rootTimer:0,animPhase:Math.random()*Math.PI*2});}
 
 function getAdj(c,r){const s=new Set();towers.forEach(t=>{if(t.sell)return;const dx=Math.abs(t.col-c),dy=Math.abs(t.row-r);if(dx<=1&&dy<=1&&!(dx===0&&dy===0))s.add(t.id);});return s;}
 function checkCombo(tw){const adj=getAdj(tw.col,tw.row);for(const c of COMBOS)if((tw.id===c.a&&adj.has(c.b))||(tw.id===c.b&&adj.has(c.a)))return c;return null;}
@@ -560,65 +504,73 @@ function getAura(tw){let m=1;towers.forEach(t=>{if(t.aura&&t!==tw){const dx=Math
 
 let selectedForSell=null;
 
+function showTowerPanel(tw){
+  selectedForSell={col:tw.col,row:tw.row};
+  const panel=document.getElementById('tower-panel');
+  const name=T(tw,'name')||tw.id;const lvl=tw.level||1;
+  const upgCost=Math.floor(tw.baseCost*.6);const canUpg=lvl<3&&gold>=upgCost;
+  const sellVal=Math.floor(tw.cost/2);
+  document.getElementById('tp-header').textContent=tw.emoji+' '+name+(lvl>=3?' \u2605':' Lv'+lvl);
+  document.getElementById('tp-desc').textContent=T(tw,'desc')||tw.desc||'';
+  let sh='<div style="background:rgba(0,0,0,.04);padding:4px 10px;border-radius:8px;text-align:center"><div style="font-size:10px;opacity:.5">DMG</div><b>'+tw.dmg+'</b>';
+  if(lvl<3){sh+='<div style="font-size:9px;color:#1a1a1a">\u2192 '+Math.round(tw.baseDmg*(1+.35*lvl))+'</div>';}
+  sh+='</div><div style="background:rgba(0,0,0,.04);padding:4px 10px;border-radius:8px;text-align:center"><div style="font-size:10px;opacity:.5">RNG</div><b>'+tw.range+'</b>';
+  if(lvl<3){sh+='<div style="font-size:9px;color:#1a1a1a">\u2192 '+ +(tw.baseRange*(1+.15*lvl)).toFixed(1)+'</div>';}
+  sh+='</div><div style="background:rgba(0,0,0,.04);padding:4px 10px;border-radius:8px;text-align:center"><div style="font-size:10px;opacity:.5">KILLS</div><b>'+tw.kills+'</b></div>';
+  document.getElementById('tp-stats').innerHTML=sh;
+  let b='';
+  if(lvl<3){b+='<button onclick="doUpgrade()" style="flex:1;font-family:Figtree,sans-serif;font-size:13px;font-weight:700;padding:8px 12px;border-radius:12px;border:none;cursor:pointer;'+(canUpg?'background:linear-gradient(135deg,#ffd700,#e6b800);color:#1a1a1a;':'background:rgba(0,0,0,.06);color:#aaa;')+'"'+(canUpg?'':' disabled')+'>⬆️ Upgrade (\ud83d\udcb0'+upgCost+')</button>';}
+  b+='<button onclick="doSell()" style="font-family:Figtree,sans-serif;font-size:13px;font-weight:600;padding:8px 14px;border-radius:12px;border:1px solid rgba(200,60,40,.2);cursor:pointer;background:rgba(200,60,40,.06);color:#c0392b;">\ud83d\uddd1\ufe0f +'+sellVal+'\ud83d\udcb0</button>';
+  document.getElementById('tp-buttons').innerHTML=b;
+  panel.style.display='block';document.getElementById('tp-backdrop').style.display='block';
+}
+function closeTowerPanel(){document.getElementById('tower-panel').style.display='none';document.getElementById('tp-backdrop').style.display='none';selectedForSell=null;updateUI();}
+function doUpgrade(){if(!selectedForSell)return;const tw=towers.find(t=>t.col===selectedForSell.col&&t.row===selectedForSell.row);if(!tw)return;const upgCost=Math.floor(tw.baseCost*.6);if(tw.level<3&&gold>=upgCost){gold-=upgCost;tw.level++;tw.dmg=Math.round(tw.baseDmg*(1+.35*(tw.level-1)));tw.range=+(tw.baseRange*(1+.15*(tw.level-1))).toFixed(2);tw.cost+=upgCost;spawnP(tw.x,tw.y,'#ffd700',12);floatText(tw.x,tw.y-10,L('upgrade_text'),'#ffd700');}closeTowerPanel();}
+function doSell(){if(!selectedForSell)return;const tw=towers.find(t=>t.col===selectedForSell.col&&t.row===selectedForSell.row);if(!tw)return;const sv=Math.floor(tw.cost/2);gold+=sv;towers=towers.filter(t=>t!==tw);spawnP(tw.x,tw.y,'#74b9ff',8);floatText(tw.x,tw.y,'+'+sv+'\ud83d\udcb0','#2ecc71');closeTowerPanel();}
+
 function placeTower(col,row){
   const existing=towers.find(t=>t.col===col&&t.row===row);
-
-  // Tap an existing tower → sell flow
-  if(existing){
-    selectedTower=null; // deselect inventory
-    if(selectedForSell&&selectedForSell.col===col&&selectedForSell.row===row){
-      // Second tap: confirm sell
-      gold+=Math.floor(existing.cost/2);
-      towers=towers.filter(t=>t!==existing);
-      spawnP(existing.x,existing.y,'#74b9ff',8);
-      floatText(existing.x,existing.y,'+'+Math.floor(existing.cost/2)+'💰','#2ecc71');
-      selectedForSell=null;
-    } else {
-      // First tap: select for sell
-      selectedForSell={col,row};
-    }
-    updateUI();return;
-  }
-
-  // Tap empty tile: clear sell selection, place tower
-  selectedForSell=null;
-  if(!selectedTower)return;
-  const def=TOWERS.find(d=>d.id===selectedTower);if(!def)return;
+  if(existing){selectedTower=null;showTowerPanel(existing);updateUI();return;}
+  closeTowerPanel();
+  if(!selectedTower)return;const def=TOWERS.find(d=>d.id===selectedTower);if(!def)return;
   if(def.unlock>wave||disabledTowers.has(def.id)||pathSet.has(col+','+row)||gold<def.cost)return;
-  gold-=def.cost;const tw={col,row,x:(col+.5)*TILE,y:(row+.5)*TILE,...def,cooldown:0,angle:0,kills:0};towers.push(tw);spawnP(tw.x,tw.y,def.color,10);
+  gold-=def.cost;const tw={col,row,x:(col+.5)*TILE,y:(row+.5)*TILE,...def,cooldown:0,angle:0,kills:0,level:1,baseCost:def.cost,baseDmg:def.dmg,baseRange:def.range};towers.push(tw);spawnP(tw.x,tw.y,def.color,10);
+  if(tutorialActive){tutorialActive=false;tutorialHintTile=null;try{localStorage.setItem('kraft_cafe_played','1');}catch(e){}}
   const combo=checkCombo(tw);if(combo){const cn=TX[lang].combos[combo.effect]||combo.effect;showCombo(cn);}updateUI();
 }
+function lightenColor(hex){try{const r=Math.min(255,parseInt(hex.slice(1,3),16)+40);const g=Math.min(255,parseInt(hex.slice(3,5),16)+40);const b=Math.min(255,parseInt(hex.slice(5,7),16)+40);return '#'+[r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('');}catch(e){return hex;}}
 
 function fire(tw,tgt){
   const am=getAura(tw);let dmg=tw.dmg*am;const combo=checkCombo(tw);
   if(combo&&combo.effect==='grandrounds')tw.cooldown=Math.floor(tw.rate/3);
   // dotbase: massive bonus vs admin/document/repetitive tags
   if(tw.dotbase){
-    const isAdmin=tgt.tags&&(tgt.tags.includes('admin')||tgt.tags.includes('document')||tgt.tags.includes('repetitive'));
+    const isAdmin=tgt.tags&&(tgt.tags.includes('admin')||tgt.tags.includes('influencer')||tgt.tags.includes('repetitive'));
     const mult=isAdmin?4:1;
     dmg*=mult;
     // AoE dissolve effect on all nearby admin/doc targets
     if(isAdmin){
-      enemies.forEach(o=>{if(o!==tgt&&o.tags&&(o.tags.includes('admin')||o.tags.includes('document'))&&Math.sqrt((o.x-tgt.x)**2+(o.y-tgt.y)**2)<2*TILE){o.hp-=dmg*.3;spawnP(o.x,o.y,'#5ce0d0',3);}});
+      enemies.forEach(o=>{if(o!==tgt&&o.tags&&(o.tags.includes('admin')||o.tags.includes('influencer'))&&Math.sqrt((o.x-tgt.x)**2+(o.y-tgt.y)**2)<2*TILE){o.hp-=dmg*.3;spawnP(o.x,o.y,'#6f4e37',3);}});
     }
     // Cool teal dissolve beam
-    particles.push({x:tw.x,y:tw.y,x2:tgt.x,y2:tgt.y,life:12,maxLife:12,beam:true,color:'#2D6A6A',width:isAdmin?4:2});
+    particles.push({x:tw.x,y:tw.y,x2:tgt.x,y2:tgt.y,life:12,maxLife:12,beam:true,color:'#1a1a1a',width:isAdmin?4:2});
     // Secondary sparkle beam
-    particles.push({x:tw.x,y:tw.y,x2:tgt.x,y2:tgt.y,life:8,maxLife:8,beam:true,color:'#5ce0d0',width:isAdmin?2:1});
-    if(isAdmin){spawnP(tgt.x,tgt.y,'#5ce0d0',6);floatText(tgt.x,tgt.y-15,'STRUCTURED','#5ce0d0');}
+    particles.push({x:tw.x,y:tw.y,x2:tgt.x,y2:tgt.y,life:8,maxLife:8,beam:true,color:'#6f4e37',width:isAdmin?2:1});
+    if(isAdmin){spawnP(tgt.x,tgt.y,'#6f4e37',6);floatText(tgt.x,tgt.y-15,'BESTELLT!','#6f4e37');}
     dealDmg(tgt,dmg,tw,combo);
     // digitalnurse combo: dotbase+nurse adjacent = also slow admin targets
     if(combo&&combo.effect==='digitalnurse'){enemies.forEach(o=>{if(o.tags&&o.tags.includes('admin')&&Math.sqrt((o.x-tgt.x)**2+(o.y-tgt.y)**2)<2.5*TILE){o.slowTimer=80;o.spd=o.baseSpd*.4;}});spawnP(tgt.x,tgt.y,'#ff6b81',5);}
     return;
   }
-  if(tw.beam){dealDmg(tgt,dmg,tw,combo);particles.push({x:tw.x,y:tw.y,x2:tgt.x,y2:tgt.y,life:10,maxLife:10,beam:true,color:tw.projC,width:tw.id==='attending'?3:2});}
-  else if(tw.chain){let h=[tgt];dealDmg(tgt,dmg,tw,combo);let pv=tgt;const chainRange=(tw.id==='overhead'?3.5:2.5)*TILE;for(let c=0;c<tw.chain;c++){let cl=null,cd=Infinity;enemies.forEach(e=>{if(h.includes(e)||e.hp<=0)return;const dx=e.x-pv.x,dy=e.y-pv.y,d=Math.sqrt(dx*dx+dy*dy);if(d<chainRange&&d<cd){cl=e;cd=d;}});if(cl){h.push(cl);dealDmg(cl,dmg*.6,tw,combo);particles.push({x:pv.x,y:pv.y,x2:cl.x,y2:cl.y,life:8,maxLife:8,beam:true,color:tw.id==='overhead'?'#fdcb6e':'#ffeaa7',width:tw.id==='overhead'?2:1.5});pv=cl;}}}
-  else{projectiles.push({x:tw.x,y:tw.y,tx:tgt.x,ty:tgt.y,target:tgt,speed:5,damage:dmg,splash:tw.splash||0,slow:tw.slow||0,burn:tw.burn||null,root:tw.root||null,color:tw.projC,size:tw.projS,combo,pctDmg:tw.pctDmg||0});}
+  if(tw.beam){const bw=(tw.id==='robii'?3:2)+((tw.level||1)-1);const bc=(tw.level||1)>=3?'#ffd700':(tw.level||1)>=2?lightenColor(tw.projC):tw.projC;dealDmg(tgt,dmg,tw,combo);particles.push({x:tw.x,y:tw.y,x2:tgt.x,y2:tgt.y,life:10,maxLife:10,beam:true,color:bc,width:bw});}
+  else if(tw.chain){let h=[tgt];dealDmg(tgt,dmg,tw,combo);let pv=tgt;const chainRange=(tw.id==='callout'?3.5:2.5)*TILE;for(let c=0;c<tw.chain;c++){let cl=null,cd=Infinity;enemies.forEach(e=>{if(h.includes(e)||e.hp<=0)return;const dx=e.x-pv.x,dy=e.y-pv.y,d=Math.sqrt(dx*dx+dy*dy);if(d<chainRange&&d<cd){cl=e;cd=d;}});if(cl){h.push(cl);dealDmg(cl,dmg*.6,tw,combo);particles.push({x:pv.x,y:pv.y,x2:cl.x,y2:cl.y,life:8,maxLife:8,beam:true,color:tw.id==='callout'?'#fdcb6e':'#ffeaa7',width:tw.id==='callout'?2:1.5});pv=cl;}}}
+  else{const lvlMult=tw.level||1;const pSize=tw.projS*(1+(lvlMult-1)*.4);const pColor=lvlMult>=3?'#ffd700':lvlMult>=2?lightenColor(tw.projC):tw.projC;projectiles.push({x:tw.x,y:tw.y,tx:tgt.x,ty:tgt.y,target:tgt,speed:5,damage:dmg,splash:tw.splash||0,slow:tw.slow||0,burn:tw.burn||null,root:tw.root||null,color:pColor,size:pSize,combo,pctDmg:tw.pctDmg||0,level:lvlMult});}
 }
 
 function dealDmg(e,dmg,tw,combo){
+  if(e.splashOnly&&tw&&!tw.splash&&!tw.beam&&!tw.burn&&!tw.pctDmg&&!combo){return;}
   const ad=dmg*(1-e.armor);if(tw&&tw.pctDmg)e.hp-=e.maxHp*tw.pctDmg;e.hp-=ad;
-  if(tw&&tw.slow&&e.slowTimer<=0){e.spd=e.baseSpd*(1-tw.slow);e.slowTimer=90;}
+  if(tw&&tw.slow&&e.slowTimer<=0){e.spd=e.baseSpd*(1-Math.min(tw.slow,.5));e.slowTimer=60;}
   if(tw&&tw.burn){e.burnDmg=tw.burn.dmg;e.burnTimer=tw.burn.dur;}
   if(tw&&tw.root&&e.rootTimer<=0){e.rootTimer=tw.root.dur;e.spd=0;}
   if(combo){switch(combo.effect){
@@ -641,6 +593,7 @@ function dealDmg(e,dmg,tw,combo){
     gold+=e.reward;score+=e.reward;spawnP(e.x,e.y,e.color,e.boss?15:8);floatText(e.x,e.y-10,'+'+e.reward,'#74b9ff');if(tw)tw.kills++;
     // Splitter: spawn 2 mini copies
     if(e.splitter&&!e.isSplit){for(let i=0;i<2;i++){enemies.push({...e,hp:e.maxHp*.3,maxHp:e.maxHp*.3,progress:e.progress-(.3+i*.4),size:e.size*.7,reward:Math.floor(e.reward*.3),splitter:false,isSplit:true,animPhase:Math.random()*Math.PI*2,spd:e.baseSpd*1.3,baseSpd:e.baseSpd*1.3});}spawnP(e.x,e.y,e.color,8);}
+    if(e.spawner&&!e.hasSpawned){e.hasSpawned=true;for(let i=0;i<2;i++){const st=ETYPES[Math.floor(Math.random()*3)];enemies.push({x:e.x,y:e.y,progress:Math.max(0,e.progress-.5-i*.3),hp:st.hp*2,maxHp:st.hp*2,spd:st.spd,baseSpd:st.spd,reward:st.reward,color:st.color,emoji:st.emoji,boss:false,size:st.size*.8,animType:st.animType,flying:false,armor:0,healer:false,tags:st.tags||[],splitter:false,shielder:false,copier:false,resurge:false,hasResurged:false,rusher:false,disabler:false,regen:false,burnImmune:false,goldDrain:false,spawner:false,splashOnly:false,disableCooldown:0,slowTimer:0,burnTimer:0,burnDmg:0,rootTimer:0,animPhase:Math.random()*Math.PI*2});}spawnP(e.x,e.y,'#e74c3c',10);}
   }
 }
 function spawnP(x,y,c,n){for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,s=.5+Math.random()*2.5;particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:20+Math.random()*20,maxLife:40,color:c,size:1.5+Math.random()*3});}}
@@ -656,6 +609,7 @@ function update(){
     if(e.copier&&!e.copied&&e.hp<e.maxHp*.5){e.copied=true;enemies.push({...e,hp:e.hp*.5,maxHp:e.maxHp*.5,progress:e.progress-.5,animPhase:Math.random()*Math.PI*2,copied:true,copier:false,reward:Math.floor(e.reward*.5)});spawnP(e.x,e.y,'#00cec9',6);}
     // Rusher: periodically speeds up all nearby allies
     if(e.rusher&&tick%80<sp){enemies.forEach(o=>{if(o!==e&&o.hp>0&&Math.sqrt((o.x-e.x)**2+(o.y-e.y)**2)<2.5*TILE){o.spd=Math.min(o.baseSpd*1.6,o.spd*1.15);}});}
+    if(e.goldDrain&&tick%40<sp){enemies.forEach(o=>{if(o!==e&&o.hp>0&&Math.sqrt((o.x-e.x)**2+(o.y-e.y)**2)<3*TILE){o.reward=Math.max(1,Math.floor(o.reward*.95));}});}
     // Disabler: jams nearest tower periodically
     if(e.disabler){e.disableCooldown-=sp;if(e.disableCooldown<=0){e.disableCooldown=120;let nearest=null,nd=Infinity;towers.forEach(t=>{if(t.sell||disabledTowers.has(t.id))return;const d=Math.sqrt((t.x-e.x)**2+(t.y-e.y)**2);if(d<3*TILE&&d<nd){nearest=t;nd=d;}});if(nearest){nearest.cooldown+=80;spawnP(nearest.x,nearest.y,'#2c3e50',5);floatText(nearest.x,nearest.y-10,'⚡JAM','#2c3e50');}}}
     // Regen: heals self
@@ -672,35 +626,31 @@ function update(){
 }
 
 function draw(){
-  X.clearRect(0,0,IW,IH);const g=X.createLinearGradient(0,0,0,IH);g.addColorStop(0,'#d4dad6');g.addColorStop(.5,'#cdd4cf');g.addColorStop(1,'#c6cec8');X.fillStyle=g;X.fillRect(0,0,IW,IH);
+  X.clearRect(0,0,IW,IH);const g=X.createLinearGradient(0,0,0,IH);g.addColorStop(0,'#e8ddd0');g.addColorStop(.5,'#e2d5c6');g.addColorStop(1,'#dccebb');X.fillStyle=g;X.fillRect(0,0,IW,IH);
   for(let cx=0;cx<COLS;cx++)for(let cy=0;cy<ROWS;cy++){X.fillStyle=(cx+cy)%2===0?'rgba(255,255,255,0.15)':'rgba(0,0,0,0.02)';X.fillRect(cx*TILE,cy*TILE,TILE,TILE);}
   X.strokeStyle='rgba(0,0,0,.04)';X.lineWidth=1;for(let x=0;x<=COLS;x++){X.beginPath();X.moveTo(x*TILE,0);X.lineTo(x*TILE,IH);X.stroke();}for(let y=0;y<=ROWS;y++){X.beginPath();X.moveTo(0,y*TILE);X.lineTo(IW,y*TILE);X.stroke();}
   if(activeMutators.some(m=>m.id==='night_shift')){X.fillStyle='rgba(20,20,40,.25)';X.fillRect(0,0,IW,IH);towers.forEach(t=>{const gr=X.createRadialGradient(t.x,t.y,0,t.x,t.y,t.range*TILE*.7);gr.addColorStop(0,'rgba(255,255,220,.12)');gr.addColorStop(1,'rgba(0,0,0,0)');X.fillStyle=gr;X.fillRect(0,0,IW,IH);});}
-  PATH.forEach(([px,py])=>{X.fillStyle='rgba(160,140,110,.35)';X.fillRect(px*TILE,py*TILE,TILE,TILE);X.strokeStyle='rgba(140,120,90,.15)';X.lineWidth=1;X.strokeRect(px*TILE+1,py*TILE+1,TILE-2,TILE-2);});
-  const s0=pathPos(0);X.font='15px serif';X.textAlign='center';X.textBaseline='middle';X.fillText('🚪',s0.x,s0.y);X.font='bold 8px Figtree,sans-serif';X.fillStyle='rgba(80,70,50,.35)';X.fillText(L('er'),s0.x,s0.y+13);
-  const ep=pathPos(PATH.length-1);X.font='15px serif';X.fillText('🛏️',ep.x,ep.y);X.font='bold 8px Figtree,sans-serif';X.fillStyle='rgba(80,70,50,.35)';X.fillText(L('ward'),ep.x,ep.y+13);
-  if(hoveredTile&&selectedTower&&gameRunning){const[hx,hy]=hoveredTile;const def=TOWERS.find(d=>d.id===selectedTower);if(def&&!def.sell){const can=!pathSet.has(`${hx},${hy}`)&&!towers.find(t=>t.col===hx&&t.row===hy)&&gold>=def.cost&&!disabledTowers.has(def.id);X.fillStyle=can?'rgba(45,106,106,.12)':'rgba(214,48,49,.12)';X.fillRect(hx*TILE,hy*TILE,TILE,TILE);if(can){const rr=def.range*TILE*activeTowerEffects.rangeMult;X.beginPath();X.arc((hx+.5)*TILE,(hy+.5)*TILE,rr,0,Math.PI*2);X.fillStyle='rgba(45,106,106,.06)';X.fill();X.strokeStyle='rgba(45,106,106,.35)';X.lineWidth=2;X.stroke();}}}  towers.forEach(t=>{if(t.aura){const r=t.aura.range*TILE+TILE/2;X.beginPath();X.arc(t.x,t.y,r,0,Math.PI*2);X.strokeStyle=`rgba(223,230,233,${.06+Math.sin(tick*.03)*.04})`;X.lineWidth=1;X.setLineDash([4,4]);X.stroke();X.setLineDash([]);}
-    if(t.dotbase){const r=t.range*TILE;const pulse=Math.sin(tick*.04)*.08+.1;X.beginPath();X.arc(t.x,t.y,r,0,Math.PI*2);X.strokeStyle=`rgba(45,106,106,${pulse})`;X.lineWidth=1.5;X.setLineDash([2,6]);X.stroke();X.setLineDash([]);
+  PATH.forEach(([px,py])=>{X.fillStyle='rgba(120,90,60,.3)';X.fillRect(px*TILE,py*TILE,TILE,TILE);X.strokeStyle='rgba(100,70,40,.12)';X.lineWidth=1;X.strokeRect(px*TILE+1,py*TILE+1,TILE-2,TILE-2);});
+  const s0=pathPos(0);X.font='15px serif';X.textAlign='center';X.textBaseline='middle';X.fillText('🚪',s0.x,s0.y);X.font='bold 8px Figtree,sans-serif';X.fillStyle='rgba(58,34,24,.3)';X.fillText(L('er'),s0.x,s0.y+13);
+  const ep=pathPos(PATH.length-1);X.font='15px serif';X.fillText('☕',ep.x,ep.y);X.font='bold 8px Figtree,sans-serif';X.fillStyle='rgba(58,34,24,.3)';X.fillText(L('ward'),ep.x,ep.y+13);
+  if(hoveredTile&&selectedTower&&gameRunning){const[hx,hy]=hoveredTile;const def=TOWERS.find(d=>d.id===selectedTower);if(def&&!def.sell){const can=!pathSet.has(`${hx},${hy}`)&&!towers.find(t=>t.col===hx&&t.row===hy)&&gold>=def.cost&&!disabledTowers.has(def.id);X.fillStyle=can?'rgba(26,26,26,.12)':'rgba(214,48,49,.12)';X.fillRect(hx*TILE,hy*TILE,TILE,TILE);if(can){const rr=def.range*TILE*activeTowerEffects.rangeMult;X.beginPath();X.arc((hx+.5)*TILE,(hy+.5)*TILE,rr,0,Math.PI*2);X.fillStyle='rgba(255,214,0,.08)';X.fill();X.strokeStyle='rgba(26,26,26,.4)';X.lineWidth=2;X.stroke();}}}
+  if(tutorialActive&&tutorialHintTile){const[hx,hy]=tutorialHintTile;const pulse=.15+Math.sin(tick*.08)*.1;X.fillStyle='rgba(255,214,0,'+pulse+')';X.fillRect(hx*TILE,hy*TILE,TILE,TILE);X.strokeStyle='rgba(200,170,0,'+(pulse+.15).toString()+')';X.lineWidth=2;X.strokeRect(hx*TILE+1,hy*TILE+1,TILE-2,TILE-2);X.font='bold 9px Figtree,sans-serif';X.fillStyle='rgba(180,150,0,'+(pulse+.2).toString()+')';X.textAlign='center';X.textBaseline='middle';X.fillText('👆',(hx+.5)*TILE,(hy+.5)*TILE);}
+  towers.forEach(t=>{if(t.aura){const r=t.aura.range*TILE+TILE/2;X.beginPath();X.arc(t.x,t.y,r,0,Math.PI*2);X.strokeStyle=`rgba(223,230,233,${.06+Math.sin(tick*.03)*.04})`;X.lineWidth=1;X.setLineDash([4,4]);X.stroke();X.setLineDash([]);}
+    if(t.dotbase){const r=t.range*TILE;const pulse=Math.sin(tick*.04)*.08+.1;X.beginPath();X.arc(t.x,t.y,r,0,Math.PI*2);X.strokeStyle=`rgba(58,34,24,${pulse})`;X.lineWidth=1.5;X.setLineDash([2,6]);X.stroke();X.setLineDash([]);
     // Orbiting data dots
-    for(let d=0;d<3;d++){const a=tick*.02+d*Math.PI*2/3;const ox=Math.cos(a)*r*.6,oy=Math.sin(a)*r*.6;X.fillStyle=`rgba(92,224,208,${.2+Math.sin(tick*.06+d)*.1})`;X.beginPath();X.arc(t.x+ox,t.y+oy,2,0,Math.PI*2);X.fill();}}
+    for(let d=0;d<3;d++){const a=tick*.02+d*Math.PI*2/3;const ox=Math.cos(a)*r*.6,oy=Math.sin(a)*r*.6;X.fillStyle=`rgba(111,78,55,${.2+Math.sin(tick*.06+d)*.1})`;X.beginPath();X.arc(t.x+ox,t.y+oy,2,0,Math.PI*2);X.fill();}}
   });
   towers.forEach(t=>{const off=disabledTowers.has(t.id);if(!off){X.save();X.shadowColor=t.color;X.shadowBlur=7;X.fillStyle=t.color+'18';X.beginPath();X.arc(t.x,t.y,13,0,Math.PI*2);X.fill();X.restore();}
     // Sell selection highlight + range ring
     if(selectedForSell&&selectedForSell.col===t.col&&selectedForSell.row===t.row){
-      // Range ring
       const sr=t.range*TILE*activeTowerEffects.rangeMult;
-      X.beginPath();X.arc(t.x,t.y,sr,0,Math.PI*2);X.fillStyle='rgba(45,106,106,.06)';X.fill();X.strokeStyle='rgba(45,106,106,.3)';X.lineWidth=2;X.stroke();
-      // Sell ring
-      X.strokeStyle='rgba(231,76,60,.6)';X.lineWidth=2;X.setLineDash([4,3]);X.beginPath();X.arc(t.x,t.y,16,0,Math.PI*2);X.stroke();X.setLineDash([]);
-      // Stats text
-      X.font='bold 8px Figtree,sans-serif';X.fillStyle='#e74c3c';X.textAlign='center';
-      X.fillText(L('sell_label'),t.x,t.y+17);
-      X.font='7px Figtree,sans-serif';X.fillStyle='rgba(60,70,80,.5)';
-      X.fillText('DMG:'+t.dmg+' RNG:'+t.range+' ×'+t.kills,t.x,t.y+25);
+      X.beginPath();X.arc(t.x,t.y,sr,0,Math.PI*2);X.fillStyle='rgba(255,214,0,.08)';X.fill();X.strokeStyle='rgba(26,26,26,.3)';X.lineWidth=2;X.stroke();
+      X.strokeStyle='rgba(255,215,0,.6)';X.lineWidth=2.5;X.setLineDash([4,3]);X.beginPath();X.arc(t.x,t.y,16,0,Math.PI*2);X.stroke();X.setLineDash([]);
     }
+    if(t.level&&t.level>1&&!off){X.fillStyle='#ffd700';for(let d=0;d<t.level-1;d++){X.beginPath();X.arc(t.x-3+d*6,t.y-12,2.5,0,Math.PI*2);X.fill();}}
     const w=Math.sin(tick*.03+t.col*2)*.4;X.globalAlpha=off?.3:1;X.font='19px serif';X.textAlign='center';X.textBaseline='middle';X.fillText(t.emoji,t.x,t.y+w);X.globalAlpha=1;if(off){X.strokeStyle='rgba(255,80,50,.4)';X.lineWidth=2;X.beginPath();X.moveTo(t.x-8,t.y-8);X.lineTo(t.x+8,t.y+8);X.moveTo(t.x+8,t.y-8);X.lineTo(t.x-8,t.y+8);X.stroke();}if(t.kills>=5&&!off){X.font='bold 7px Figtree,sans-serif';X.fillStyle='rgba(255,255,255,.35)';X.fillText('×'+t.kills,t.x,t.y+13);}});
-  enemies.forEach(e=>{const t=e.animPhase;let ox=0,oy=0,sc=1;switch(e.animType){case'shuffle':ox=Math.sin(t*1.5)*2;oy=Math.abs(Math.sin(t*3))*-1.5;break;case'bob':oy=Math.sin(t*1.5)*3;break;case'scurry':ox=Math.sin(t*4)*2;oy=Math.abs(Math.sin(t*4))*-2;break;case'slide':ox=Math.sin(t*.8)*1;break;case'flutter':oy=Math.sin(t*3)*4;sc=1+Math.sin(t*6)*.08;break;case'pulse':sc=1+Math.sin(t*1.2)*.12;break;}const dx2=e.x+ox,dy2=e.y+oy-2;X.fillStyle='rgba(0,0,0,.18)';X.beginPath();X.ellipse(e.x,e.y+10*e.size,8*e.size,3,0,0,Math.PI*2);X.fill();if(e.burnTimer>0){X.fillStyle=`rgba(225,112,85,${.12+Math.sin(tick*.2)*.06})`;X.beginPath();X.arc(dx2,dy2,12*e.size,0,Math.PI*2);X.fill();}if(e.rootTimer>0){X.fillStyle='rgba(0,184,148,.2)';X.beginPath();X.arc(dx2,dy2+4,10*e.size,0,Math.PI*2);X.fill();}if(e.slowTimer>0){X.fillStyle='rgba(116,185,255,.15)';X.beginPath();X.arc(dx2,dy2,12*e.size,0,Math.PI*2);X.fill();}if(e.healer&&tick%40<20){X.strokeStyle=`rgba(255,215,0,${.08+Math.sin(tick*.1)*.04})`;X.lineWidth=1;X.beginPath();X.arc(dx2,dy2,3*TILE*(tick%40)/40,0,Math.PI*2);X.stroke();}if(e.shielder){X.strokeStyle=`rgba(253,121,168,${.12+Math.sin(tick*.05)*.06})`;X.lineWidth=1.5;X.beginPath();X.arc(dx2,dy2,2*TILE,0,Math.PI*2);X.stroke();}if(e.copier&&!e.copied){X.fillStyle=`rgba(0,206,201,${.06+Math.sin(tick*.15)*.04})`;X.beginPath();X.arc(dx2,dy2,10*e.size,0,Math.PI*2);X.fill();}if(e.rusher){X.strokeStyle=`rgba(224,86,160,${.15+Math.sin(tick*.06)*.08})`;X.lineWidth=1;X.beginPath();X.arc(dx2,dy2,2*TILE,0,Math.PI*2);X.stroke();for(let ar=0;ar<3;ar++){const aa=tick*.04+ar*Math.PI*2/3;X.fillStyle='rgba(224,86,160,.2)';X.beginPath();X.arc(dx2+Math.cos(aa)*12,dy2+Math.sin(aa)*12,2,0,Math.PI*2);X.fill();}}if(e.disabler){X.fillStyle=`rgba(44,62,80,${.08+Math.sin(tick*.08)*.05})`;X.beginPath();X.arc(dx2,dy2,14*e.size,0,Math.PI*2);X.fill();if(tick%60<30){X.font='8px serif';X.textAlign='center';X.fillText('⚡',dx2+10,dy2-8);}}if(e.regen){const rp=Math.sin(tick*.1)*.06+.1;X.strokeStyle=`rgba(0,180,216,${rp})`;X.lineWidth=1.5;X.beginPath();X.arc(dx2,dy2,11*e.size,tick*.03,tick*.03+Math.PI*1.2);X.stroke();}if(e.burnImmune&&e.burnTimer<=0){X.font='7px serif';X.textAlign='center';X.fillText('🔥',dx2-9,dy2+10);X.strokeStyle='rgba(200,50,50,.4)';X.lineWidth=1.5;X.beginPath();X.moveTo(dx2-12,dy2+7);X.lineTo(dx2-6,dy2+13);X.stroke();}X.save();X.translate(dx2,dy2);X.scale(sc*e.size,sc*e.size);X.font=`${e.boss?24:17}px serif`;X.textAlign='center';X.textBaseline='middle';X.fillText(e.emoji,0,0);X.restore();const bw=e.boss?26:16;const hp=e.hp/e.maxHp;const by=dy2-(e.boss?17:12)*e.size;X.fillStyle='rgba(0,0,0,.35)';X.fillRect(dx2-bw/2,by,bw,3);X.fillStyle=hp>.5?'#00b894':hp>.25?'#fdcb6e':'#d63031';X.fillRect(dx2-bw/2,by,bw*Math.max(0,hp),3);if(e.boss){X.font='9px serif';X.textAlign='center';X.fillText('⚠️',dx2,by-5);}if(e.armor>0){X.font='7px serif';X.fillText('🛡️',dx2+bw/2+4,by+2);}});
-  projectiles.forEach(p=>{X.fillStyle=p.color;X.shadowColor=p.color;X.shadowBlur=4;X.beginPath();X.arc(p.x,p.y,p.size,0,Math.PI*2);X.fill();X.shadowBlur=0;});
+  enemies.forEach(e=>{const t=e.animPhase;let ox=0,oy=0,sc=1;switch(e.animType){case'shuffle':ox=Math.sin(t*1.5)*2;oy=Math.abs(Math.sin(t*3))*-1.5;break;case'bob':oy=Math.sin(t*1.5)*3;break;case'scurry':ox=Math.sin(t*4)*2;oy=Math.abs(Math.sin(t*4))*-2;break;case'slide':ox=Math.sin(t*.8)*1;break;case'flutter':oy=Math.sin(t*3)*4;sc=1+Math.sin(t*6)*.08;break;case'pulse':sc=1+Math.sin(t*1.2)*.12;break;}const dx2=e.x+ox,dy2=e.y+oy-2;X.fillStyle='rgba(0,0,0,.18)';X.beginPath();X.ellipse(e.x,e.y+10*e.size,8*e.size,3,0,0,Math.PI*2);X.fill();if(e.burnTimer>0){X.fillStyle=`rgba(225,112,85,${.12+Math.sin(tick*.2)*.06})`;X.beginPath();X.arc(dx2,dy2,12*e.size,0,Math.PI*2);X.fill();}if(e.rootTimer>0){X.fillStyle='rgba(0,184,148,.2)';X.beginPath();X.arc(dx2,dy2+4,10*e.size,0,Math.PI*2);X.fill();}if(e.slowTimer>0){X.fillStyle='rgba(116,185,255,.15)';X.beginPath();X.arc(dx2,dy2,12*e.size,0,Math.PI*2);X.fill();}if(e.healer&&tick%40<20){X.strokeStyle=`rgba(255,215,0,${.08+Math.sin(tick*.1)*.04})`;X.lineWidth=1;X.beginPath();X.arc(dx2,dy2,3*TILE*(tick%40)/40,0,Math.PI*2);X.stroke();}if(e.shielder){X.strokeStyle=`rgba(253,121,168,${.12+Math.sin(tick*.05)*.06})`;X.lineWidth=1.5;X.beginPath();X.arc(dx2,dy2,2*TILE,0,Math.PI*2);X.stroke();}if(e.copier&&!e.copied){X.fillStyle=`rgba(0,206,201,${.06+Math.sin(tick*.15)*.04})`;X.beginPath();X.arc(dx2,dy2,10*e.size,0,Math.PI*2);X.fill();}if(e.rusher){X.strokeStyle=`rgba(224,86,160,${.15+Math.sin(tick*.06)*.08})`;X.lineWidth=1;X.beginPath();X.arc(dx2,dy2,2*TILE,0,Math.PI*2);X.stroke();for(let ar=0;ar<3;ar++){const aa=tick*.04+ar*Math.PI*2/3;X.fillStyle='rgba(224,86,160,.2)';X.beginPath();X.arc(dx2+Math.cos(aa)*12,dy2+Math.sin(aa)*12,2,0,Math.PI*2);X.fill();}}if(e.disabler){X.fillStyle=`rgba(44,62,80,${.08+Math.sin(tick*.08)*.05})`;X.beginPath();X.arc(dx2,dy2,14*e.size,0,Math.PI*2);X.fill();if(tick%60<30){X.font='8px serif';X.textAlign='center';X.fillText('⚡',dx2+10,dy2-8);}}if(e.regen){const rp=Math.sin(tick*.1)*.06+.1;X.strokeStyle=`rgba(0,180,216,${rp})`;X.lineWidth=1.5;X.beginPath();X.arc(dx2,dy2,11*e.size,tick*.03,tick*.03+Math.PI*1.2);X.stroke();}if(e.burnImmune&&e.burnTimer<=0){X.font='7px serif';X.textAlign='center';X.fillText('🔥',dx2-9,dy2+10);X.strokeStyle='rgba(200,50,50,.4)';X.lineWidth=1.5;X.beginPath();X.moveTo(dx2-12,dy2+7);X.lineTo(dx2-6,dy2+13);X.stroke();}if(e.goldDrain){X.fillStyle=`rgba(255,215,0,${.08+Math.sin(tick*.06)*.05})`;X.beginPath();X.arc(dx2,dy2,3*TILE,0,Math.PI*2);X.fill();if(tick%50<25){X.font='7px serif';X.fillText('💰',dx2+12,dy2-10);}}if(e.spawner){X.strokeStyle=`rgba(231,76,60,${.15+Math.sin(tick*.1)*.08})`;X.lineWidth=1.5;X.beginPath();X.arc(dx2,dy2,12*e.size,0,Math.PI*2);X.stroke();}if(e.splashOnly){X.strokeStyle=`rgba(142,68,173,${.2+Math.sin(tick*.07)*.1})`;X.lineWidth=2;X.setLineDash([2,4]);X.beginPath();X.arc(dx2,dy2,11*e.size,0,Math.PI*2);X.stroke();X.setLineDash([]);}X.save();X.translate(dx2,dy2);X.scale(sc*e.size,sc*e.size);X.font=`${e.boss?24:17}px serif`;X.textAlign='center';X.textBaseline='middle';X.fillText(e.emoji,0,0);X.restore();const bw=e.boss?26:16;const hp=e.hp/e.maxHp;const by=dy2-(e.boss?17:12)*e.size;X.fillStyle='rgba(0,0,0,.35)';X.fillRect(dx2-bw/2,by,bw,3);X.fillStyle=hp>.5?'#00b894':hp>.25?'#fdcb6e':'#d63031';X.fillRect(dx2-bw/2,by,bw*Math.max(0,hp),3);if(e.boss){X.font='9px serif';X.textAlign='center';X.fillText('⚠️',dx2,by-5);}if(e.armor>0){X.font='7px serif';X.fillText('🛡️',dx2+bw/2+4,by+2);}});
+  projectiles.forEach(p=>{const lvl=p.level||1;X.fillStyle=p.color;X.shadowColor=p.color;X.shadowBlur=4+lvl*3;X.beginPath();X.arc(p.x,p.y,p.size,0,Math.PI*2);X.fill();if(lvl>=2){X.globalAlpha=.3;X.beginPath();X.arc(p.x,p.y,p.size*1.8,0,Math.PI*2);X.fill();X.globalAlpha=1;}X.shadowBlur=0;});
   particles.forEach(p=>{const a=p.life/p.maxLife;if(p.beam){X.strokeStyle=p.color+Math.floor(a*180).toString(16).padStart(2,'0');X.lineWidth=p.width||2;X.beginPath();X.moveTo(p.x,p.y);X.lineTo(p.x2,p.y2);X.stroke();}else{X.globalAlpha=a;X.fillStyle=p.color;X.beginPath();X.arc(p.x,p.y,p.size*a,0,Math.PI*2);X.fill();X.globalAlpha=1;}});
   floatingTexts.forEach(f=>{const a=f.life/f.maxLife;X.globalAlpha=a;X.fillStyle=f.color;X.font='bold 10px Figtree,sans-serif';X.textAlign='center';X.textBaseline='middle';X.fillText(f.text,f.x,f.y);X.globalAlpha=1;});
   // Law at bottom
@@ -718,11 +668,7 @@ function updateUI(){
     const nm=btn.querySelector('.nm');if(nm)nm.textContent=T(def,'name')||def.id;
   });
   const ib=document.getElementById('ib');
-  if(selectedForSell){
-    const ex=towers.find(t=>t.col===selectedForSell.col&&t.row===selectedForSell.row);
-    if(ex){ib.style.display='block';ib.textContent=L('sell_confirm')(T(ex,'name')||ex.id,Math.floor(ex.cost/2));}
-    else{selectedForSell=null;ib.style.display='none';}
-  } else if(selectedTower){
+  if(selectedTower){
     const def=TOWERS.find(d=>d.id===selectedTower);
     if(def){ib.style.display='block';ib.textContent=L('tower_tip')(def);}
   } else ib.style.display='none';
@@ -748,7 +694,8 @@ let tsp=null,tm=false;
 C.addEventListener('touchstart',e=>{e.preventDefault();if(paused)return;const t=e.touches[0];tsp={x:t.clientX,y:t.clientY};tm=false;const{col,row,ok}=s2g(t.clientX,t.clientY);if(ok)hoveredTile=[col,row];},{passive:false});
 C.addEventListener('touchmove',e=>{e.preventDefault();if(!tsp)return;const t=e.touches[0];if(Math.abs(t.clientX-tsp.x)>8||Math.abs(t.clientY-tsp.y)>8)tm=true;const{col,row,ok}=s2g(t.clientX,t.clientY);hoveredTile=ok?[col,row]:null;},{passive:false});
 C.addEventListener('touchend',e=>{e.preventDefault();if(!gameRunning||tm||!tsp||paused){hoveredTile=null;tsp=null;return;}const{col,row,ok}=s2g(tsp.x,tsp.y);if(ok)placeTower(col,row);setTimeout(()=>{hoveredTile=null;},200);tsp=null;},{passive:false});
-document.getElementById('sb').addEventListener('click',e=>{e.stopPropagation();speedMult=speedMult===1?2:speedMult===2?3:1;document.getElementById('sb').textContent=`⏩${speedMult}x`;});
+document.getElementById('sb').addEventListener('click',e=>{e.stopPropagation();speedMult=speedMult===1?2:speedMult===2?3:1;document.getElementById('sb').textContent='⏩'+speedMult+'x';});
+document.getElementById('pb').addEventListener('click',e=>{e.stopPropagation();manualPause=!manualPause;paused=manualPause||showingIntro;document.getElementById('pb').textContent=manualPause?'▶️':'⏸️';});
 document.addEventListener('keydown',e=>{const n=parseInt(e.key);if(n>=1&&n<=TOWERS.length){const def=TOWERS[n-1];if(def&&wave>=def.unlock){selectedTower=selectedTower===def.id?null:def.id;updateUI();}}if(e.key==='Escape'){selectedTower=null;updateUI();}});
 
 function generateScorecard(){
@@ -758,7 +705,7 @@ function generateScorecard(){
 
   // Hospital background
   const bg=c.createLinearGradient(0,0,0,H);
-  bg.addColorStop(0,'#d4dad6');bg.addColorStop(1,'#c0c8c2');
+  bg.addColorStop(0,'#e8ddd0');bg.addColorStop(1,'#dccebb');
   c.fillStyle=bg;c.fillRect(0,0,W,H);
 
   // Floor tile pattern
@@ -773,33 +720,31 @@ function generateScorecard(){
   for(let x=0;x<=W;x+=ts){c.beginPath();c.moveTo(x,0);c.lineTo(x,H);c.stroke();}
   for(let y=0;y<=H;y+=ts){c.beginPath();c.moveTo(0,y);c.lineTo(W,y);c.stroke();}
 
-  // Top banner
-  c.fillStyle='rgba(45,106,106,0.12)';
+  // Top banner - KRAFT black
+  c.fillStyle='rgba(26,26,26,0.95)';
   c.fillRect(0,0,W,90);
-  c.fillStyle='rgba(45,106,106,0.06)';
-  c.fillRect(0,88,W,2);
 
-  // Title
-  c.font='bold 36px Figtree, sans-serif';c.fillStyle='#2D6A6A';c.textAlign='center';c.textBaseline='middle';
-  c.fillText('🏥 '+L('sc_title'),W/2,50);
+  // Title in KRAFT yellow
+  c.font='bold 36px Figtree, sans-serif';c.fillStyle='#FFD600';c.textAlign='center';c.textBaseline='middle';
+  c.fillText('⚡ '+L('sc_title'),W/2,50);
 
   // Central score area
   const cx=W/2, cy=260;
 
   // Big score circle
   c.beginPath();c.arc(cx,cy,100,0,Math.PI*2);
-  c.fillStyle='rgba(45,106,106,0.08)';c.fill();
-  c.strokeStyle='rgba(45,106,106,0.2)';c.lineWidth=3;c.stroke();
+  c.fillStyle='rgba(58,34,24,0.08)';c.fill();
+  c.strokeStyle='rgba(58,34,24,0.2)';c.lineWidth=3;c.stroke();
 
-  c.font='bold 72px Figtree, sans-serif';c.fillStyle='#2a3a4a';c.textAlign='center';
+  c.font='bold 72px Figtree, sans-serif';c.fillStyle='#1a1a1a';c.textAlign='center';
   c.fillText(score.toString(),cx,cy+8);
-  c.font='16px Figtree, sans-serif';c.fillStyle='#5a6a7c';
+  c.font='16px Figtree, sans-serif';c.fillStyle='#6a5040';
   c.fillText(L('sc_score').toUpperCase(),cx,cy-50);
 
   // Shifts survived (left)
-  c.font='bold 48px Figtree, sans-serif';c.fillStyle='#2a3a4a';
+  c.font='bold 48px Figtree, sans-serif';c.fillStyle='#1a1a1a';
   c.fillText(wave.toString(),cx-220,cy+5);
-  c.font='14px Figtree, sans-serif';c.fillStyle='#5a6a7c';
+  c.font='14px Figtree, sans-serif';c.fillStyle='#6a5040';
   c.fillText(L('sc_survived'),cx-220,cy-35);
   c.fillText(L('sc_shifts'),cx-220,cy+35);
 
@@ -807,8 +752,8 @@ function generateScorecard(){
   let topTower=null,topKills=0;
   towers.forEach(t=>{if(t.kills>topKills){topKills=t.kills;topTower=t;}});
   c.font='44px serif';
-  c.fillText(topTower?topTower.emoji:'🏥',cx+220,cy-5);
-  c.font='14px Figtree, sans-serif';c.fillStyle='#5a6a7c';
+  c.fillText(topTower?topTower.emoji:'☕',cx+220,cy-5);
+  c.font='14px Figtree, sans-serif';c.fillStyle='#6a5040';
   c.fillText(L('sc_top'),cx+220,cy-40);
   if(topTower){
     c.font='12px Figtree, sans-serif';c.fillStyle='#7a8a9c';
@@ -820,7 +765,7 @@ function generateScorecard(){
   c.beginPath();c.moveTo(100,390);c.lineTo(W-100,390);c.stroke();
 
   // Quote
-  c.font='italic 18px Special Elite, monospace';c.fillStyle='#6a5a48';c.textAlign='center';
+  c.font='italic 18px Playfair Display, serif';c.fillStyle='#6a5040';c.textAlign='center';
   const quote=lastGoQuote||L('go_quotes')[0];
   // Word wrap
   const maxW=W-200;
@@ -828,7 +773,7 @@ function generateScorecard(){
   let lines=[],line='';
   words.forEach(w=>{const test=line?line+' '+w:w;if(c.measureText(test).width>maxW){lines.push(line);line=w;}else line=test;});
   if(line)lines.push(line);
-  c.font='italic 18px Special Elite, monospace';
+  c.font='italic 18px Playfair Display, serif';
   lines.forEach((l,i)=>{c.fillText('"'+l+(i===lines.length-1?'"':''),cx,420+i*28);});
 
   // CTA at bottom
@@ -837,7 +782,7 @@ function generateScorecard(){
 
   // Decorative emojis scattered
   c.globalAlpha=0.15;c.font='30px serif';
-  const emojis=['💉','📟','⚡','🧊','💊','🪢','📢','🧲','👩‍⚕️','💻','🧓','📄','👔'];
+  const emojis=['☕','🥛','🍌','💨','👩‍🍳','🫖','📱','📢','🧹','🏃','🥐','💻','🧑'];
   emojis.forEach((em,i)=>{
     const ex=60+((i*97)%11)/11*(W-120);
     const ey=100+((i*173)%7)/7*(H-200);
@@ -846,21 +791,21 @@ function generateScorecard(){
   c.globalAlpha=1;
 
   // Bottom bar
-  c.fillStyle='rgba(45,106,106,0.08)';c.fillRect(0,H-30,W,30);
-  c.font='11px Figtree, sans-serif';c.fillStyle='rgba(45,106,106,0.5)';
-  c.fillText('🏥 '+L('sc_title')+' · dotbase.org',cx,H-12);
+  c.fillStyle='rgba(26,26,26,0.9)';c.fillRect(0,H-30,W,30);
+  c.font='11px Figtree, sans-serif';c.fillStyle='#FFD600';
+  c.fillText('⚡ '+L('sc_title')+' · kiezkaffeekraft.de',cx,H-12);
 
   // Convert and download/share
   cv.toBlob(blob=>{
     if(!blob)return;
-    const file=new File([blob],'hospital-defense-score.png',{type:'image/png'});
+    const file=new File([blob],'kraft-td-score.png',{type:'image/png'});
     // Try Web Share API first (mobile)
     if(navigator.canShare&&navigator.canShare({files:[file]})){
       navigator.share({files:[file],title:L('sc_title'),text:L('sc_survived')+' '+wave+' '+L('sc_shifts')+' · '+L('sc_score')+': '+score}).catch(()=>{});
     } else {
       // Fallback: download
       const url=URL.createObjectURL(blob);
-      const a=document.createElement('a');a.href=url;a.download='hospital-defense-score.png';
+      const a=document.createElement('a');a.href=url;a.download='kraft-td-score.png';
       document.body.appendChild(a);a.click();document.body.removeChild(a);
       setTimeout(()=>URL.revokeObjectURL(url),5000);
     }
